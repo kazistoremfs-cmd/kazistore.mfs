@@ -1,0 +1,6 @@
+{
+  "name": "Kazi Store",
+  "description": "A modern, highly interactive single-page application for Kazi Store, offering MFS services and premium Resume/CV templates.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
