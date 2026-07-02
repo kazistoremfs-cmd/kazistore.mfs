@@ -44,14 +44,11 @@ export default function ServiceDetail() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-slate-50 to-transparent rounded-bl-full -z-10"></div>
           
           <div className="flex flex-col md:flex-row items-start gap-4 md:gap-6">
-            <div className={`w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-2xl md:rounded-3xl flex items-center justify-center ${service.bg}`}>
-              {service.icon}
-            </div>
             <div>
               <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold font-bn text-slate-900 mb-2 md:mb-4 tracking-tight">
                 {service.title}
               </h1>
-              <p className="text-sm md:text-lg text-slate-600 font-bn leading-relaxed max-w-2xl">
+              <p className="text-sm md:text-lg text-slate-600 font-bn leading-relaxed max-w-2xl whitespace-pre-line">
                 {service.desc}
               </p>
             </div>
