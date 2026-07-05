@@ -7,7 +7,7 @@ export default function Footer() {
             <div className="flex flex-col mb-4">
               <div className="flex items-center">
                 <span className="text-3xl font-black tracking-tighter text-white uppercase font-en leading-none">KAZI</span>
-                <span className="text-3xl font-black tracking-tighter text-[#F59E0B] uppercase font-en leading-none ml-1">STORE</span>
+                <span className="text-3xl font-black tracking-tighter text-[#08B3AF] uppercase font-en leading-none ml-1">STORE</span>
               </div>
               <span className="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em] font-en mt-1">MFS Agent Point</span>
             </div>
