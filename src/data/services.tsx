@@ -210,11 +210,11 @@ export const servicesData = serviceCategories.flatMap(cat =>
           title: "SSC",
           subItems: [
             {
-              content: "SSC পরীক্ষা, রেজাল্ট ও বোর্ড চ্যালেঞ্জ",
+              content: "SSC পরীক্ষার রেজাল্ট ও বোর্ড চ্যালেঞ্জ",
               link: "/ssc-details"
             },
             {
-              content: "একাদশ শ্রেণিতে কলেজ ভর্তি আবেদন",
+              content: "কলেজ ভর্তি আবেদন",
               link: "/college-admission-details"
             }
           ]

@@ -34,7 +34,7 @@ export default function CollegeAdmissionDetails() {
         >
           {/* Header */}
           <div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-bn text-white mb-3 md:mb-4 tracking-tight drop-shadow-md">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-bn text-white mb-3 md:mb-4 tracking-tight drop-shadow-md">
               একাদশ শ্রেণিতে ভর্তি আবেদন
             </h1>
             <p className="text-sm sm:text-base md:text-lg text-slate-300 font-bn leading-relaxed max-w-2xl whitespace-pre-line drop-shadow">
@@ -48,7 +48,7 @@ export default function CollegeAdmissionDetails() {
                 <GraduationCap className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-white font-bn mb-3">অনলাইন আবেদন</h3>
-              <ul className="space-y-3 font-bn text-slate-300 text-sm md:text-base">
+              <ul className="space-y-3 font-bn text-slate-300 text-[15px] md:text-base">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
                   <span>আবেদনের ফি প্রদান (বিকাশ/নগদ এর মাধ্যমে)</span>
@@ -69,7 +69,7 @@ export default function CollegeAdmissionDetails() {
                 <FileCheck className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-white font-bn mb-3">ফলাফল ও নিশ্চায়ন</h3>
-              <ul className="space-y-3 font-bn text-slate-300 text-sm md:text-base">
+              <ul className="space-y-3 font-bn text-slate-300 text-[15px] md:text-base">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
                   <span>ভর্তির ফলাফল (মেরিট লিস্ট) চেক করা</span>
@@ -88,7 +88,7 @@ export default function CollegeAdmissionDetails() {
 
           <div className="bg-blue-900/30 border border-blue-500/30 rounded-2xl p-6 backdrop-blur-md">
             <h3 className="text-lg md:text-xl font-bold text-white font-bn mb-3">আবেদনের জন্য কী কী প্রয়োজন?</h3>
-            <p className="font-bn text-slate-300 text-sm md:text-base leading-relaxed">
+            <p className="font-bn text-slate-300 text-[15px] md:text-base leading-relaxed">
               আবেদন করার জন্য শিক্ষার্থীর <strong>SSC রোল নম্বর, রেজিস্ট্রেশন নম্বর, পাসের সন, বোর্ডের নাম</strong> এবং একটি সচল <strong>মোবাইল নম্বর</strong> প্রয়োজন হবে। কলেজ পছন্দের তালিকা আগে থেকেই ঠিক করে আনলে আবেদন প্রক্রিয়া দ্রুত সম্পন্ন করা সম্ভব।
             </p>
           </div>

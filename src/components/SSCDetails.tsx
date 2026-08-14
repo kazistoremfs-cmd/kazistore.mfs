@@ -34,7 +34,7 @@ export default function SSCDetails() {
         >
           {/* Header */}
           <div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-bn text-white mb-3 md:mb-4 tracking-tight drop-shadow-md">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-bn text-white mb-3 md:mb-4 tracking-tight drop-shadow-md">
               SSC রেজাল্ট ও বোর্ড চ্যালেঞ্জ
             </h1>
             <p className="text-sm sm:text-base md:text-lg text-slate-300 font-bn leading-relaxed max-w-2xl whitespace-pre-line drop-shadow">
@@ -48,7 +48,7 @@ export default function SSCDetails() {
                 <FileText className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-white font-bn mb-3">রেজাল্ট ও মার্কশিট</h3>
-              <ul className="space-y-3 font-bn text-slate-300 text-sm md:text-base">
+              <ul className="space-y-3 font-bn text-slate-300 text-[15px] md:text-base">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
                   <span>এসএমএস ও ওয়েবসাইটের মাধ্যমে দ্রুত রেজাল্ট চেক</span>
@@ -69,7 +69,7 @@ export default function SSCDetails() {
                 <Download className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-bold text-white font-bn mb-3">বোর্ড চ্যালেঞ্জ (খাতা পুনঃনিরীক্ষণ)</h3>
-              <ul className="space-y-3 font-bn text-slate-300 text-sm md:text-base">
+              <ul className="space-y-3 font-bn text-slate-300 text-[15px] md:text-base">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
                   <span>সকল বোর্ডের খাতা পুনঃনিরীক্ষণের আবেদন ফি জমা</span>
@@ -88,7 +88,7 @@ export default function SSCDetails() {
 
           <div className="bg-blue-900/30 border border-blue-500/30 rounded-2xl p-6 backdrop-blur-md">
             <h3 className="text-lg md:text-xl font-bold text-white font-bn mb-3">কী কী প্রয়োজন?</h3>
-            <p className="font-bn text-slate-300 text-sm md:text-base leading-relaxed">
+            <p className="font-bn text-slate-300 text-[15px] md:text-base leading-relaxed">
               রেজাল্ট দেখার জন্য পরীক্ষার্থীর <strong>রোল নম্বর, রেজিস্ট্রেশন নম্বর এবং বোর্ডের নাম</strong> প্রয়োজন। বোর্ড চ্যালেঞ্জের জন্য পরীক্ষার্থীর একটি সচল <strong>মোবাইল নম্বর</strong> লাগবে। বিস্তারিত জানতে আমাদের দোকানে আসুন অথবা WhatsApp-এ যোগাযোগ করুন।
             </p>
           </div>
