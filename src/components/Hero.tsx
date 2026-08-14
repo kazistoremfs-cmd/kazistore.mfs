@@ -5,47 +5,54 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden pt-20 pb-20 bg-[#0F172A] min-h-[600px] flex items-center">
       {/* Background decoration */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#1e3a8a]/40 to-[#0F172A] opacity-90 overflow-hidden">
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#1e3a8a]/40 to-[#0F172A] opacity-90 overflow-hidden [perspective:1000px]">
         {/* Animated MFS Elements */}
-        <motion.div
-          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-[15%] right-[10%] text-pink-500/20"
-        >
-          <Smartphone className="w-32 h-32" />
-        </motion.div>
-        
-        <motion.div
-          animate={{ y: [0, 30, 0], rotate: [0, -10, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-[20%] right-[25%] text-orange-500/20"
-        >
-          <Wallet className="w-24 h-24" />
-        </motion.div>
-        
-        <motion.div
-          animate={{ y: [0, -25, 0], x: [0, 15, 0], rotate: [0, 15, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute top-[40%] right-[5%] text-emerald-500/20"
-        >
-          <Banknote className="w-28 h-28" />
-        </motion.div>
+        <div className="[transform-style:preserve-3d]">
+          <motion.div
+            animate={{ y: [0, -20, 0], rotateX: [0, 15, 0], rotateY: [0, -15, 0], rotateZ: [0, 5, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-[10%] right-[5%] md:top-[15%] md:right-[10%] text-pink-500/40 md:text-pink-500/30 drop-shadow-2xl"
+            style={{ willChange: "transform" }}
+          >
+            <Smartphone className="w-24 h-24 md:w-32 md:h-32 drop-shadow-[0_10px_10px_rgba(236,72,153,0.3)]" />
+          </motion.div>
+          
+          <motion.div
+            animate={{ y: [0, 30, 0], rotateX: [0, -20, 0], rotateY: [0, 20, 0], rotateZ: [0, -10, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-[20%] right-[10%] md:right-[25%] text-orange-500/40 md:text-orange-500/30 drop-shadow-2xl"
+            style={{ willChange: "transform" }}
+          >
+            <Wallet className="w-20 h-20 md:w-24 md:h-24 drop-shadow-[0_10px_10px_rgba(249,115,22,0.3)]" />
+          </motion.div>
+          
+          <motion.div
+            animate={{ y: [0, -25, 0], x: [0, 15, 0], rotateX: [0, 25, 0], rotateY: [0, -25, 0], rotateZ: [0, 15, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute top-[40%] right-[5%] text-emerald-500/40 md:text-emerald-500/30 drop-shadow-2xl"
+            style={{ willChange: "transform" }}
+          >
+            <Banknote className="w-20 h-20 md:w-28 md:h-28 drop-shadow-[0_10px_10px_rgba(16,185,129,0.3)]" />
+          </motion.div>
 
-        <motion.div
-          animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 3 }}
-          className="absolute top-[10%] left-[40%] text-blue-500/10"
-        >
-          <Send className="w-20 h-20" />
-        </motion.div>
+          <motion.div
+            animate={{ y: [0, 20, 0], rotateX: [0, -15, 0], rotateY: [0, 15, 0], rotateZ: [0, -5, 0] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+            className="absolute top-[10%] left-[15%] md:left-[40%] text-blue-500/30 md:text-blue-500/20 drop-shadow-2xl"
+            style={{ willChange: "transform" }}
+          >
+            <Send className="w-16 h-16 md:w-20 md:h-20 drop-shadow-[0_10px_10px_rgba(59,130,246,0.3)]" />
+          </motion.div>
 
-        <motion.div
-          animate={{ scale: [1, 1.1, 1], rotate: [0, 10, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          className="absolute bottom-[15%] left-[10%] text-purple-500/10"
-        >
-          <CreditCard className="w-40 h-40" />
-        </motion.div>
+          <motion.div
+            animate={{ scale: [1, 1.1, 1], rotateX: [0, 20, 0], rotateY: [0, -20, 0], rotateZ: [0, 10, 0] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+            className="absolute bottom-[10%] left-[5%] md:bottom-[15%] md:left-[10%] text-purple-500/30 md:text-purple-500/20 drop-shadow-2xl"
+            style={{ willChange: "transform" }}
+          >
+            <CreditCard className="w-24 h-24 md:w-40 md:h-40 drop-shadow-[0_10px_10px_rgba(168,85,247,0.3)]" />
+          </motion.div>
+        </div>
       </div>
       <div className="absolute top-20 right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl z-0 pointer-events-none"></div>
       <div className="absolute bottom-10 right-40 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl z-0 pointer-events-none"></div>

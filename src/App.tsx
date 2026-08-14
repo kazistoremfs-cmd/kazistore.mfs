@@ -8,6 +8,8 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import Footer from './components/Footer';
 import ServiceDetail from './components/ServiceDetail';
+import SSCDetails from './components/SSCDetails';
+import CollegeAdmissionDetails from './components/CollegeAdmissionDetails';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function Home() {
@@ -29,6 +31,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/service/:id" element={<ServiceDetail />} />
+            <Route path="/ssc-details" element={<SSCDetails />} />
+            <Route path="/college-admission-details" element={<CollegeAdmissionDetails />} />
           </Routes>
         </main>
 

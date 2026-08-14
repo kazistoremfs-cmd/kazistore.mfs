@@ -1,0 +1,39 @@
+--- src/data/services.tsx
++++ src/data/services.tsx
+@@ -203,6 +203,28 @@
+     } else if (item.id.startsWith('bill-')) {
+       customDesc = '১ মিনিটে বিল পেমেন্ট! ঝামেলাহীন সেবা পেতে আজই আমাদের কাজী স্টোরে আসুন। আপনার বিদ্যুৎ, গ্যাস বা ইন্টারনেট বিল পরিশোধ করুন কোনো রকম বিড়ম্বনা ছাড়াই।';
+     }
++    
++    let corners = undefined;
++    if (item.id === 'edu-admission') {
++      corners = [
++        {
++          title: "SSC Corner",
++          content: "SSC admission forms, results, and other details are handled here."
++        },
++        {
++          title: "HSC Corner",
++          content: "HSC admission forms, results, and other details are handled here."
++        },
++        {
++          title: "Hon's Corner",
++          content: "Honors admission forms, results, and other details are handled here."
++        },
++        {
++          title: "Master's Corner",
++          content: "Master's admission forms, results, and other details are handled here."
++        }
++      ];
++    }
+ 
+     return {
+       id: item.id,
+@@ -211,6 +233,7 @@
+       desc: customDesc,
+       importantLinks,
+       bg: 'bg-[#0F172A]',
++      corners,
+       details: [
+         {
+           Service: item.name,
