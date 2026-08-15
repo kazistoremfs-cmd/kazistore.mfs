@@ -149,6 +149,21 @@ export default function SSCDetails() {
               </div>
             </div>
 
+            {/* যা যা লাগবে */}
+            <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-4 sm:p-6 backdrop-blur-md shadow-xl">
+              <h3 className="text-xl md:text-2xl font-bold text-white font-bn mb-5">বোর্ড চ্যালেঞ্জ করতে যা যা লাগবে</h3>
+              <ul className="space-y-4 font-bn text-[15px] md:text-base text-slate-300">
+                <li className="flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 font-bold font-bn text-sm">১</div>
+                  <span>রোল নাম্বার এবং রেজিষ্টেশন নাম্বার।</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="w-7 h-7 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 font-bold font-bn text-sm">২</div>
+                  <span>সচল একটা মোবাইল নাম্বার।</span>
+                </li>
+              </ul>
+            </div>
+
             {/* ফি ও ফলাফল */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-4 sm:p-6 backdrop-blur-md shadow-xl flex flex-col justify-center">
@@ -160,9 +175,19 @@ export default function SSCDetails() {
               </div>
               <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-4 sm:p-6 backdrop-blur-md shadow-xl flex flex-col justify-center">
                 <h3 className="text-xl font-bold text-white font-bn mb-3">বোর্ড চ্যালেঞ্জ ফলাফল</h3>
-                <p className="font-bn text-[15px] md:text-base text-slate-300 leading-relaxed">
+                <p className="font-bn text-[15px] md:text-base text-slate-300 leading-relaxed mb-5">
                   SSC ফলাফল প্রকাশের পরবর্তী <strong className="text-white">৭ দিন</strong> ফল পুনঃনিরীক্ষণের আবেদন চলবে এবং SSC ফলাফল প্রকাশের <strong className="text-white">৩০ দিন</strong> পর পুনঃনিরীক্ষণের ফল প্রকাশিত হবে।
                 </p>
+                <div className="mt-auto">
+                  <a 
+                    href="https://wa.me/message/L2XAYVWBE5RIJ1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-teal-500/20 hover:bg-teal-500/30 text-teal-300 border border-teal-500/30 px-6 py-2.5 rounded-xl text-[15px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95"
+                  >
+                    যোগাযোগ
+                  </a>
+                </div>
               </div>
             </div>
           </div>
