@@ -224,6 +224,10 @@ export const servicesData = serviceCategories.flatMap(cat =>
           content: "HSC এডমিশন সম্পর্কিত তথ্য ও সেবাসমূহ এখানে পাওয়া যাবে।"
         },
         {
+          title: "ADMISSION",
+          content: "বিশ্ববিদ্যালয় ভর্তি ও এডমিশন সম্পর্কিত তথ্য ও সেবাসমূহ এখানে পাওয়া যাবে।"
+        },
+        {
           title: "Hon's",
           content: "অনার্স এডমিশন সম্পর্কিত তথ্য ও সেবাসমূহ এখানে পাওয়া যাবে।"
         },
