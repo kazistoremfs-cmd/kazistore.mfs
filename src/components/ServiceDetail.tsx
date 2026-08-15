@@ -10,6 +10,7 @@ export default function ServiceDetail() {
   const service = servicesData.find(s => s.id === id);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [openCorner, setOpenCorner] = useState<number | null>(null);
+  const [openChargeDetails, setOpenChargeDetails] = useState<boolean>(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -152,32 +153,48 @@ export default function ServiceDetail() {
               </div>
             </div>
           ) : (
-            <div>
-              <h2 className="text-lg md:text-2xl font-bold font-bn text-white mb-3 md:mb-4 drop-shadow">সার্ভিস ডিটেইলস ও চার্জ</h2>
-              <div className="overflow-x-auto rounded-xl md:rounded-2xl border border-slate-700/50 bg-slate-800/60 backdrop-blur-md shadow-xl">
-                <table className="w-full text-left font-en min-w-[300px]">
-                  <thead className="bg-slate-900/60 text-slate-300 text-[10px] md:text-xs uppercase tracking-wider">
-                    <tr>
-                      {Object.keys(service.details[0]).map((key) => (
-                        <th key={key} className="px-4 md:px-6 py-3 md:py-4 font-semibold whitespace-nowrap">
-                          {key.replace(/([A-Z])/g, ' $1').trim()}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-700/50">
-                    {service.details.map((detail, idx) => (
-                      <tr key={idx} className="hover:bg-slate-700/40 transition-colors text-xs md:text-sm">
-                        {Object.values(detail).map((val, i) => (
-                          <td key={i} className="px-4 md:px-6 py-3 md:py-4 text-slate-100 font-medium">
-                            {val as React.ReactNode}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+            <div className="border border-slate-700/50 rounded-xl md:rounded-2xl bg-slate-800/60 backdrop-blur-md shadow-xl overflow-hidden">
+              <button 
+                onClick={() => setOpenChargeDetails(!openChargeDetails)}
+                className="w-full flex items-center justify-between p-4 md:p-5 hover:bg-slate-700/30 transition-colors"
+              >
+                <h2 className="text-lg md:text-2xl font-bold font-bn text-white drop-shadow">সার্ভিস ডিটেইলস ও চার্জ</h2>
+                <ChevronDown className={`w-5 h-5 md:w-6 md:h-6 text-slate-400 transition-transform duration-300 ${openChargeDetails ? 'rotate-180' : ''}`} />
+              </button>
+              
+              <AnimatePresence>
+                {openChargeDetails && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="p-4 md:p-5 pt-0 border-t border-slate-700/50">
+                      <div className="bg-blue-900/20 border border-blue-500/20 rounded-xl mt-4 overflow-hidden">
+                        <table className="w-full text-left font-bn">
+                          <thead className="bg-blue-900/40 text-blue-300 text-[15px] md:text-base">
+                            <tr>
+                              <th className="px-4 py-3 font-semibold border-b border-blue-500/20">এজেন্টের ধরন</th>
+                              <th className="px-4 py-3 font-semibold border-b border-blue-500/20">ক্যাশ আউট চার্জ</th>
+                            </tr>
+                          </thead>
+                          <tbody className="text-slate-200 text-[15px] md:text-base divide-y divide-blue-500/10">
+                            <tr className="hover:bg-blue-900/30 transition-colors">
+                              <td className="px-4 py-3">প্রিয় এজেন্ট</td>
+                              <td className="px-4 py-3">১৪ টাকা (প্রতি হাজারে)</td>
+                            </tr>
+                            <tr className="hover:bg-blue-900/30 transition-colors">
+                              <td className="px-4 py-3">সাধারন এজেন্ট</td>
+                              <td className="px-4 py-3">১৮.৫ টাকা</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           )}
 
