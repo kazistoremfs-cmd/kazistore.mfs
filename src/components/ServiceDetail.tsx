@@ -101,12 +101,20 @@ export default function ServiceDetail() {
                               {corner.subItems && (
                                 <div className="flex flex-col gap-3">
                                   {corner.subItems.map((sub: any, i: number) => (
-                                    <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-slate-800/40 p-4 rounded-xl border border-slate-700/50">
+                                    <div key={i} className="flex flex-col gap-3 bg-slate-800/40 p-4 rounded-xl border border-slate-700/50">
                                       <p className="text-slate-300 font-bn text-[15px] md:text-base leading-snug">{sub.content}</p>
-                                      <div className="w-full sm:w-auto flex sm:shrink-0 mt-1 sm:mt-0">
+                                      <div className="w-full flex justify-between items-center gap-2 mt-1">
+                                        <a 
+                                          href="https://wa.me/message/L2XAYVWBE5RIJ1"
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="inline-flex justify-center items-center gap-2 bg-teal-500/20 hover:bg-teal-500/30 text-teal-300 border border-teal-500/30 px-5 sm:px-6 py-2.5 rounded-xl text-[14px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
+                                        >
+                                          যোগাযোগ
+                                        </a>
                                         <Link 
                                           to={sub.link}
-                                          className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-6 py-2.5 rounded-xl text-[15px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
+                                          className="inline-flex justify-center items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-5 sm:px-6 py-2.5 rounded-xl text-[14px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
                                         >
                                           বিস্তারিত
                                         </Link>
@@ -117,10 +125,18 @@ export default function ServiceDetail() {
                               )}
 
                               {corner.link && !corner.subItems && (
-                                <div className="w-full flex justify-end mt-2">
+                                <div className="w-full flex justify-between items-center gap-2 mt-3 pt-2 border-t border-slate-700/50">
+                                  <a 
+                                    href="https://wa.me/message/L2XAYVWBE5RIJ1"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex justify-center items-center gap-2 bg-teal-500/20 hover:bg-teal-500/30 text-teal-300 border border-teal-500/30 px-5 sm:px-6 py-2.5 rounded-xl text-[14px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
+                                  >
+                                    যোগাযোগ
+                                  </a>
                                   <Link 
                                     to={corner.link}
-                                    className="w-full sm:w-auto inline-flex justify-center items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-6 py-2.5 rounded-xl text-[15px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95"
+                                    className="inline-flex justify-center items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-5 sm:px-6 py-2.5 rounded-xl text-[14px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
                                   >
                                     বিস্তারিত
                                   </Link>
