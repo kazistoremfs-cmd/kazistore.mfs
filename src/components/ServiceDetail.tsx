@@ -47,7 +47,6 @@ export default function ServiceDetail() {
       </div>
 
       <div className="relative z-10 flex-1 flex flex-col w-full max-w-4xl mx-auto md:px-8">
-        
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-slate-400 p-4 md:pt-12 md:px-0 font-en backdrop-blur-md bg-[#0F172A]/50 md:bg-transparent sticky top-0 z-20 border-b border-slate-800 md:border-none">
           <Link to="/" className="hover:text-blue-400 transition-colors flex items-center gap-1">
@@ -172,24 +171,64 @@ export default function ServiceDetail() {
                   >
                     <div className="p-4 md:p-5 pt-0 border-t border-slate-700/50">
                       <div className="bg-blue-900/20 border border-blue-500/20 rounded-xl mt-4 overflow-hidden">
-                        <table className="w-full text-left font-bn">
-                          <thead className="bg-blue-900/40 text-blue-300 text-[15px] md:text-base">
-                            <tr>
-                              <th className="px-4 py-3 font-semibold border-b border-blue-500/20">এজেন্টের ধরন</th>
-                              <th className="px-4 py-3 font-semibold border-b border-blue-500/20">ক্যাশ আউট চার্জ</th>
-                            </tr>
-                          </thead>
-                          <tbody className="text-slate-200 text-[15px] md:text-base divide-y divide-blue-500/10">
-                            <tr className="hover:bg-blue-900/30 transition-colors">
-                              <td className="px-4 py-3">প্রিয় এজেন্ট</td>
-                              <td className="px-4 py-3">১৪ টাকা (প্রতি হাজারে)</td>
-                            </tr>
-                            <tr className="hover:bg-blue-900/30 transition-colors">
-                              <td className="px-4 py-3">সাধারন এজেন্ট</td>
-                              <td className="px-4 py-3">১৮.৫ টাকা</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        {service.id === 'mfs-nagad' ? (
+                          <table className="w-full text-left font-bn">
+                            <thead className="bg-blue-900/40 text-blue-300 text-[15px] md:text-base">
+                              <tr>
+                                <th className="px-4 py-3 font-semibold border-b border-blue-500/20">মাধ্যম</th>
+                                <th className="px-4 py-3 font-semibold border-b border-blue-500/20">চার্জ</th>
+                              </tr>
+                            </thead>
+                            <tbody className="text-slate-200 text-[15px] md:text-base divide-y divide-blue-500/10">
+                              <tr className="hover:bg-blue-900/30 transition-colors">
+                                <td className="px-4 py-3">APP এর মাধ্যমে</td>
+                                <td className="px-4 py-3">১৩ টাকা</td>
+                              </tr>
+                              <tr className="hover:bg-blue-900/30 transition-colors">
+                                <td className="px-4 py-3">USSD এর মাধ্যমে</td>
+                                <td className="px-4 py-3">১৫ টাকা</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        ) : service.id === 'mfs-bkash' || service.id === 'mfs-rocket' ? (
+                          <table className="w-full text-left font-bn">
+                            <thead className="bg-blue-900/40 text-blue-300 text-[15px] md:text-base">
+                              <tr>
+                                <th className="px-4 py-3 font-semibold border-b border-blue-500/20">এজেন্টের ধরন</th>
+                                <th className="px-4 py-3 font-semibold border-b border-blue-500/20">ক্যাশ আউট চার্জ</th>
+                              </tr>
+                            </thead>
+                            <tbody className="text-slate-200 text-[15px] md:text-base divide-y divide-blue-500/10">
+                              <tr className="hover:bg-blue-900/30 transition-colors">
+                                <td className="px-4 py-3">প্রিয় এজেন্ট</td>
+                                <td className="px-4 py-3">১৪ টাকা (প্রতি হাজারে)</td>
+                              </tr>
+                              <tr className="hover:bg-blue-900/30 transition-colors">
+                                <td className="px-4 py-3">সাধারন এজেন্ট</td>
+                                <td className="px-4 py-3">১৮.৫ টাকা</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        ) : (
+                          <table className="w-full text-left font-bn">
+                            <thead className="bg-blue-900/40 text-blue-300 text-[15px] md:text-base">
+                              <tr>
+                                {Object.keys(service.details[0] || {}).map((key, idx) => (
+                                  <th key={idx} className="px-4 py-3 font-semibold border-b border-blue-500/20">{key}</th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody className="text-slate-200 text-[15px] md:text-base divide-y divide-blue-500/10">
+                              {service.details.map((row: any, idx: number) => (
+                                <tr key={idx} className="hover:bg-blue-900/30 transition-colors">
+                                  {Object.values(row).map((val: any, vIdx: number) => (
+                                    <td key={vIdx} className="px-4 py-3">{val}</td>
+                                  ))}
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        )}
                       </div>
                     </div>
                   </motion.div>

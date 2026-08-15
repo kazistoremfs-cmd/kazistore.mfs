@@ -11,7 +11,7 @@ export const serviceCategories = [
       { id: 'mfs-bkash', name: 'bKash' },
       { id: 'mfs-nagad', name: 'Nagad' },
       { id: 'mfs-rocket', name: 'Rocket' },
-      { id: 'bill-electricity', name: 'Electricity Bill Payment' },
+      { id: 'bill-electricity', name: 'Electricity Bill' },
       { id: 'bill-gas', name: 'Gas Bill Payment' },
       { id: 'bill-internet', name: 'Internet Bill Payment' },
       { id: 'bill-vehicle', name: 'Vehicle Fine Payment' },
@@ -23,8 +23,8 @@ export const serviceCategories = [
     titleBn: 'অনলাইন ও শিক্ষা',
     icon: <GraduationCap className="w-6 h-6 text-white" />,
     items: [
-      { id: 'edu-admission', name: 'University / College Application' },
-      { id: 'edu-fee', name: 'Application Fee Payment' },
+      { id: 'edu-admission', name: 'Uni & Collage Apply' },
+      { id: 'edu-fee', name: 'Job Apply' },
       { id: 'gov-birth', name: 'Birth Registration Correction' },
       { id: 'gov-gd', name: 'Online GD' },
     ]
@@ -248,8 +248,8 @@ export const servicesData = serviceCategories.flatMap(cat =>
       corners,
       details: [
         {
-          Service: item.name,
-          Charge: item.id === 'bill-gas' ? 'ফ্রি' : 'আলোচনা সাপেক্ষে / অফিসিয়াল রেট'
+          'সেবা': item.name,
+          'চার্জ': item.id === 'bill-gas' || item.id === 'bill-electricity' ? 'ফ্রি' : 'আলোচনা সাপেক্ষে / অফিসিয়াল রেট'
         }
       ],
       faqs: customFaqs || [
