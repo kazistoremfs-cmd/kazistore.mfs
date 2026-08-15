@@ -30,7 +30,7 @@ export default function Footer() {
             <ul className="space-y-2 text-slate-300 font-bn text-sm">
               <li>আশুগঞ্জ, ব্রাহ্মণবাড়িয়া</li>
               <li className="font-en">kazistore.mfs@gmail.com</li>
-              <li className="font-en">+880 1700-000000</li>
+              <li className="font-en">+880 1960-523052</li>
             </ul>
           </div>
         </div>
