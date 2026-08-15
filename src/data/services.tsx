@@ -8,9 +8,9 @@ export const serviceCategories = [
     titleBn: 'আর্থিক সেবা',
     icon: <Wallet className="w-6 h-6 text-white" />,
     items: [
-      { id: 'mfs-bkash', name: 'bKash – Send Money/Cash In / Out' },
-      { id: 'mfs-nagad', name: 'Nagad – Cash In / Out' },
-      { id: 'mfs-rocket', name: 'Rocket – Cash In / Out' },
+      { id: 'mfs-bkash', name: 'bKash' },
+      { id: 'mfs-nagad', name: 'Nagad' },
+      { id: 'mfs-rocket', name: 'Rocket' },
       { id: 'bill-electricity', name: 'Electricity Bill Payment' },
       { id: 'bill-gas', name: 'Gas Bill Payment' },
       { id: 'bill-internet', name: 'Internet Bill Payment' },

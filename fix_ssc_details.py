@@ -1,38 +1,12 @@
-import { Link } from 'react-router-dom';
-import { ArrowLeft, ChevronRight, Download, FileText, CheckCircle2 } from 'lucide-react';
-import { motion } from 'motion/react';
-import React from 'react';
+with open("src/components/SSCDetails.tsx", "r") as f:
+    content = f.read()
 
-export default function SSCDetails() {
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+import re
 
-  return (
-    <div className="relative min-h-[calc(100vh-64px)] bg-[#0F172A] overflow-hidden flex flex-col">
-      {/* 3D Background Element */}
-      <div className="absolute inset-0 z-0 overflow-hidden [perspective:1000px] pointer-events-none fixed">
-        <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-blue-600/20 to-[#0F172A] opacity-90"></div>
-      </div>
+# We will replace everything inside the main <motion.div> (Content Container)
+search_pattern = r"          \{/\* Header \*/\}.*?(?=        </motion\.div>)"
 
-      <div className="relative z-10 flex-1 flex flex-col w-full max-w-4xl mx-auto md:px-8">
-        
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-slate-400 p-4 md:pt-12 md:px-0 font-en backdrop-blur-md bg-[#0F172A]/50 md:bg-transparent sticky top-0 z-20 border-b border-slate-800 md:border-none">
-          <Link to="/service/edu-admission" className="hover:text-blue-400 transition-colors flex items-center gap-1">
-            <ArrowLeft className="w-4 h-4" /> Back to Admission
-          </Link>
-          <ChevronRight className="w-4 h-4 text-slate-600" />
-          <span className="text-white font-medium truncate">SSC রেজাল্ট ও বোর্ড চ্যালেঞ্জ</span>
-        </nav>
-
-        {/* Content Container */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="p-4 sm:p-6 md:p-10 lg:p-12 flex flex-col gap-8 md:gap-12 flex-1"
-        >
-          {/* Header */}
+replace_content = """          {/* Header */}
           <div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-bn text-white mb-3 md:mb-4 tracking-tight drop-shadow-md">
               SSC রেজাল্ট ও বোর্ড চ্যালেঞ্জ
@@ -97,11 +71,11 @@ export default function SSCDetails() {
                 <div className="w-10 h-10 bg-orange-500/20 rounded-xl flex items-center justify-center text-orange-400 shrink-0">
                   <Download className="w-5 h-5" />
                 </div>
-                <h3 className="text-xl md:text-2xl font-bold text-white font-bn">বোর্ড চ্যালেঞ্জ</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-white font-bn">বোর্ড চ্যালেঞ্জ (খাতা পুনঃনিরীক্ষণ)</h3>
               </div>
               
               <p className="font-bn text-[15px] md:text-base text-slate-300 leading-relaxed mb-6">
-                বোর্ড চ্যালেঞ্জ করার ক্ষেত্রে ঢালাওভাবে সব বিষয়ে আবেদন না করে নির্দিষ্ট কিছু বিষয় বেছে নেওয়া উচিত। কারণ বোর্ড চ্যালেঞ্জে মূলত নম্বর সঠিকভাবে যোগ করা হয়েছে কি না, কভার পেজে নম্বর তুলতে ভুল হয়েছে কি না এবং কোনো উত্তরের নম্বর বাদ পড়েছে কি না—এগুলো চেক করা হয়। নিচে বিষয় নির্বাচন করার প্রধান মূলনীতিগুলো তুলে ধরা হলো:
+                বোর্ড চ্যালেঞ্জ (খাতা পুনঃনিরীক্ষণ) করার ক্ষেত্রে ঢালাওভাবে সব বিষয়ে আবেদন না করে নির্দিষ্ট কিছু বিষয় বেছে নেওয়া উচিত। কারণ বোর্ড চ্যালেঞ্জে মূলত নম্বর সঠিকভাবে যোগ করা হয়েছে কি না, কভার পেজে নম্বর তুলতে ভুল হয়েছে কি না এবং কোনো উত্তরের নম্বর বাদ পড়েছে কি না—এগুলো চেক করা হয়। নিচে বিষয় নির্বাচন করার প্রধান মূলনীতিগুলো তুলে ধরা হলো:
               </p>
 
               <div className="space-y-6">
@@ -165,9 +139,10 @@ export default function SSCDetails() {
                 </p>
               </div>
             </div>
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  );
-}
+          </div>\n"""
+
+import re
+new_content = re.sub(search_pattern, replace_content, content, flags=re.DOTALL)
+
+with open("src/components/SSCDetails.tsx", "w") as f:
+    f.write(new_content)
