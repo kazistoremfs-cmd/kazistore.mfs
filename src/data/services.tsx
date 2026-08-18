@@ -249,7 +249,7 @@ export const servicesData = serviceCategories.flatMap(cat =>
       details: [
         {
           'সেবা': item.name,
-          'চার্জ': item.id === 'bill-gas' || item.id === 'bill-electricity' ? 'ফ্রি' : 'আলোচনা সাপেক্ষে / অফিসিয়াল রেট'
+          'চার্জ': item.id === 'bill-gas' || item.id === 'bill-internet' ? 'ফ্রি' : item.id === 'bill-electricity' ? '২০ টাকা (প্রতি হাজারে)' : 'আলোচনা সাপেক্ষে / অফিসিয়াল রেট'
         }
       ],
       faqs: customFaqs || [

@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { servicesData } from '../data/services';
 import { ArrowLeft, ChevronRight, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -7,6 +7,7 @@ import React from 'react';
 
 export default function ServiceDetail() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const service = servicesData.find(s => s.id === id);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [openCorner, setOpenCorner] = useState<number | null>(null);
@@ -49,9 +50,9 @@ export default function ServiceDetail() {
       <div className="relative z-10 flex-1 flex flex-col w-full max-w-4xl mx-auto md:px-8">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-slate-400 p-4 md:pt-12 md:px-0 font-en backdrop-blur-md bg-[#0F172A]/50 md:bg-transparent sticky top-0 z-20 border-b border-slate-800 md:border-none">
-          <Link to="/" className="hover:text-blue-400 transition-colors flex items-center gap-1">
-            <ArrowLeft className="w-4 h-4" /> Home
-          </Link>
+          <button onClick={() => navigate(-1)} className="hover:text-blue-400 transition-colors flex items-center gap-1 cursor-pointer">
+            <ArrowLeft className="w-4 h-4" /> Back
+          </button>
           <ChevronRight className="w-4 h-4 text-slate-600" />
           <span className="text-white font-medium truncate">{service.title}</span>
         </nav>
@@ -190,7 +191,7 @@ export default function ServiceDetail() {
                               </tr>
                             </tbody>
                           </table>
-                        ) : service.id === 'mfs-bkash' || service.id === 'mfs-rocket' ? (
+                        ) : service.id === 'mfs-bkash' ? (
                           <table className="w-full text-left font-bn">
                             <thead className="bg-blue-900/40 text-blue-300 text-[15px] md:text-base">
                               <tr>
@@ -206,6 +207,25 @@ export default function ServiceDetail() {
                               <tr className="hover:bg-blue-900/30 transition-colors">
                                 <td className="px-4 py-3">সাধারন এজেন্ট</td>
                                 <td className="px-4 py-3">১৮.৫ টাকা</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        ) : service.id === 'mfs-rocket' ? (
+                          <table className="w-full text-left font-bn">
+                            <thead className="bg-blue-900/40 text-blue-300 text-[15px] md:text-base">
+                              <tr>
+                                <th className="px-4 py-3 font-semibold border-b border-blue-500/20">মাধ্যম</th>
+                                <th className="px-4 py-3 font-semibold border-b border-blue-500/20">ক্যাশ আউট চার্জ</th>
+                              </tr>
+                            </thead>
+                            <tbody className="text-slate-200 text-[15px] md:text-base divide-y divide-blue-500/10">
+                              <tr className="hover:bg-blue-900/30 transition-colors">
+                                <td className="px-4 py-3">এজেন্ট</td>
+                                <td className="px-4 py-3">১৭ টাকা (প্রতি হাজারে)</td>
+                              </tr>
+                              <tr className="hover:bg-blue-900/30 transition-colors">
+                                <td className="px-4 py-3">এটিএম (ATM)</td>
+                                <td className="px-4 py-3">৯ টাকা (প্রতি হাজারে)</td>
                               </tr>
                             </tbody>
                           </table>

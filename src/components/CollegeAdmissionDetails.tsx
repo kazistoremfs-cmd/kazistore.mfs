@@ -1,9 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ChevronRight, CheckCircle2, GraduationCap, FileCheck } from 'lucide-react';
 import { motion } from 'motion/react';
 import React from 'react';
 
 export default function CollegeAdmissionDetails() {
+  const navigate = useNavigate();
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -19,9 +20,9 @@ export default function CollegeAdmissionDetails() {
         
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-slate-400 p-4 md:pt-12 md:px-0 font-en backdrop-blur-md bg-[#0F172A]/50 md:bg-transparent sticky top-0 z-20 border-b border-slate-800 md:border-none">
-          <Link to="/service/edu-admission" className="hover:text-blue-400 transition-colors flex items-center gap-1">
-            <ArrowLeft className="w-4 h-4" /> Back to Admission
-          </Link>
+          <button onClick={() => navigate(-1)} className="hover:text-blue-400 transition-colors flex items-center gap-1 cursor-pointer">
+            <ArrowLeft className="w-4 h-4" /> Back
+          </button>
           <ChevronRight className="w-4 h-4 text-slate-600" />
           <span className="text-white font-medium truncate">কলেজ ভর্তি আবেদন (XI Class)</span>
         </nav>
