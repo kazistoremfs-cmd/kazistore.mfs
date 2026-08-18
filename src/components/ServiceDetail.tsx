@@ -11,7 +11,6 @@ export default function ServiceDetail() {
   const service = servicesData.find(s => s.id === id);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [openCorner, setOpenCorner] = useState<number | null>(null);
-  const [openChargeDetails, setOpenChargeDetails] = useState<boolean>(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -154,25 +153,14 @@ export default function ServiceDetail() {
             </div>
           ) : (
             <div className="border border-slate-700/50 rounded-xl md:rounded-2xl bg-slate-800/60 backdrop-blur-md shadow-xl overflow-hidden">
-              <button 
-                onClick={() => setOpenChargeDetails(!openChargeDetails)}
-                className="w-full flex items-center justify-between p-4 md:p-5 hover:bg-slate-700/30 transition-colors"
-              >
+              <div className="w-full p-4 md:p-5 border-b border-slate-700/50">
                 <h2 className="text-lg md:text-2xl font-bold font-bn text-white drop-shadow">সার্ভিস ডিটেইলস ও চার্জ</h2>
-                <ChevronDown className={`w-5 h-5 md:w-6 md:h-6 text-slate-400 transition-transform duration-300 ${openChargeDetails ? 'rotate-180' : ''}`} />
-              </button>
+              </div>
               
-              <AnimatePresence>
-                {openChargeDetails && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="p-4 md:p-5 pt-0 border-t border-slate-700/50">
-                      <div className="bg-blue-900/20 border border-blue-500/20 rounded-xl mt-4 overflow-hidden">
-                        {service.id === 'mfs-nagad' ? (
+              <div>
+                <div className="p-4 md:p-5 pt-0">
+                  <div className="bg-blue-900/20 border border-blue-500/20 rounded-xl mt-4 overflow-hidden">
+                    {service.id === 'mfs-nagad' ? (
                           <table className="w-full text-left font-bn">
                             <thead className="bg-blue-900/40 text-blue-300 text-[15px] md:text-base">
                               <tr>
@@ -251,9 +239,7 @@ export default function ServiceDetail() {
                         )}
                       </div>
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  </div>
             </div>
           )}
 

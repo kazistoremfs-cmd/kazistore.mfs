@@ -1,4 +1,5 @@
-import { ArrowRight, ShieldCheck, Smartphone, Wallet, Banknote, CreditCard, Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, ShieldCheck, Smartphone, Wallet, Banknote, CreditCard, Send, Receipt } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function Hero() {
@@ -86,6 +87,9 @@ export default function Hero() {
                 Contact Us
                 <ArrowRight className="w-4 h-4" />
               </a>
+              <Link to="/charges" className="bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-8 py-3.5 rounded-xl font-bold transition-all flex items-center justify-center font-bn text-lg">
+                সার্ভিস চার্জ
+              </Link>
               <a href="#services" className="bg-white/5 hover:bg-white/10 text-white border border-white/20 backdrop-blur-sm px-8 py-3.5 rounded-xl font-bold transition-all flex items-center gap-2 font-en">
                 Explore Services
               </a>
