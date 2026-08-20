@@ -11,6 +11,7 @@ import ServiceDetail from './components/ServiceDetail';
 import SSCDetails from './components/SSCDetails';
 import CollegeAdmissionDetails from './components/CollegeAdmissionDetails';
 import ChargeSummary from './components/ChargeSummary';
+import UniversityAdmissionDetails from './components/UniversityAdmissionDetails';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function Home() {
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/ssc-details" element={<SSCDetails />} />
             <Route path="/college-admission-details" element={<CollegeAdmissionDetails />} />
             <Route path="/charges" element={<ChargeSummary />} />
+            <Route path="/admission/:id" element={<UniversityAdmissionDetails />} />
           </Routes>
         </main>
 

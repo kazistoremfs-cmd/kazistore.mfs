@@ -225,7 +225,23 @@ export const servicesData = serviceCategories.flatMap(cat =>
         },
         {
           title: "ADMISSION",
-          content: "বিশ্ববিদ্যালয় ভর্তি ও এডমিশন সম্পর্কিত তথ্য ও সেবাসমূহ এখানে পাওয়া যাবে।"
+          subItems: [
+            { content: "DU Admission", link: "/admission/du" },
+            { content: "RU Admission", link: "/admission/ru" },
+            { content: "CU Admission", link: "/admission/cu" },
+            { content: "JU Admission", link: "/admission/ju" },
+            { content: "BUP Admission", link: "/admission/bup" },
+            { content: "BUET Admission", link: "/admission/buet" },
+            { content: "ইঞ্জিনিয়ারিং গুচ্ছ Admission", link: "/admission/eng-guccho" },
+            { content: "MIST Admission", link: "/admission/mist" },
+            { content: "BUTEX Admission", link: "/admission/butex" },
+            { content: "IUT Admission", link: "/admission/iut" },
+            { content: "জিএসটি গুচ্ছ এডমিশন", link: "/admission/gst" },
+            { content: "কৃষি গুচ্ছ এডমিশন", link: "/admission/agri-guccho" },
+            { content: "মেডিকেল এডমিশন", link: "/admission/medical" },
+            { content: "ডেন্টাল এডমিশন", link: "/admission/dental" },
+            { content: "নার্সিং ও মিডওয়াইফারি", link: "/admission/nursing" }
+          ]
         },
         {
           title: "Hon's",
