@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import ServiceDetail from './components/ServiceDetail';
 import SSCDetails from './components/SSCDetails';
 import CollegeAdmissionDetails from './components/CollegeAdmissionDetails';
+import HSCDetails from './components/HSCDetails';
 import ChargeSummary from './components/ChargeSummary';
 import UniversityAdmissionDetails from './components/UniversityAdmissionDetails';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -35,6 +36,7 @@ export default function App() {
             <Route path="/service/:id" element={<ServiceDetail />} />
             <Route path="/ssc-details" element={<SSCDetails />} />
             <Route path="/college-admission-details" element={<CollegeAdmissionDetails />} />
+            <Route path="/hsc-details" element={<HSCDetails />} />
             <Route path="/charges" element={<ChargeSummary />} />
             <Route path="/admission/:id" element={<UniversityAdmissionDetails />} />
           </Routes>

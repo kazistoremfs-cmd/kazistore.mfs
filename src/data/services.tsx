@@ -221,7 +221,12 @@ export const servicesData = serviceCategories.flatMap(cat =>
         },
         {
           title: "HSC",
-          content: "HSC এডমিশন সম্পর্কিত তথ্য ও সেবাসমূহ এখানে পাওয়া যাবে।"
+          subItems: [
+            {
+              content: "HSC পরীক্ষার রেজাল্ট ও বোর্ড চ্যালেঞ্জ",
+              link: "/hsc-details"
+            }
+          ]
         },
         {
           title: "ADMISSION",
