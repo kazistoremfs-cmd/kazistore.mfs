@@ -82,15 +82,17 @@ export default function Hero() {
               বিকাশ, নগদ, রকেট, বিল পেমেন্ট, প্রিন্টিং, সিম সেবা ও আরো অনেক কিছু — এক ছাদের নিচে।
             </p>
             
-            <div className="flex flex-wrap gap-4 mb-16">
-              <a href="#contact" className="bg-[#08B3AF] hover:bg-teal-600 text-white px-8 py-3.5 rounded-xl font-bold transition-all flex items-center gap-2 font-en shadow-lg shadow-teal-500/20">
-                Contact Us
-                <ArrowRight className="w-4 h-4" />
-              </a>
-              <Link to="/charges" className="bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-8 py-3.5 rounded-xl font-bold transition-all flex items-center justify-center font-bn text-lg">
-                সার্ভিস চার্জ
-              </Link>
-              <a href="#services" className="bg-white/5 hover:bg-white/10 text-white border border-white/20 backdrop-blur-sm px-8 py-3.5 rounded-xl font-bold transition-all flex items-center gap-2 font-en">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-16">
+              <div className="flex flex-row gap-3 w-full sm:w-auto">
+                <a href="#contact" className="flex-1 sm:flex-none justify-center bg-[#08B3AF] hover:bg-teal-600 text-white px-4 sm:px-8 py-3.5 rounded-xl font-bold transition-all flex items-center gap-2 font-en shadow-lg shadow-teal-500/20 whitespace-nowrap text-sm sm:text-base">
+                  Contact Us
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+                <Link to="/charges" className="flex-1 sm:flex-none justify-center bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-4 sm:px-8 py-3.5 rounded-xl font-bold transition-all flex items-center font-bn text-[15px] sm:text-lg whitespace-nowrap">
+                  সার্ভিস চার্জ
+                </Link>
+              </div>
+              <a href="#services" className="w-full sm:w-auto justify-center bg-white/5 hover:bg-white/10 text-white border border-white/20 backdrop-blur-sm px-8 py-3.5 rounded-xl font-bold transition-all flex items-center gap-2 font-en whitespace-nowrap">
                 Explore Services
               </a>
             </div>
