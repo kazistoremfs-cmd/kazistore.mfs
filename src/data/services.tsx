@@ -25,6 +25,7 @@ export const serviceCategories = [
     items: [
       { id: 'edu-admission', name: 'Uni & Collage Apply' },
       { id: 'edu-fee', name: 'Job Apply' },
+      { id: 'gov-vaccine', name: 'টিকা আবেদন' },
       { id: 'gov-birth', name: 'Birth Registration Correction' },
       { id: 'gov-gd', name: 'Online GD' },
     ]
@@ -204,6 +205,9 @@ export const servicesData = serviceCategories.flatMap(cat =>
     }
     
     let corners = undefined;
+    let cornersTitle = undefined;
+    let customDetails = undefined;
+    let customDetailsTitle = undefined;
     if (item.id === 'edu-admission') {
       corners = [
         {
@@ -257,6 +261,55 @@ export const servicesData = serviceCategories.flatMap(cat =>
           content: "মাস্টার্স এডমিশন সম্পর্কিত তথ্য ও সেবাসমূহ এখানে পাওয়া যাবে।"
         }
       ];
+    } else if (item.id === 'edu-fee') {
+      cornersTitle = "চাকরির ক্যাটাগরি";
+      corners = [
+        {
+          title: "সরকারি চাকরি",
+          content: "বিসিএস (BCS), নন-ক্যাডার, সরকারি ব্যাংক, প্রাইমারি শিক্ষক নিয়োগ, বিভিন্ন মন্ত্রণালয় এবং অধিদপ্তরের চাকরি। এগুলোতে সাধারণত একটি নির্দিষ্ট ও দীর্ঘ প্রক্রিয়ায় নিয়োগ হয়।",
+          link: "#"
+        },
+        {
+          title: "বেসরকারি চাকরি",
+          content: "বহুজাতিক কোম্পানি (MNC), দেশীয় করপোরেট প্রতিষ্ঠান, বেসরকারি ব্যাংক, আইটি প্রতিষ্ঠান এবং এনজিও (NGO)-এর চাকরি।",
+          link: "#"
+        },
+        {
+          title: "প্রতিরক্ষা ও আইনশৃঙ্খলা বাহিনী",
+          content: "বাংলাদেশ সেনাবাহিনী, নৌবাহিনী, বিমানবাহিনী, পুলিশ, র্যাব, বিজিবি ইত্যাদিতে নিয়োগ, যেখানে শারীরিক যোগ্যতা একটি বড় মাপকাঠি।",
+          link: "#"
+        }
+      ];
+    } else if (item.id === 'gov-vaccine') {
+      customDetailsTitle = "টিকা ধরণ";
+      customDetails = [
+        {
+          'টিকা ধরণ': 'HPV টিকা (জরায়ুমুখ ক্যানসার টিকা)',
+          'পদক্ষেপ': (
+            <a 
+              href="https://wa.me/message/L2XAYVWBE5RIJ1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex justify-center items-center bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-4 py-1.5 rounded-lg text-sm font-bold transition-all font-bn"
+            >
+              বিস্তারিত
+            </a>
+          )
+        },
+        {
+          'টিকা ধরণ': 'কলেরা ও টাইফয়েড টিকা',
+          'পদক্ষেপ': (
+            <a 
+              href="https://wa.me/message/L2XAYVWBE5RIJ1" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex justify-center items-center bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-4 py-1.5 rounded-lg text-sm font-bold transition-all font-bn"
+            >
+              বিস্তারিত
+            </a>
+          )
+        }
+      ];
     }
 
     return {
@@ -267,7 +320,9 @@ export const servicesData = serviceCategories.flatMap(cat =>
       importantLinks,
       bg: 'bg-[#0F172A]',
       corners,
-      details: [
+      cornersTitle,
+      detailsTitle: customDetailsTitle,
+      details: customDetails || [
         {
           'সেবা': item.name,
           'চার্জ': item.id === 'bill-gas' || item.id === 'bill-internet' ? 'ফ্রি' : item.id === 'bill-electricity' ? '২০ টাকা (প্রতি হাজারে)' : 'আলোচনা সাপেক্ষে / অফিসিয়াল রেট'

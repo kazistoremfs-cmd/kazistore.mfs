@@ -35,7 +35,7 @@ export default function Services() {
                   <div key={item.id} className="flex items-center justify-between border-b border-slate-50 pb-4 last:border-0 last:pb-0">
                     <div className="flex items-center gap-3">
                       <span className="w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0"></span>
-                      <span className="text-sm text-slate-700 font-en font-medium line-clamp-1">{item.name}</span>
+                      <span className={`text-sm text-slate-700 font-medium line-clamp-1 ${/[\u0980-\u09FF]/.test(item.name) ? 'font-bn text-[15px]' : 'font-en'}`}>{item.name}</span>
                     </div>
                     <Link 
                       to={`/service/${item.id}`}

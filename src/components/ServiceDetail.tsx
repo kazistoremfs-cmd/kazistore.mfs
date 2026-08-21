@@ -75,7 +75,9 @@ export default function ServiceDetail() {
           {/* Details Table / Corners */}
           {'corners' in service && service.corners ? (
             <div>
-              <h2 className="text-lg md:text-2xl font-bold font-bn text-white mb-3 md:mb-4 drop-shadow">একাডেমিক কর্ণার</h2>
+              <h2 className="text-lg md:text-2xl font-bold font-bn text-white mb-3 md:mb-4 drop-shadow">
+                {(service as any).cornersTitle || "একাডেমিক কর্ণার"}
+              </h2>
               <div className="space-y-2 md:space-y-3">
                 {(service as any).corners.map((corner: any, idx: number) => (
                   <div key={idx} className="border border-slate-700/50 rounded-xl overflow-hidden bg-slate-800/60 backdrop-blur-md shadow-lg">
@@ -154,7 +156,9 @@ export default function ServiceDetail() {
           ) : (
             <div className="border border-slate-700/50 rounded-xl md:rounded-2xl bg-slate-800/60 backdrop-blur-md shadow-xl overflow-hidden">
               <div className="w-full p-4 md:p-5 border-b border-slate-700/50">
-                <h2 className="text-lg md:text-2xl font-bold font-bn text-white drop-shadow">সার্ভিস ডিটেইলস ও চার্জ</h2>
+                <h2 className="text-lg md:text-2xl font-bold font-bn text-white drop-shadow">
+                  {(service as any).detailsTitle || "সার্ভিস ডিটেইলস ও চার্জ"}
+                </h2>
               </div>
               
               <div>
