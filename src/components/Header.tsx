@@ -35,7 +35,7 @@ export default function Header() {
           <span>নোটিশ:</span>
         </div>
         <div className="animate-marquee pl-24 whitespace-nowrap">
-          এসএসসি পরীক্ষা ২০২৬-এর বোর্ড চ্যালেঞ্জ আবেদনের শেষ তারিখ ১৭ আগস্ট।
+          কলেরা প্রতিরোধী ওরাল ভ্যাকসিন (OCV) এখন বিনামূল্যে প্রদান করা হচ্ছে। সকল নাগরিক আপনার স্থানীয় স্বাস্থ্য কেন্দ্রে যোগাযোগ করুন। <Link to="/vaccine/cholera" className="underline hover:text-white/80 transition-colors ml-1">বিস্তারিত তথ্য</Link>
         </div>
       </div>
     </>
