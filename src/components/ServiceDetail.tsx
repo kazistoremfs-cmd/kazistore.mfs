@@ -114,12 +114,23 @@ export default function ServiceDetail() {
                                         >
                                           যোগাযোগ
                                         </a>
-                                        <Link 
-                                          to={sub.link}
-                                          className="inline-flex justify-center items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-5 sm:px-6 py-2.5 rounded-xl text-[14px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
-                                        >
-                                          বিস্তারিত
-                                        </Link>
+                                        {sub.link?.startsWith('http') ? (
+                                          <a 
+                                            href={sub.link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex justify-center items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-5 sm:px-6 py-2.5 rounded-xl text-[14px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
+                                          >
+                                            বিস্তারিত
+                                          </a>
+                                        ) : (
+                                          <Link 
+                                            to={sub.link || "#"}
+                                            className="inline-flex justify-center items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-5 sm:px-6 py-2.5 rounded-xl text-[14px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
+                                          >
+                                            বিস্তারিত
+                                          </Link>
+                                        )}
                                       </div>
                                     </div>
                                   ))}
@@ -136,12 +147,23 @@ export default function ServiceDetail() {
                                   >
                                     যোগাযোগ
                                   </a>
-                                  <Link 
-                                    to={corner.link}
-                                    className="inline-flex justify-center items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-5 sm:px-6 py-2.5 rounded-xl text-[14px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
-                                  >
-                                    বিস্তারিত
-                                  </Link>
+                                  {corner.link?.startsWith('http') ? (
+                                    <a 
+                                      href={corner.link}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="inline-flex justify-center items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-5 sm:px-6 py-2.5 rounded-xl text-[14px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
+                                    >
+                                      বিস্তারিত
+                                    </a>
+                                  ) : (
+                                    <Link 
+                                      to={corner.link || "#"}
+                                      className="inline-flex justify-center items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-5 sm:px-6 py-2.5 rounded-xl text-[14px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
+                                    >
+                                      বিস্তারিত
+                                    </Link>
+                                  )}
                                 </div>
                               )}
                             </div>

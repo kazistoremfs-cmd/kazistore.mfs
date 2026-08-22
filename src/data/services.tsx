@@ -267,47 +267,39 @@ export const servicesData = serviceCategories.flatMap(cat =>
         {
           title: "সরকারি চাকরি",
           content: "বিসিএস (BCS), নন-ক্যাডার, সরকারি ব্যাংক, প্রাইমারি শিক্ষক নিয়োগ, বিভিন্ন মন্ত্রণালয় এবং অধিদপ্তরের চাকরি। এগুলোতে সাধারণত একটি নির্দিষ্ট ও দীর্ঘ প্রক্রিয়ায় নিয়োগ হয়।",
-          link: "#"
+          link: "https://wa.me/message/L2XAYVWBE5RIJ1"
         },
         {
           title: "বেসরকারি চাকরি",
           content: "বহুজাতিক কোম্পানি (MNC), দেশীয় করপোরেট প্রতিষ্ঠান, বেসরকারি ব্যাংক, আইটি প্রতিষ্ঠান এবং এনজিও (NGO)-এর চাকরি।",
-          link: "#"
+          link: "https://wa.me/message/L2XAYVWBE5RIJ1"
         },
         {
           title: "প্রতিরক্ষা ও আইনশৃঙ্খলা বাহিনী",
           content: "বাংলাদেশ সেনাবাহিনী, নৌবাহিনী, বিমানবাহিনী, পুলিশ, র্যাব, বিজিবি ইত্যাদিতে নিয়োগ, যেখানে শারীরিক যোগ্যতা একটি বড় মাপকাঠি।",
-          link: "#"
+          link: "https://wa.me/message/L2XAYVWBE5RIJ1"
         }
       ];
     } else if (item.id === 'gov-vaccine') {
-      customDetailsTitle = "টিকা ধরণ";
-      customDetails = [
+      cornersTitle = "টিকা ধরণ";
+      corners = [
         {
-          'টিকা ধরণ': 'HPV টিকা (জরায়ুমুখ ক্যানসার টিকা)',
-          'পদক্ষেপ': (
-            <a 
-              href="https://wa.me/message/L2XAYVWBE5RIJ1" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex justify-center items-center bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-4 py-1.5 rounded-lg text-sm font-bold transition-all font-bn"
-            >
-              বিস্তারিত
-            </a>
-          )
+          title: "HPV টিকা (জরায়ুমুখ ক্যানসার টিকা)",
+          subItems: [
+            {
+              content: "এইচপিভি বা জরায়ুমুখ ক্যানসার প্রতিরোধের জন্য টিকার আবেদন ও রেজিস্ট্রেশন সেবা।",
+              link: "/vaccine/hpv"
+            }
+          ]
         },
         {
-          'টিকা ধরণ': 'কলেরা ও টাইফয়েড টিকা',
-          'পদক্ষেপ': (
-            <a 
-              href="https://wa.me/message/L2XAYVWBE5RIJ1" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex justify-center items-center bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-4 py-1.5 rounded-lg text-sm font-bold transition-all font-bn"
-            >
-              বিস্তারিত
-            </a>
-          )
+          title: "কলেরা ও টাইফয়েড টিকা",
+          subItems: [
+            {
+              content: "কলেরা ও টাইফয়েড রোগের টিকার আবেদন ও রেজিস্ট্রেশন সেবা।",
+              link: "/vaccine/cholera"
+            }
+          ]
         }
       ];
     }
@@ -328,16 +320,7 @@ export const servicesData = serviceCategories.flatMap(cat =>
           'চার্জ': item.id === 'bill-gas' || item.id === 'bill-internet' ? 'ফ্রি' : item.id === 'bill-electricity' ? '২০ টাকা (প্রতি হাজারে)' : 'আলোচনা সাপেক্ষে / অফিসিয়াল রেট'
         }
       ],
-      faqs: customFaqs || [
-        {
-          q: 'এই সেবাটি পেতে কী কী প্রয়োজন?',
-          a: 'প্রয়োজনীয় ডকুমেন্টস এবং বিস্তারিত জানতে আমাদের WhatsApp নাম্বারে যোগাযোগ করুন।'
-        },
-        {
-          q: 'সার্ভিস চার্জ কত?',
-          a: 'অফিসিয়াল রেট অনুযায়ী চার্জ প্রযোজ্য। বিস্তারিত এজেন্টের সাথে কথা বলে নিশ্চিত হোন।'
-        }
-      ]
+      faqs: customFaqs
     };
   })
 );

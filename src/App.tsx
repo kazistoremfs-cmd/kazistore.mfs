@@ -13,6 +13,7 @@ import CollegeAdmissionDetails from './components/CollegeAdmissionDetails';
 import HSCDetails from './components/HSCDetails';
 import ChargeSummary from './components/ChargeSummary';
 import UniversityAdmissionDetails from './components/UniversityAdmissionDetails';
+import VaccineDetails from './components/VaccineDetails';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function Home() {
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="/hsc-details" element={<HSCDetails />} />
             <Route path="/charges" element={<ChargeSummary />} />
             <Route path="/admission/:id" element={<UniversityAdmissionDetails />} />
+            <Route path="/vaccine/:id" element={<VaccineDetails />} />
           </Routes>
         </main>
 
