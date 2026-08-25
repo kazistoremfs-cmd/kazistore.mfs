@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, ChevronRight, CheckCircle2, ChevronDown, Calculator } from 'lucide-react';
+import { ArrowLeft, ChevronRight, CheckCircle2, ChevronDown, Calculator, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import React, { useState } from 'react';
 
@@ -93,7 +93,7 @@ export default function CollegeAdmissionDetails() {
       <div className="relative z-10 flex-1 flex flex-col w-full max-w-4xl mx-auto md:px-8">
         
         {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-slate-400 p-4 md:pt-12 md:px-0 font-en backdrop-blur-md bg-[#0F172A]/50 md:bg-transparent sticky top-0 z-20 border-b border-slate-800 md:border-none">
+        <nav className="flex items-center gap-2 text-sm text-slate-400 p-4 md:pt-12 md:px-0 font-bn backdrop-blur-md bg-[#0F172A]/50 md:bg-transparent sticky top-0 z-20 border-b border-slate-800 md:border-none">
           <button onClick={() => navigate(-1)} className="hover:text-blue-400 transition-colors flex items-center gap-1 cursor-pointer">
             <ArrowLeft className="w-4 h-4" /> Back
           </button>
@@ -121,9 +121,22 @@ export default function CollegeAdmissionDetails() {
             <h3 className="text-xl md:text-2xl font-bold text-white mb-4">অনলাইনে প্রাথমিক আবেদন প্রক্রিয়া (সকল গ্রুপের জন্য)</h3>
             <p className="text-slate-300 mb-4">যেকোনো গ্রুপের শিক্ষার্থীদের অনলাইনে আবেদনের মূল নিয়মাবলি একই। বাংলাদেশ শিক্ষা বোর্ডের নির্ধারিত ওয়েবসাইটের মাধ্যমে আবেদন সম্পন্ন করতে হয়।</p>
             <ul className="space-y-3 text-slate-300">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                <span><strong>আবেদন ফি:</strong> ১৫০ টাকা</span>
+              <li className="flex flex-col gap-2">
+                <div className="flex items-start gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+                  <span><strong>আবেদন ফি:</strong> ১৫০ টাকা</span>
+                </div>
+                <div className="pl-7">
+                  <a 
+                    href="https://xiclassadmission.govt.bd/college-list/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[15px] bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 hover:text-blue-300 border border-blue-500/20 px-3 py-1.5 rounded-lg transition-all font-bn"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    কলেজ লিস্ট
+                  </a>
+                </div>
               </li>
               <li className="flex items-start gap-2">
                 <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
@@ -198,21 +211,24 @@ export default function CollegeAdmissionDetails() {
                   <h3 className="text-2xl font-bold text-white">ফি ক্যালকুলেটর</h3>
                 </div>
                 <div className="space-y-4">
-                  <label className="flex items-center gap-3 cursor-pointer group">
-                    <div className="relative flex items-center justify-center">
-                      <input 
-                        type="checkbox" 
-                        className="peer sr-only"
-                        checked={fees.college}
-                        onChange={(e) => setFees({...fees, college: e.target.checked})}
-                      />
-                      <div className="w-6 h-6 rounded border-2 border-slate-500 peer-checked:border-emerald-500 peer-checked:bg-emerald-500 transition-all flex items-center justify-center">
-                        <CheckCircle2 className="w-4 h-4 text-white opacity-0 peer-checked:opacity-100 transition-opacity" />
+                  <div className="flex flex-col gap-2">
+                    <label className="flex items-center gap-3 cursor-pointer group">
+                      <div className="relative flex items-center justify-center">
+                        <input 
+                          type="checkbox" 
+                          className="peer sr-only"
+                          checked={fees.college}
+                          onChange={(e) => setFees({...fees, college: e.target.checked})}
+                        />
+                        <div className="w-6 h-6 rounded border-2 border-slate-500 peer-checked:border-emerald-500 peer-checked:bg-emerald-500 transition-all flex items-center justify-center">
+                          <CheckCircle2 className="w-4 h-4 text-white opacity-0 peer-checked:opacity-100 transition-opacity" />
+                        </div>
                       </div>
-                    </div>
-                    <span className="text-slate-200 text-lg group-hover:text-white transition-colors flex-1">কলেজ ফি</span>
-                    <span className="text-slate-400">১৫০ টাকা</span>
-                  </label>
+                      <span className="text-slate-200 text-lg group-hover:text-white transition-colors flex-1">আবেদন ফি</span>
+                      <span className="text-slate-400">১৫০ টাকা</span>
+                    </label>
+
+                  </div>
 
                   <label className="flex items-center gap-3 cursor-pointer group">
                     <div className="relative flex items-center justify-center">
@@ -226,7 +242,7 @@ export default function CollegeAdmissionDetails() {
                         <CheckCircle2 className="w-4 h-4 text-white opacity-0 peer-checked:opacity-100 transition-opacity" />
                       </div>
                     </div>
-                    <span className="text-slate-200 text-lg group-hover:text-white transition-colors flex-1">আবেদন ফি</span>
+                    <span className="text-slate-200 text-lg group-hover:text-white transition-colors flex-1">সার্ভিস চার্জ</span>
                     <span className="text-slate-400">৫০ টাকা</span>
                   </label>
 

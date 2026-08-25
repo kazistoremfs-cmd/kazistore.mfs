@@ -36,6 +36,8 @@ export default function Header() {
         </div>
         <div className="animate-marquee pl-24 whitespace-nowrap">
           কলেরা প্রতিরোধী ওরাল ভ্যাকসিন (OCV) এখন বিনামূল্যে প্রদান করা হচ্ছে। সকল নাগরিক আপনার স্থানীয় স্বাস্থ্য কেন্দ্রে যোগাযোগ করুন। <Link to="/vaccine/cholera" className="underline hover:text-white/80 transition-colors ml-1">বিস্তারিত তথ্য</Link>
+          <span className="mx-8 text-white/50">•</span>
+          ২০২৬-২৭ শিক্ষাবর্ষের একাদশ শ্রেণিতে অনলাইনে ভর্তির আবেদন আগামী ২ সেপ্টেম্বর ২০২৬ তারিখ থেকে শুরু হয়ে ১০ সেপ্টেম্বর রাত ৮টা পর্যন্ত চলবে।
         </div>
       </div>
     </>
