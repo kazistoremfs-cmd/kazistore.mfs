@@ -118,7 +118,7 @@ export default function CollegeAdmissionDetails() {
           </div>
 
           <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-6 backdrop-blur-md shadow-xl">
-            <h3 className="text-xl md:text-2xl font-bold text-white mb-4">অনলাইনে প্রাথমিক আবেদন প্রক্রিয়া (সকল গ্রুপের জন্য)</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-4">আবেদন প্রক্রিয়া</h3>
             <p className="text-slate-300 mb-4">যেকোনো গ্রুপের শিক্ষার্থীদের অনলাইনে আবেদনের মূল নিয়মাবলি একই। বাংলাদেশ শিক্ষা বোর্ডের নির্ধারিত ওয়েবসাইটের মাধ্যমে আবেদন সম্পন্ন করতে হয়।</p>
             <ul className="space-y-3 text-slate-300">
               <li className="flex flex-col gap-2">
@@ -151,7 +151,7 @@ export default function CollegeAdmissionDetails() {
 
           {/* Collapsible Groups */}
           <div>
-            <h2 className="text-2xl font-bold text-white mb-4 drop-shadow">গ্রুপ অনুযায়ী ভর্তির যোগ্যতা ও নির্দেশিকা</h2>
+            <h2 className="text-2xl font-bold text-white mb-4 drop-shadow">ভর্তির যোগ্যতা ও নির্দেশিকা</h2>
             <p className="text-slate-300 mb-6">এসএসসি-তে যে গ্রুপ ছিল, কলেজে চাইলে সেই গ্রুপ পরিবর্তন করা যায়। নিচে প্রতিটি গ্রুপের বিস্তারিত দেওয়া হলো:</p>
             
             <div className="flex flex-col gap-3">
@@ -292,7 +292,7 @@ export default function CollegeAdmissionDetails() {
 
           {/* FAQs */}
           <div>
-            <h2 className="text-2xl font-bold text-white mb-6 drop-shadow">সাধারণ প্রশ্নোত্তর (FAQ) - একাদশ শ্রেণিতে ভর্তি</h2>
+            <h2 className="text-2xl font-bold text-white mb-6 drop-shadow">FAQ</h2>
             <div className="flex flex-col gap-3">
               {faqs.map((faq, idx) => (
                 <div key={idx} className="border border-slate-700/50 rounded-xl overflow-hidden bg-slate-800/40 backdrop-blur-sm">
