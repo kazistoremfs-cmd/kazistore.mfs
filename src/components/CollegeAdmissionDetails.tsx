@@ -17,7 +17,7 @@ export default function CollegeAdmissionDetails() {
 
   const calculateTotal = () => {
     let total = 0;
-    if (fees.college) total += 150;
+    if (fees.college) total += 220;
     if (fees.application) total += 50;
     if (fees.colorPrint) total += 10;
     if (fees.bwPrint) total += 5;
@@ -59,7 +59,7 @@ export default function CollegeAdmissionDetails() {
     },
     {
       q: "অনলাইনে আবেদনের ফি কীভাবে জমা দেওয়া যায়?",
-      a: "আবেদন ফি ১৫০ টাকা। বিকাশ, নগদ, রকেট, উপায় মাধ্যমে ফি জমা দেয়া যাবে।"
+      a: "আবেদন ফি ২২০ টাকা। বিকাশ, নগদ, রকেট, উপায় মাধ্যমে ফি জমা দেয়া যাবে।"
     },
     {
       q: "অনলাইনে আবেদন করার পর কি কলেজ পছন্দক্রম (Choice List) পরিবর্তন করা যায়?",
@@ -124,7 +124,7 @@ export default function CollegeAdmissionDetails() {
               <li className="flex flex-col gap-2">
                 <div className="flex items-start gap-2">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                  <span><strong>আবেদন ফি:</strong> ১৫০ টাকা</span>
+                  <span><strong>আবেদন ফি:</strong> ২২০ টাকা</span>
                 </div>
                 <div className="pl-7">
                   <a 
@@ -225,7 +225,7 @@ export default function CollegeAdmissionDetails() {
                         </div>
                       </div>
                       <span className="text-slate-200 text-lg group-hover:text-white transition-colors flex-1">আবেদন ফি</span>
-                      <span className="text-slate-400">১৫০ টাকা</span>
+                      <span className="text-slate-400">২২০ টাকা</span>
                     </label>
 
                   </div>
