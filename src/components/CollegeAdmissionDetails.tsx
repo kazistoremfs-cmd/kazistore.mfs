@@ -18,7 +18,7 @@ export default function CollegeAdmissionDetails() {
   const calculateTotal = () => {
     let total = 0;
     if (fees.college) total += 220;
-    if (fees.application) total += 50;
+    if (fees.application) total += 70;
     if (fees.colorPrint) total += 10;
     if (fees.bwPrint) total += 5;
     return total;
@@ -243,7 +243,7 @@ export default function CollegeAdmissionDetails() {
                       </div>
                     </div>
                     <span className="text-slate-200 text-lg group-hover:text-white transition-colors flex-1">সার্ভিস চার্জ</span>
-                    <span className="text-slate-400">৫০ টাকা</span>
+                    <span className="text-slate-400">৭০ টাকা</span>
                   </label>
 
                   <label className="flex items-center gap-3 cursor-pointer group">
