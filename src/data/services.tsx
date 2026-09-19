@@ -208,7 +208,23 @@ export const servicesData = serviceCategories.flatMap(cat =>
     let cornersTitle = undefined;
     let customDetails = undefined;
     let customDetailsTitle = undefined;
-    if (item.id === 'edu-admission') {
+    
+    if (item.id === 'credit-card') {
+      customDesc = 'ক্রেডিট কার্ডের বিল পেমেন্ট এবং ক্রেডিট কার্ড থেকে ক্যাশ আউট সেবা গ্রহণ করুন খুব সহজেই।';
+      cornersTitle = 'ক্রেডিট কার্ড সার্ভিসসমূহ';
+      corners = [
+        {
+          title: 'Credit Card Bill Payment',
+          content: 'আপনার যেকোনো ব্যাংকের ক্রেডিট কার্ডের বিল পেমেন্ট করুন নিরাপদে এবং দ্রুততম সময়ে।',
+          link: '/credit-card-bill-payment'
+        },
+        {
+          title: 'Credit Card TO CASH',
+          content: 'ক্রেডিট কার্ড থেকে নগদ টাকা উত্তোলনের সুবিধা। খুব সহজেই ক্রেডিট কার্ডের ব্যালেন্স ক্যাশে রূপান্তর করুন।',
+          link: 'https://wa.me/message/L2XAYVWBE5RIJ1'
+        }
+      ];
+    } else if (item.id === 'edu-admission') {
       corners = [
         {
           title: "SSC",
@@ -226,6 +242,10 @@ export const servicesData = serviceCategories.flatMap(cat =>
         {
           title: "HSC",
           subItems: [
+            {
+              content: "একাদশ শ্রেণি ভর্তি",
+              link: "/college-admission-details"
+            },
             {
               content: "HSC পরীক্ষার রেজাল্ট ও বোর্ড চ্যালেঞ্জ",
               link: "/hsc-details"
