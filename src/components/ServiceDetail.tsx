@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { servicesData } from '../data/services';
-import { ArrowLeft, ChevronRight, ChevronDown } from 'lucide-react';
+import { ArrowLeft, ChevronRight, ChevronDown, MessageCircle, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useEffect, useState } from 'react';
 import React from 'react';
@@ -138,30 +138,33 @@ export default function ServiceDetail() {
                               )}
 
                               {corner.link && !corner.subItems && (
-                                <div className="w-full flex justify-between items-center gap-2 mt-3 pt-2 border-t border-slate-700/50">
+                                <div className="w-full flex justify-between items-center gap-3 mt-3 pt-3 border-t border-slate-700/50">
                                   <a 
                                     href="https://wa.me/message/L2XAYVWBE5RIJ1"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex justify-center items-center gap-2 bg-teal-500/20 hover:bg-teal-500/30 text-teal-300 border border-teal-500/30 px-5 sm:px-6 py-2.5 rounded-xl text-[14px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
+                                    className="inline-flex justify-center items-center gap-1.5 bg-emerald-600/25 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/40 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl text-sm md:text-base font-bold transition-all font-bn shadow-md active:scale-95 whitespace-nowrap"
                                   >
-                                    যোগাযোগ
+                                    <MessageCircle className="w-4 h-4 text-emerald-300 shrink-0" />
+                                    <span>যোগাযোগ</span>
                                   </a>
                                   {corner.link?.startsWith('http') ? (
                                     <a 
                                       href={corner.link}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="inline-flex justify-center items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-5 sm:px-6 py-2.5 rounded-xl text-[14px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
+                                      className="inline-flex justify-center items-center gap-1.5 bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-400/40 px-5 sm:px-6 py-2 sm:py-2.5 rounded-xl text-sm md:text-base font-bold transition-all font-bn shadow-md hover:scale-105 active:scale-95 whitespace-nowrap"
                                     >
-                                      বিস্তারিত
+                                      <span>বিস্তারিত</span>
+                                      <ExternalLink className="w-3.5 h-3.5 text-sky-300 shrink-0" />
                                     </a>
                                   ) : (
                                     <Link 
                                       to={corner.link || "#"}
-                                      className="inline-flex justify-center items-center gap-2 bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-5 sm:px-6 py-2.5 rounded-xl text-[14px] md:text-base font-bold transition-all font-bn shadow-lg hover:scale-105 active:scale-95 whitespace-nowrap"
+                                      className="inline-flex justify-center items-center gap-1.5 bg-sky-500/20 hover:bg-sky-500/30 text-sky-300 border border-sky-400/40 px-5 sm:px-6 py-2 sm:py-2.5 rounded-xl text-sm md:text-base font-bold transition-all font-bn shadow-md hover:scale-105 active:scale-95 whitespace-nowrap"
                                     >
-                                      বিস্তারিত
+                                      <span>বিস্তারিত</span>
+                                      <ChevronRight className="w-4 h-4 text-sky-300 shrink-0" />
                                     </Link>
                                   )}
                                 </div>

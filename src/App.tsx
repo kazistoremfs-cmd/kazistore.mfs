@@ -15,6 +15,8 @@ import ChargeSummary from './components/ChargeSummary';
 import UniversityAdmissionDetails from './components/UniversityAdmissionDetails';
 import VaccineDetails from './components/VaccineDetails';
 import CreditCardBillPaymentDetails from './components/CreditCardBillPaymentDetails';
+import GPSimDetails from './components/GPSimDetails';
+import AIAssistant from './components/AIAssistant';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function Home() {
@@ -43,10 +45,12 @@ export default function App() {
             <Route path="/admission/:id" element={<UniversityAdmissionDetails />} />
             <Route path="/vaccine/:id" element={<VaccineDetails />} />
             <Route path="/credit-card-bill-payment" element={<CreditCardBillPaymentDetails />} />
+            <Route path="/sim/gp" element={<GPSimDetails />} />
           </Routes>
         </main>
 
         <Footer />
+        <AIAssistant />
       </div>
     </Router>
   );
