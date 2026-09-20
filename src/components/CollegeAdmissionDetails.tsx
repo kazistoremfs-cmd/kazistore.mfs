@@ -98,7 +98,7 @@ export default function CollegeAdmissionDetails() {
             <ArrowLeft className="w-4 h-4" /> ফিরে যান
           </button>
           <ChevronRight className="w-4 h-4 text-slate-600" />
-          <span className="text-white font-medium truncate">একাদশ শ্রেণিতে ভর্তি বিজ্ঞপ্তি (২০২৬-২০২৭)</span>
+          <span className="text-white font-medium truncate">একাদশ শ্রেণিতে ভর্তি ফর্ম</span>
         </nav>
 
         {/* Content Body */}
@@ -145,7 +145,7 @@ export default function CollegeAdmissionDetails() {
             <div className="text-center sm:text-left bg-blue-950/40 border border-blue-500/30 rounded-2xl p-5 mb-6">
               <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
                 <h2 className="text-xl sm:text-2xl font-bold text-yellow-300">
-                  ২০২৬-২০২৭ শিক্ষাবর্ষ একাদশ শ্রেণির ভর্তি বিজ্ঞপ্তি
+                  একাদশ শ্রেণিতে ভর্তি ফর্ম
                 </h2>
               </div>
               <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
