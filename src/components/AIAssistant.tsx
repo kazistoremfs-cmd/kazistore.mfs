@@ -1,24 +1,288 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
-  Bot, X, Send, Sparkles, MessageSquare, RotateCcw, 
-  ExternalLink, User, HelpCircle, Loader2, ChevronDown
+  Bot, X, Send, Sparkles, RotateCcw, 
+  ExternalLink, User, HelpCircle, Loader2, ChevronDown,
+  ArrowRight, CheckCircle2, Zap
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { Link, useNavigate } from 'react-router-dom';
 
 interface ChatMessage {
   id: string;
   role: 'user' | 'model';
   text: string;
   timestamp: string;
+  isStreaming?: boolean;
 }
 
 const SUGGESTIONS = [
   "কাজী স্টোরে কী কী সেবা পাওয়া যায়?",
-  "গ্রামীনফোন সিম রিপ্লেসমেন্ট করতে কী কী লাগে?",
-  "বিকাশ ও নগদ ক্যাশ আউট সুবিধা কী?",
+  "বিকাশ ও নগদ ক্যাশ আউট ও চার্জ কত?",
+  "ক্রেডিট কার্ড বিল পরিশোধের নিয়ম কী?",
   "একাদশ শ্রেণিতে কলেজ ভর্তির আবেদন কীভাবে করব?",
-  "ক্রেডিট কার্ড বিল পরিশোধ কীভাবে করে?",
+  "সিভি বা বায়োডাটা (Resume) তৈরির নিয়ম কী?",
+  "গ্রামীনফোন সিম রিপ্লেসমেন্ট করতে কী কী লাগে?",
 ];
+
+// Map of route names for friendly fallback labels
+const ROUTE_LABELS: Record<string, string> = {
+  '/sim/gp': 'GP নতুন সিম ও রিপ্লেসমেন্ট পেজ',
+  '/service/sim-new': 'নতুন সিম রেজিস্ট্রেশন পেজ',
+  '/service/sim-replace': 'সিম রিপ্লেসমেন্ট পেজ',
+  '/service/sim-recharge': 'মোবাইল রিচার্জ পেজ',
+  '/college-admission-details': 'কলেজ ভর্তি বিস্তারিত পেজ',
+  '/ssc-details': 'এসএসসি ও দাখিল সেবা পেজ',
+  '/hsc-details': 'এইচএসসি সেবা পেজ',
+  '/admission/university': 'বিশ্ববিদ্যালয় ভর্তি পেজ',
+  '/service/edu-fee': 'চাকরির আবেদন পেজ',
+  '/credit-card-bill-payment': 'ক্রেডিট কার্ড বিল পরিশোধ পেজ',
+  '/charges': 'সার্ভিস চার্জ ও ফি তালিকা',
+  '/service/mfs-bkash': 'বিকাশ সেবা পেজ',
+  '/service/mfs-nagad': 'নগদ সেবা পেজ',
+  '/service/mfs-rocket': 'রকেট সেবা পেজ',
+  '/service/bill-electricity': 'বিদ্যুৎ বিল পরিশোধ পেজ',
+  '/service/bill-gas': 'গ্যাস বিল পেজ',
+  '/service/bill-internet': 'ইন্টারনেট বিল পেজ',
+  '/service/bill-vehicle': 'ট্রাফিক জরিমানা পেজ',
+  '/service/gov-vaccine': 'টিকা ও ভ্যাকসিন আবেদন পেজ',
+  '/service/gov-birth': 'জন্ম নিবন্ধন পেজ',
+  '/service/gov-gd': 'অনলাইন জিডি পেজ',
+  '/service/doc-resume': 'সিভি ও বায়োডাটা পেজ',
+  '/service/print-photo': 'ছবি প্রিন্ট পেজ',
+  '/service/print-copy': 'ফটোকপি সেবা পেজ',
+  '/service/print-lamination': 'ল্যামিনেশন পেজ',
+};
+
+// Rich Message Formatter that turns Markdown links, internal routes, and bold text into styled UI
+function FormattedMessageContent({ text, onNavigate }: { text: string; onNavigate?: () => void }) {
+  // Regex to match markdown links: [label](target) or bare urls / bare routes
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)|(https?:\/\/[^\s)]+)|(\/(?:sim\/gp|college-admission-details|ssc-details|hsc-details|credit-card-bill-payment|charges|admission\/[a-z0-9-]+|vaccine\/[a-z0-9-]+|service\/[a-z0-9-]+))/g;
+
+  // Split text into paragraphs/lines
+  const lines = text.split('\n');
+
+  const renderInlineSegment = (segment: string, keyPrefix: string) => {
+    // Process markdown links or URLs first
+    const parts: React.ReactNode[] = [];
+    let lastIndex = 0;
+    let match: RegExpExecArray | null;
+
+    linkRegex.lastIndex = 0;
+    while ((match = linkRegex.exec(segment)) !== null) {
+      const matchStart = match.index;
+      const matchEnd = linkRegex.lastIndex;
+
+      if (matchStart > lastIndex) {
+        parts.push(renderBoldText(segment.substring(lastIndex, matchStart), `${keyPrefix}-t-${lastIndex}`));
+      }
+
+      const markdownLabel = match[1];
+      const markdownTarget = match[2];
+      const bareUrl = match[3];
+      const bareRoute = match[4];
+
+      if (markdownLabel && markdownTarget) {
+        if (markdownTarget.startsWith('/')) {
+          parts.push(
+            <Link
+              key={`${keyPrefix}-link-${matchStart}`}
+              to={markdownTarget}
+              onClick={onNavigate}
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 my-1 bg-gradient-to-r from-teal-500/25 to-[#08B3AF]/25 hover:from-teal-500/40 hover:to-[#08B3AF]/40 text-teal-200 hover:text-white border border-teal-500/50 rounded-xl text-xs font-bold transition-all shadow-sm group/link cursor-pointer"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-teal-300 group-hover/link:rotate-12 transition-transform shrink-0" />
+              <span className="underline decoration-teal-400/60 underline-offset-2">{markdownLabel}</span>
+              <ArrowRight className="w-3.5 h-3.5 text-teal-300 group-hover/link:translate-x-0.5 transition-transform shrink-0" />
+            </Link>
+          );
+        } else {
+          parts.push(
+            <a
+              key={`${keyPrefix}-ext-${matchStart}`}
+              href={markdownTarget}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-teal-300 hover:text-white underline underline-offset-2 text-xs font-medium break-all"
+            >
+              <span>{markdownLabel}</span>
+              <ExternalLink className="w-3 h-3 inline shrink-0" />
+            </a>
+          );
+        }
+      } else if (bareRoute) {
+        const label = ROUTE_LABELS[bareRoute] || 'সার্ভিস পেজ দেখুন';
+        parts.push(
+          <Link
+            key={`${keyPrefix}-broute-${matchStart}`}
+            to={bareRoute}
+            onClick={onNavigate}
+            className="inline-flex items-center gap-1.5 px-2.5 py-1 my-1 bg-gradient-to-r from-teal-500/25 to-[#08B3AF]/25 hover:from-teal-500/40 hover:to-[#08B3AF]/40 text-teal-200 hover:text-white border border-teal-500/50 rounded-xl text-xs font-bold transition-all shadow-sm group/link cursor-pointer"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-teal-300 group-hover/link:rotate-12 transition-transform shrink-0" />
+            <span className="underline decoration-teal-400/60 underline-offset-2">{label}</span>
+            <ArrowRight className="w-3.5 h-3.5 text-teal-300 group-hover/link:translate-x-0.5 transition-transform shrink-0" />
+          </Link>
+        );
+      } else if (bareUrl) {
+        parts.push(
+          <a
+            key={`${keyPrefix}-bare-${matchStart}`}
+            href={bareUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-teal-300 hover:text-white underline underline-offset-2 text-xs font-medium break-all"
+          >
+            <span>{bareUrl.includes('wa.me') ? 'কাজী স্টোর হোয়াটসঅ্যাপ' : bareUrl}</span>
+            <ExternalLink className="w-3 h-3 inline shrink-0" />
+          </a>
+        );
+      }
+
+      lastIndex = matchEnd;
+    }
+
+    if (lastIndex < segment.length) {
+      parts.push(renderBoldText(segment.substring(lastIndex), `${keyPrefix}-t-end`));
+    }
+
+    return parts;
+  };
+
+  const renderBoldText = (str: string, keyPrefix: string) => {
+    const boldParts = str.split(/(\*\*[^*]+\*\*)/g);
+    return boldParts.map((bPart, idx) => {
+      if (bPart.startsWith('**') && bPart.endsWith('**')) {
+        return (
+          <strong key={`${keyPrefix}-b-${idx}`} className="font-bold text-white text-teal-100">
+            {bPart.slice(2, -2)}
+          </strong>
+        );
+      }
+      return <span key={`${keyPrefix}-p-${idx}`}>{bPart}</span>;
+    });
+  };
+
+  return (
+    <div className="space-y-2">
+      {lines.map((line, lIdx) => {
+        const trimmed = line.trim();
+        if (!trimmed) {
+          return <div key={`empty-${lIdx}`} className="h-1" />;
+        }
+
+        // Check if list item
+        const isBullet = /^[•*\-]\s+/.test(trimmed);
+        const isNumbered = /^\d+\.\s+/.test(trimmed);
+
+        if (isBullet || isNumbered) {
+          const content = trimmed.replace(/^[•*\-]\s+|^\d+\.\s+/, '');
+          return (
+            <motion.div 
+              key={`line-${lIdx}`} 
+              initial={{ opacity: 0, y: 2 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="flex items-start gap-2 pl-1 leading-relaxed"
+            >
+              <span className="text-teal-400 mt-1 shrink-0 text-xs">
+                {isNumbered ? '▪' : '•'}
+              </span>
+              <div className="flex-1 leading-relaxed">
+                {renderInlineSegment(content, `line-${lIdx}`)}
+              </div>
+            </motion.div>
+          );
+        }
+
+        return (
+          <motion.p 
+            key={`p-${lIdx}`} 
+            initial={{ opacity: 0, y: 2 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="leading-relaxed"
+          >
+            {renderInlineSegment(line, `p-${lIdx}`)}
+          </motion.p>
+        );
+      })}
+    </div>
+  );
+}
+
+// Live Typewriter effect component that reveals text smoothly with text animation and zero blinking
+function TypewriterMessage({ 
+  text, 
+  isStreaming, 
+  onFinished, 
+  onScroll,
+  onNavigate 
+}: { 
+  text: string; 
+  isStreaming?: boolean; 
+  onFinished?: () => void; 
+  onScroll?: () => void;
+  onNavigate?: () => void;
+}) {
+  const [tokenCount, setTokenCount] = useState(isStreaming ? 1 : 999999);
+  const [isTypingComplete, setIsTypingComplete] = useState(!isStreaming);
+
+  // Tokenize preserving spaces and newlines
+  const tokensRef = useRef<string[]>([]);
+  tokensRef.current = text.match(/\S+|\s+/g) || [text];
+
+  useEffect(() => {
+    if (!isStreaming) {
+      setIsTypingComplete(true);
+      return;
+    }
+
+    const totalTokens = tokensRef.current.length;
+    let current = 1;
+    setTokenCount(1);
+    setIsTypingComplete(false);
+
+    const interval = setInterval(() => {
+      // Step by 2-3 tokens for a fluid, natural reading pace
+      current += 2;
+      if (current >= totalTokens) {
+        current = totalTokens;
+        setTokenCount(totalTokens);
+        setIsTypingComplete(true);
+        clearInterval(interval);
+        onFinished?.();
+      } else {
+        setTokenCount(current);
+      }
+      onScroll?.();
+    }, 20);
+
+    return () => clearInterval(interval);
+  }, [text, isStreaming]);
+
+  const handleFastForward = () => {
+    setTokenCount(tokensRef.current.length);
+    setIsTypingComplete(true);
+    onFinished?.();
+    onScroll?.();
+  };
+
+  const displayedText = isTypingComplete 
+    ? text 
+    : tokensRef.current.slice(0, tokenCount).join('');
+
+  return (
+    <div 
+      className="relative group/msg cursor-pointer select-text"
+      onClick={() => {
+        if (!isTypingComplete) handleFastForward();
+      }}
+      title={!isTypingComplete ? "ক্লিক করে সম্পূর্ণ মেসেজ একসাথে দেখুন" : undefined}
+    >
+      <FormattedMessageContent text={displayedText} onNavigate={onNavigate} />
+    </div>
+  );
+}
 
 export default function AIAssistant() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,14 +290,17 @@ export default function AIAssistant() {
     {
       id: 'welcome',
       role: 'model',
-      text: 'আসসালামু আলাইকুম! আমি কাজী স্টোরের এআই (AI) সহকারী। কাজী স্টোরের যেকোনো সেবা, সিম রিপ্লেসমেন্ট, এমএফএস (বিকাশ/নগদ/রকেট), কলেজ/বিশ্ববিদ্যালয় ভর্তি আবেদন বা প্রিন্টিং সম্পর্কে আপনার কী জানার আছে?',
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      text: 'আসসালামু আলাইকুম! আমি কাজী স্টোরের এআই (AI) সহকারী। কাজী স্টোরের যেকোনো সেবা, নতুন সিম ও সিম রিপ্লেসমেন্ট, বিকাশ/নগদ/রকেট, কলেজ ভর্তি, ক্রেডিট কার্ড বিল বা প্রিন্টিং সম্পর্কে আপনার কী জানার আছে?',
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      isStreaming: false
     }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const chatWindowRef = useRef<HTMLDivElement>(null);
+  const triggerButtonRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -45,12 +312,37 @@ export default function AIAssistant() {
     return () => window.removeEventListener('open-kazi-ai', handleOpen);
   }, []);
 
+  // Minimize chat window when clicking or tapping outside
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node;
+      if (
+        chatWindowRef.current &&
+        !chatWindowRef.current.contains(target) &&
+        triggerButtonRef.current &&
+        !triggerButtonRef.current.contains(target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isOpen]);
+
   useEffect(() => {
     if (isOpen) {
       scrollToBottom();
       setTimeout(() => inputRef.current?.focus(), 250);
     }
-  }, [isOpen, messages, isLoading]);
+  }, [isOpen, messages.length, isLoading]);
 
   const handleSend = async (queryText?: string) => {
     const textToSend = (queryText || input).trim();
@@ -82,13 +374,14 @@ export default function AIAssistant() {
       }
 
       const data = await response.json();
-      const replyText = data.reply || 'দুঃখিত, এই মুহূর্তে উত্তর দেওয়া সম্ভব হচ্ছে না। অনুগ্রহ করে সরাসরি আমাদের হোয়াটসঅ্যাপে যোগাযোগ করুন: https://wa.me/message/L2XAYVWBE5RIJ1';
+      const replyText = data.reply || 'কাজী স্টোরের সকল সেবা সম্পর্কে জানতে আমাদের হোমপেজ ভিজিট করুন: [কাজী স্টোর সেবা](/charges)';
 
       const botMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'model',
         text: replyText,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        isStreaming: true
       };
 
       setMessages(prev => [...prev, botMsg]);
@@ -97,13 +390,18 @@ export default function AIAssistant() {
       const errorMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'model',
-        text: 'কাজী স্টোরের সেবার ব্যাপারে আরও বিস্তারিত জানতে সরাসরি আমাদের হেল্পলাইনে যোগাযোগ করতে পারেন। হোয়াটসঅ্যাপ: https://wa.me/message/L2XAYVWBE5RIJ1',
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        text: 'কাজী স্টোরের সেবা সম্পর্কে বিস্তারিত জানতে আমাদের ওয়েবসাইটের সার্ভিস তালিকা দেখুন: [সার্ভিস চার্জ ও ফি তালিকা](/charges)',
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        isStreaming: true
       };
       setMessages(prev => [...prev, errorMsg]);
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const markStreamComplete = (msgId: string) => {
+    setMessages(prev => prev.map(m => m.id === msgId ? { ...m, isStreaming: false } : m));
   };
 
   const resetChat = () => {
@@ -112,38 +410,16 @@ export default function AIAssistant() {
         id: 'welcome',
         role: 'model',
         text: 'কথোপকথন রিস্টার্ট করা হয়েছে। কাজী স্টোরের যেকোনো সেবা সম্পর্কে আপনার প্রশ্নটি করুন।',
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        isStreaming: false
       }
     ]);
-  };
-
-  // Helper to render text with clickable links
-  const renderMessageText = (text: string) => {
-    const urlRegex = /(https?:\/\/[^\s]+)/g;
-    const parts = text.split(urlRegex);
-    return parts.map((part, i) => {
-      if (part.match(urlRegex)) {
-        return (
-          <a
-            key={i}
-            href={part}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-teal-300 underline hover:text-white inline-flex items-center gap-1 break-all"
-          >
-            {part.includes('wa.me') ? 'কাজী স্টোর হোয়াটসঅ্যাপ' : part}
-            <ExternalLink className="w-3 h-3 inline shrink-0" />
-          </a>
-        );
-      }
-      return <span key={i} className="whitespace-pre-line">{part}</span>;
-    });
   };
 
   return (
     <>
       {/* Floating Trigger Button */}
-      <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end">
+      <div ref={triggerButtonRef} className="fixed bottom-5 right-5 z-50 flex flex-col items-end">
         {!isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 10, scale: 0.9 }}
@@ -178,11 +454,12 @@ export default function AIAssistant() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            ref={chatWindowRef}
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 25, scale: 0.95 }}
             transition={{ duration: 0.25 }}
-            className="fixed bottom-22 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[420px] max-h-[82vh] h-[620px] bg-slate-900/95 backdrop-blur-xl border border-slate-700/80 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden font-bn text-slate-100"
+            className="fixed bottom-22 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[440px] max-h-[82vh] h-[640px] bg-slate-900/95 backdrop-blur-xl border border-slate-700/80 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden font-bn text-slate-100"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-slate-900 via-teal-950 to-slate-900 px-5 py-4 border-b border-slate-700/80 flex items-center justify-between shrink-0">
@@ -196,9 +473,6 @@ export default function AIAssistant() {
                 <div>
                   <div className="flex items-center gap-2">
                     <h3 className="font-bold text-white text-base leading-tight">কাজী স্টোর এআই</h3>
-                    <span className="text-[10px] bg-teal-500/20 text-teal-300 px-2 py-0.5 rounded-full border border-teal-500/30 uppercase font-en font-bold tracking-wider">
-                      AI 3.8
-                    </span>
                   </div>
                   <p className="text-xs text-slate-400">অনলাইন স্মার্ট সহযোগী</p>
                 </div>
@@ -230,20 +504,29 @@ export default function AIAssistant() {
                   className={`flex gap-2.5 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   {msg.role === 'model' && (
-                    <div className="w-7 h-7 rounded-lg bg-teal-500/20 border border-teal-500/30 flex items-center justify-center text-teal-300 shrink-0 mt-0.5">
+                    <div className="w-7 h-7 rounded-lg bg-teal-500/20 border border-teal-500/30 flex items-center justify-center text-teal-300 shrink-0 mt-0.5 shadow-sm">
                       <Bot className="w-4 h-4" />
                     </div>
                   )}
 
-                  <div className={`flex flex-col max-w-[82%] ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
+                  <div className={`flex flex-col max-w-[85%] ${msg.role === 'user' ? 'items-end' : 'items-start'}`}>
                     <div
-                      className={`p-3.5 rounded-2xl text-sm leading-relaxed shadow-md ${
+                      className={`p-3.5 rounded-2xl text-sm shadow-md ${
                         msg.role === 'user'
-                          ? 'bg-gradient-to-r from-teal-600 to-[#08B3AF] text-white rounded-br-xs'
-                          : 'bg-slate-800/90 text-slate-200 border border-slate-700/70 rounded-bl-xs'
+                          ? 'bg-gradient-to-r from-teal-600 to-[#08B3AF] text-white rounded-br-xs font-bn'
+                          : 'bg-slate-800/95 text-slate-100 border border-slate-700/80 rounded-bl-xs font-bn'
                       }`}
                     >
-                      {renderMessageText(msg.text)}
+                      {msg.role === 'user' ? (
+                        <p className="whitespace-pre-line leading-relaxed">{msg.text}</p>
+                      ) : (
+                        <TypewriterMessage 
+                          text={msg.text} 
+                          isStreaming={msg.isStreaming}
+                          onFinished={() => markStreamComplete(msg.id)}
+                          onScroll={scrollToBottom}
+                        />
+                      )}
                     </div>
                     <span className="text-[10px] text-slate-500 mt-1 px-1 font-en">
                       {msg.timestamp}
@@ -264,9 +547,9 @@ export default function AIAssistant() {
                   <div className="w-7 h-7 rounded-lg bg-teal-500/20 border border-teal-500/30 flex items-center justify-center text-teal-300 shrink-0 mt-0.5">
                     <Bot className="w-4 h-4" />
                   </div>
-                  <div className="bg-slate-800/90 border border-slate-700/70 p-3.5 rounded-2xl rounded-bl-xs text-slate-400 flex items-center gap-2">
+                  <div className="bg-slate-800/90 border border-slate-700/70 p-3.5 rounded-2xl rounded-bl-xs text-slate-300 flex items-center gap-2.5">
                     <Loader2 className="w-4 h-4 animate-spin text-teal-400" />
-                    <span className="text-xs">কাজী স্টোর থেকে তথ্য খোঁজা হচ্ছে...</span>
+                    <span className="text-xs">কাজী স্টোরের সংশ্লিষ্ট সার্ভিস তথ্য ও লিংক খোঁজা হচ্ছে...</span>
                   </div>
                 </div>
               )}
@@ -311,7 +594,7 @@ export default function AIAssistant() {
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="কাজী স্টোরের যেকোনো সেবা সম্পর্কে লিখুন..."
                   disabled={isLoading}
-                  className="flex-1 bg-slate-800/90 border border-slate-700 focus:border-teal-400 focus:ring-1 focus:ring-teal-400 text-white placeholder-slate-400 text-sm px-4 py-2.5 rounded-xl outline-none transition-all disabled:opacity-50"
+                  className="flex-1 bg-slate-800/90 border border-slate-700 focus:border-teal-400 focus:ring-1 focus:ring-teal-400 text-white placeholder-slate-400 text-sm px-4 py-2.5 rounded-xl outline-none transition-all disabled:opacity-50 font-bn"
                 />
                 <button
                   type="submit"
