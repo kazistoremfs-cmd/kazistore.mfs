@@ -244,8 +244,8 @@ function TypewriterMessage({
     setIsTypingComplete(false);
 
     const interval = setInterval(() => {
-      // Step by 2-3 tokens for a fluid, natural reading pace
-      current += 2;
+      // Step by 3-4 tokens for snappy, crisp response on mobile and desktop
+      current += 3;
       if (current >= totalTokens) {
         current = totalTokens;
         setTokenCount(totalTokens);
@@ -256,7 +256,7 @@ function TypewriterMessage({
         setTokenCount(current);
       }
       onScroll?.();
-    }, 20);
+    }, 12);
 
     return () => clearInterval(interval);
   }, [text, isStreaming]);
@@ -274,8 +274,11 @@ function TypewriterMessage({
 
   return (
     <div 
-      className="relative group/msg cursor-pointer select-text"
-      onClick={() => {
+      className="relative group/msg select-text"
+      onClick={(e) => {
+        // If clicking on an anchor or link element, let default navigation happen
+        const target = e.target as HTMLElement;
+        if (target.closest('a')) return;
         if (!isTypingComplete) handleFastForward();
       }}
       title={!isTypingComplete ? "ক্লিক করে সম্পূর্ণ মেসেজ একসাথে দেখুন" : undefined}
@@ -547,6 +550,7 @@ export default function AIAssistant() {
                           isStreaming={msg.isStreaming}
                           onFinished={() => markStreamComplete(msg.id)}
                           onScroll={scrollToBottom}
+                          onNavigate={() => setIsOpen(false)}
                         />
                       )}
                     </div>

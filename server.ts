@@ -73,7 +73,7 @@ function handleCashOutQuery(text: string): string | null {
     lower.includes('ক্যাশ') || lower.includes('cash') || 
     lower.includes('তুলতে') || lower.includes('তুললে') || lower.includes('তোলা') || lower.includes('তুলা') || 
     lower.includes('উত্তোলন') || lower.includes('চার্জ') || lower.includes('খরচ') || lower.includes('কাটবে') ||
-    lower.includes('বিকাশ') || lower.includes('নগদ') || lower.includes('রকেট');
+    lower.includes('ফি') || lower.includes('রেট') || lower.includes('বিকাশ') || lower.includes('নগদ') || lower.includes('রকেট');
 
   if (!isCashOutTopic) return null;
 
@@ -369,7 +369,7 @@ async function startServer() {
         dynamicSystemPrompt += `\n\n### বর্তমান প্রশ্নের জন্য অফিশিয়াল গণনাকৃত ক্যাশ আউট রেট (Exact Ground Truth):\n${calculatedCashOut}\nউত্তরে এই সঠিক সংখ্যাগুলোই সংক্ষিপ্ত ও প্রফেশনালভাবে প্রদান করো। কোনো অতিরিক্ত ভূমিকা ছাড়া সরাসরি হিসাব তুলে ধরবে।`;
       }
 
-      const candidateModels = ["gemini-2.5-flash", "gemini-2.5-flash-lite", "gemini-3.8-flash"];
+      const candidateModels = ["gemini-2.5-flash-lite", "gemini-2.5-flash", "gemini-3.8-flash"];
       let generatedText = "";
 
       for (const model of candidateModels) {
