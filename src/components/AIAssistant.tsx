@@ -17,6 +17,7 @@ interface ChatMessage {
 
 const SUGGESTIONS = [
   "কাজী স্টোরে কী কী সেবা পাওয়া যায়?",
+  "৫০০০ টাকা তুলতে কত খরচ?",
   "বিকাশ ও নগদ ক্যাশ আউট ও চার্জ কত?",
   "ক্রেডিট কার্ড বিল পরিশোধের নিয়ম কী?",
   "একাদশ শ্রেণিতে কলেজ ভর্তির আবেদন কীভাবে করব?",
@@ -316,8 +317,27 @@ export default function AIAssistant() {
   useEffect(() => {
     if (!isOpen) return;
 
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length > 0) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
+    };
+
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
       const target = event.target as Node;
+      if (!target || !document.body.contains(target)) return;
+
+      // On mobile touch devices, check if it was a swipe/scroll rather than a tap outside
+      if (event instanceof TouchEvent && event.changedTouches?.length > 0) {
+        const dx = Math.abs(event.changedTouches[0].clientX - touchStartX);
+        const dy = Math.abs(event.changedTouches[0].clientY - touchStartY);
+        if (dx > 12 || dy > 12) return; // User was scrolling, ignore
+      }
+
       if (
         chatWindowRef.current &&
         !chatWindowRef.current.contains(target) &&
@@ -329,11 +349,13 @@ export default function AIAssistant() {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('touchstart', handleClickOutside);
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchend', handleClickOutside);
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('touchstart', handleTouchStart);
+      document.removeEventListener('touchend', handleClickOutside);
     };
   }, [isOpen]);
 
@@ -459,7 +481,7 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 25, scale: 0.95 }}
             transition={{ duration: 0.25 }}
-            className="fixed bottom-22 right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-[440px] max-h-[82vh] h-[640px] bg-slate-900/95 backdrop-blur-xl border border-slate-700/80 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden font-bn text-slate-100"
+            className="fixed bottom-20 sm:bottom-22 right-2 sm:right-6 left-2 sm:left-auto w-auto sm:w-[440px] max-h-[85vh] h-[calc(100dvh-95px)] sm:h-[640px] bg-slate-900/95 backdrop-blur-xl border border-slate-700/80 rounded-3xl shadow-2xl z-50 flex flex-col overflow-hidden font-bn text-slate-100"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-slate-900 via-teal-950 to-slate-900 px-5 py-4 border-b border-slate-700/80 flex items-center justify-between shrink-0">
@@ -594,7 +616,7 @@ export default function AIAssistant() {
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="কাজী স্টোরের যেকোনো সেবা সম্পর্কে লিখুন..."
                   disabled={isLoading}
-                  className="flex-1 bg-slate-800/90 border border-slate-700 focus:border-teal-400 focus:ring-1 focus:ring-teal-400 text-white placeholder-slate-400 text-sm px-4 py-2.5 rounded-xl outline-none transition-all disabled:opacity-50 font-bn"
+                  className="flex-1 bg-slate-800/90 border border-slate-700 focus:border-teal-400 focus:ring-1 focus:ring-teal-400 text-white placeholder-slate-400 text-base sm:text-sm px-4 py-2.5 rounded-xl outline-none transition-all disabled:opacity-50 font-bn"
                 />
                 <button
                   type="submit"
