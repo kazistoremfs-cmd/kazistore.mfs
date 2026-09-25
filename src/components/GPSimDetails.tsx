@@ -71,13 +71,13 @@ export default function GPSimDetails() {
   const steps = [
     {
       step: "০১",
-      title: "NID ও আঙ্গুলের ছাপ প্রস্তুত রাখুন",
-      desc: "যার নামে সিম নিবন্ধিত হবে তাকে সশরীরে কাজী স্টোরে উপস্থিত থাকতে হবে বায়োমেট্রিক ভেরিফিকেশনের জন্য।"
+      title: "পছন্দের নম্বর নির্বাচন",
+      desc: "আমাদের কাছে থাকা প্রচুর GP ফ্রেশ নম্বর তালিকা থেকে আপনার পছন্দের নম্বরটি বেছে নিন।"
     },
     {
       step: "০২",
-      title: "পছন্দের নম্বর নির্বাচন",
-      desc: "আমাদের কাছে থাকা প্রচুর গ্রামীনফোন ফ্রেশ নম্বর তালিকা থেকে আপনার পছন্দের নম্বরটি বেছে নিন।"
+      title: "NID ও আঙ্গুলের ছাপ প্রস্তুত রাখুন",
+      desc: "যার নামে সিম নিবন্ধিত হবে তাকে সশরীরে কাজী স্টোরে উপস্থিত থাকতে হবে বায়োমেট্রিক ভেরিফিকেশনের জন্য।"
     },
     {
       step: "০৩",
@@ -117,11 +117,11 @@ export default function GPSimDetails() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/20 border border-sky-400/30 text-sky-300 text-xs sm:text-sm font-semibold mb-3">
                 <Sparkles className="w-3.5 h-3.5" /> অফিসিয়াল বায়োমেট্রিক ও সিম রিপ্লেসমেন্ট পয়েন্ট
               </div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 tracking-tight drop-shadow-md">
-                গ্রামীনফোন নতুন সিম ও রিপ্লেসমেন্ট
+              <h1 className="text-[17px] min-[360px]:text-[19px] min-[410px]:text-2xl sm:text-4xl lg:text-5xl font-bold text-white mb-3 tracking-tight drop-shadow-md whitespace-nowrap">
+                GP নতুন সিম ও রিপ্লেসমেন্ট
               </h1>
               <p className="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-                দেশের ১ নম্বর শক্তিশালী নেটওয়ার্কের নতুন গ্রামীনফোন ৪জি/৫জি রেডি সিম এবং হারানো বা নষ্ট সিম রিপ্লেসমেন্ট সেবা কাজী স্টোরে পাওয়া যাচ্ছে। আকর্ষণীয় ওয়েলকাম অফার ও তাৎক্ষণিক বায়োমেট্রিক সুবিধা সহ এখনই চলে আসুন!
+                দেশের ১ নম্বর শক্তিশালী নেটওয়ার্কের নতুন GP ৪জি/৫জি রেডি সিম এবং হারানো বা নষ্ট সিম রিপ্লেসমেন্ট সেবা কাজী স্টোরে পাওয়া যাচ্ছে। আকর্ষণীয় ওয়েলকাম অফার ও তাৎক্ষণিক বায়োমেট্রিক সুবিধা সহ এখনই চলে আসুন!
               </p>
             </div>
 
@@ -142,7 +142,7 @@ export default function GPSimDetails() {
           <div>
             <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center gap-2">
               <CardSim className="w-6 h-6 text-sky-400" />
-              গ্রামীনফোন সিম প্যাকেজ ও রিপ্লেসমেন্ট সেবা
+              GP সিম প্যাকেজ ও রিপ্লেসমেন্ট সেবা
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {packages.map((pkg, idx) => (
@@ -214,9 +214,6 @@ export default function GPSimDetails() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {steps.map((st, idx) => (
                 <div key={idx} className="bg-slate-800/40 border border-slate-700/50 p-5 rounded-2xl relative overflow-hidden">
-                  <div className="text-4xl font-black text-sky-500/20 font-en mb-2">
-                    {st.step}
-                  </div>
                   <h3 className="text-white font-bold text-base mb-1.5">
                     {st.title}
                   </h3>
@@ -235,36 +232,38 @@ export default function GPSimDetails() {
               জরুরি জ্ঞাতব্য ও সরকারি নিয়মাবলী
             </h3>
             <ul className="text-sm sm:text-base space-y-2 text-amber-200/90 list-disc list-inside">
-              <li>একজন ব্যক্তির জাতীয় পরিচয়পত্র (NID) দিয়ে সর্বোচ্চ ১৫টি সিম নিবন্ধন সম্ভব।</li>
+              <li>একজন ব্যক্তির জাতীয় পরিচয়পত্র (NID) দিয়ে সর্বোচ্চ 10 টি সিম নিবন্ধন সম্ভব।</li>
               <li>আপনার NID-তে কয়টি সিম রয়েছে যাচাই করতে ডায়াল করুন: <span className="font-en font-bold text-amber-300">*16001#</span></li>
               <li>সিম ক্রয়ের সময় অবশ্যই সিমের মূল গ্রহীতাকে সশরীরে এসে ফিঙ্গারপ্রিন্ট দিতে হবে।</li>
             </ul>
           </div>
 
           {/* Bottom Action Card */}
-          <div className="bg-slate-900 border border-slate-700 p-6 sm:p-8 rounded-2xl text-center flex flex-col items-center justify-center gap-4">
+          <div className="bg-slate-900 border border-slate-700 p-6 sm:p-8 rounded-2xl text-center flex flex-col items-center justify-center gap-3">
             <h3 className="text-xl sm:text-2xl font-bold text-white">
-              আজই চলে আসুন আপনার বিশ্বস্ত প্রতিষ্ঠান কাজী স্টোরে
+              সিম ও রিচার্জ সেবায় কাজী স্টোর
             </h3>
-            <p className="text-slate-300 text-sm sm:text-base max-w-xl">
-              সিম ক্রয়, সিম রিপ্লেসমেন্ট (হারানো সিম উত্তোলন), ৪জি কনভার্সন এবং সকল অপারেটরের ফ্লেক্সিলোড সেবায় আমরা সবসময় আপনার পাশে।
+            <p className="text-slate-300 text-sm sm:text-base max-w-lg leading-relaxed">
+              নতুন সিম, রিপ্লেসমেন্ট ও ফ্লেক্সিলোড সংক্রান্ত যেকোনো প্রয়োজনে সরাসরি যোগাযোগ করুন।
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-3 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center justify-center gap-3 w-full sm:w-auto mt-1">
               <a 
                 href="https://wa.me/message/L2XAYVWBE5RIJ1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3 rounded-xl font-bold text-base transition-all shadow-lg shadow-emerald-600/30 active:scale-95"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-5 py-2.5 rounded-xl font-bold text-sm sm:text-base transition-all shadow-lg shadow-emerald-600/30 active:scale-95"
               >
-                <MessageCircle className="w-5 h-5 text-white" />
-                <span>হোয়াটসঅ্যাপে যোগাযোগ</span>
+                <MessageCircle className="w-4 h-4 text-white" />
+                <span>হোয়াটসঅ্যাপ</span>
               </a>
               <a 
-                href="tel:01700000000"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 px-6 py-3 rounded-xl font-bold text-base transition-all active:scale-95"
+                href="https://wa.me/message/L2XAYVWBE5RIJ1"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 px-5 py-2.5 rounded-xl font-bold text-sm sm:text-base transition-all active:scale-95"
               >
                 <Phone className="w-4 h-4" />
-                <span>সরাসরি কল করুন</span>
+                <span>সরাসরি যোগাযোগ</span>
               </a>
             </div>
           </div>

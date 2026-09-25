@@ -16,6 +16,7 @@ import UniversityAdmissionDetails from './components/UniversityAdmissionDetails'
 import VaccineDetails from './components/VaccineDetails';
 import CreditCardBillPaymentDetails from './components/CreditCardBillPaymentDetails';
 import GPSimDetails from './components/GPSimDetails';
+import BMETRegistrationDetails from './components/BMETRegistrationDetails';
 import AIAssistant from './components/AIAssistant';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -46,6 +47,7 @@ export default function App() {
             <Route path="/vaccine/:id" element={<VaccineDetails />} />
             <Route path="/credit-card-bill-payment" element={<CreditCardBillPaymentDetails />} />
             <Route path="/sim/gp" element={<GPSimDetails />} />
+            <Route path="/bmet-registration" element={<BMETRegistrationDetails />} />
           </Routes>
         </main>
 

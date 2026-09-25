@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, ChevronRight, Wallet, Receipt, Zap, Wifi, Flame, Building2 } from 'lucide-react';
+import { ArrowLeft, ChevronRight, Wallet, Receipt, Zap, Wifi, Flame, Building2, Globe } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export default function ChargeSummary() {
@@ -11,6 +11,20 @@ export default function ChargeSummary() {
   }, []);
 
   const charges = [
+    {
+      category: 'অনলাইন ও সরকারি সেবা ফি',
+      icon: <Globe className="w-6 h-6 text-sky-400" />,
+      items: [
+        {
+          name: 'BMET রেজিস্ট্রেশন ও স্মার্ট কার্ড (আমি প্রবাসী)',
+          details: [
+            { method: 'আমি প্রবাসী / BMET অফিশিয়াল সরকারি ফি', charge: '২১০ টাকা' },
+            { method: 'আবেদন ও প্রিন্ট চার্জ', charge: '৪০ টাকা' },
+            { method: 'মোট প্যাকেজ (সরকারি ফি + আবেদন ও প্রিন্ট)', charge: '২৫০ টাকা' }
+          ]
+        }
+      ]
+    },
     {
       category: 'মোবাইল ব্যাংকিং (MFS) ক্যাশ আউট চার্জ',
       icon: <Wallet className="w-6 h-6 text-blue-400" />,

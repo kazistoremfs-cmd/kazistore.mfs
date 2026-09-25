@@ -40,6 +40,16 @@ function handleCashOutQuery(text: string): string | null {
 
   if (!isCashOutTopic) return null;
 
+  // Do not intercept if user is specifically asking about other services like BMET, admissions, vaccines, etc.
+  if (
+    lower.includes('bmet') || lower.includes('বিএমইটি') || lower.includes('প্রবাসী') ||
+    lower.includes('ভর্তি') || lower.includes('admission') || lower.includes('টিকা') ||
+    lower.includes('vaccine') || lower.includes('সিম') || lower.includes('বিদ্যুৎ') ||
+    lower.includes('গ্যাস') || lower.includes('ইন্টারনেট') || lower.includes('সিভি')
+  ) {
+    return null;
+  }
+
   // Detect specific provider
   let provider: 'bkash' | 'nagad' | 'rocket' | null = null;
   if (lower.includes('বিকাশ') || lower.includes('bkash')) provider = 'bkash';
@@ -184,15 +194,23 @@ function fallbackAnswer(question: string): string {
   }
 
   // Dynamic brain registry search: Automatically supports any newly added services in the registry
-  for (const item of KAZI_STORE_BRAIN_REGISTRY) {
-    const matched = item.aliases.some(alias => q.includes(alias.toLowerCase()));
-    if (matched) {
-      const points = item.keyPoints.slice(0, 2).map(p => `• ${p}`).join('\n');
-      const reqs = item.requirements && item.requirements.length > 0 
-        ? `\n• প্রয়োজনীয়: ${item.requirements.join(', ')}`
-        : '';
-      return `**${item.name}:**\n${points}${reqs}\n\n👉 বিস্তারিত তথ্য দেখুন: [${item.name} পেজ](${item.route})`;
-    }
+  const matchingCandidates = KAZI_STORE_BRAIN_REGISTRY
+    .map(item => {
+      const matchedAliases = item.aliases.filter(alias => q.includes(alias.toLowerCase()));
+      const maxLen = matchedAliases.reduce((max, a) => Math.max(max, a.length), 0);
+      return { item, maxLen };
+    })
+    .filter(m => m.maxLen > 0)
+    .sort((a, b) => b.maxLen - a.maxLen);
+
+  if (matchingCandidates.length > 0) {
+    const item = matchingCandidates[0].item;
+    const points = item.keyPoints.slice(0, 3).map(p => `• ${p}`).join('\n');
+    const reqs = item.requirements && item.requirements.length > 0 
+      ? `\n• প্রয়োজনীয় কাগজপত্র: ${item.requirements.join(', ')}`
+      : '';
+    const charges = item.chargesOrRates ? `\n• চার্জ/ফি: ${item.chargesOrRates}` : '';
+    return `**${item.name}:**\n${points}${charges}${reqs}\n\n👉 বিস্তারিত তথ্য ও চার্ট দেখুন: [${item.name} বিস্তারিত পেজ](${item.route})`;
   }
 
   return `কাজী স্টোরে আপনাকে স্বাগতম! এখানে মোবাইল ব্যাংকিং, সিম সেবা, ভর্তি আবেদন, ক্রেডিট কার্ড ও ইউটিলিটি বিল পরিশোধ সহ সকল সেবা পাওয়া যায়।
@@ -268,14 +286,21 @@ async function startServer() {
         parts: [{ text: message }],
       });
 
-      // Ground Gemini dynamically with exact brain knowledge item if question matches a registered service
-      const matchedBrainItem = KAZI_STORE_BRAIN_REGISTRY.find(item => 
-        item.aliases.some(alias => message.toLowerCase().includes(alias.toLowerCase()))
-      );
+      // Ground Gemini dynamically with exact brain knowledge item (prioritize longest matching alias for precision)
+      const matchingItems = KAZI_STORE_BRAIN_REGISTRY
+        .map(item => {
+          const matchedAliases = item.aliases.filter(alias => message.toLowerCase().includes(alias.toLowerCase()));
+          const maxLen = matchedAliases.reduce((max, a) => Math.max(max, a.length), 0);
+          return { item, maxLen };
+        })
+        .filter(m => m.maxLen > 0)
+        .sort((a, b) => b.maxLen - a.maxLen);
+
+      const matchedBrainItem = matchingItems[0]?.item;
 
       let dynamicSystemPrompt = buildKaziStoreBrainPrompt();
       if (matchedBrainItem) {
-        dynamicSystemPrompt += `\n\n### বর্তমান প্রশ্নের জন্য অফিশিয়াল তথ্য (Exact Match from Central Brain):\nসেবা: ${matchedBrainItem.name}\nপেজ লিংক: ${matchedBrainItem.route}\nমূল তথ্য:\n${matchedBrainItem.keyPoints.map(k => `• ${k}`).join('\n')}\n${matchedBrainItem.chargesOrRates ? `অফিসিয়াল চার্জ: ${matchedBrainItem.chargesOrRates}\n` : ''}${matchedBrainItem.requirements ? `প্রয়োজনীয় শর্ত/কাগজপত্র: ${matchedBrainItem.requirements.join(', ')}\n` : ''}\nনির্দেশনা: উপরের তথ্যের ওপর ভিত্তি করে সর্বোচ্চ ২-৩ লাইনে পয়েন্ট আকারে উত্তর দেবে এবং পেজ লিংক [${matchedBrainItem.name}](${matchedBrainItem.route}) প্রদান করবে।`;
+        dynamicSystemPrompt += `\n\n### গুরুত্বপূর্ণ ফোকাস (CRITICAL MATCH):\nব্যবহারকারীর প্রশ্নটি সরাসরি "${matchedBrainItem.name}" এর সাথে সম্পর্কিত।\nএই সেবার অফিশিয়াল লিংক হলো: [${matchedBrainItem.name}](${matchedBrainItem.route})\n\nমূল তথ্য:\n${matchedBrainItem.keyPoints.map(k => `• ${k}`).join('\n')}\n${matchedBrainItem.chargesOrRates ? `চার্জ/ফি: ${matchedBrainItem.chargesOrRates}\n` : ''}${matchedBrainItem.requirements ? `প্রয়োজনীয় কাগজপত্র: ${matchedBrainItem.requirements.join(', ')}\n` : ''}\nনিয়ম: অন্য কোনো পেজের লিংক দেবে না। তোমার উত্তরের শেষে শুধুমাত্র এবং নিশ্চিতভাবে [${matchedBrainItem.name}](${matchedBrainItem.route}) লিংকটি যুক্ত করবে।`;
       }
 
       const candidateModels = ["gemini-3.5-flash-lite", "gemini-2.5-flash", "gemini-3.8-flash"];

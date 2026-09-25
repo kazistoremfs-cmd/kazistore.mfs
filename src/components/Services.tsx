@@ -38,7 +38,7 @@ export default function Services() {
                       <span className={`text-sm text-slate-700 font-medium line-clamp-1 ${/[\u0980-\u09FF]/.test(item.name) ? 'font-bn text-[15px]' : 'font-en'}`}>{item.name}</span>
                     </div>
                     <Link 
-                      to={`/service/${item.id}`}
+                      to={(item as any).route || `/service/${item.id}`}
                       className="shrink-0 ml-4 flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 text-slate-600 hover:text-blue-600 hover:border-blue-300 hover:bg-blue-50 transition-all font-bn text-[11px] font-bold"
                     >
                       বিস্তারিত <ArrowRight className="w-3 h-3" />
