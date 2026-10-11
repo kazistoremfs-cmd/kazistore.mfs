@@ -50,7 +50,7 @@ export default function ServiceDetail() {
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-slate-400 p-4 md:pt-12 md:px-0 font-en backdrop-blur-md bg-[#0F172A]/50 md:bg-transparent sticky top-0 z-20 border-b border-slate-800 md:border-none">
           <button onClick={() => navigate(-1)} className="hover:text-blue-400 transition-colors flex items-center gap-1 cursor-pointer">
-            <ArrowLeft className="w-4 h-4" /> Back
+            <ArrowLeft className="w-4 h-4" /> <span>পেছনে</span>
           </button>
           <ChevronRight className="w-4 h-4 text-slate-600" />
           <span className="text-white font-medium truncate">{service.title}</span>
@@ -275,7 +275,9 @@ export default function ServiceDetail() {
           {/* Important Links */}
           {'importantLinks' in service && service.importantLinks && (
             <div>
-              <h2 className="text-lg md:text-2xl font-bold font-bn text-white mb-3 md:mb-4 drop-shadow">গুরুত্বপূর্ণ লিংকসমূহ</h2>
+              <h2 className="text-lg md:text-2xl font-bold text-white mb-3 md:mb-4 drop-shadow">
+                গুরুত্বপূর্ণ লিংকসমূহ
+              </h2>
               <div className="flex flex-wrap gap-2 md:gap-3">
                 {(service as any).importantLinks.map((link: { label: string, url: string }, idx: number) => (
                   <a 
@@ -283,7 +285,7 @@ export default function ServiceDetail() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-4 py-2.5 md:px-5 md:py-3 rounded-lg md:rounded-xl text-xs md:text-sm font-bold transition-all font-bn shadow-lg inline-flex items-center gap-2 backdrop-blur-md hover:scale-105 active:scale-95"
+                    className="bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 border border-blue-500/30 px-4 py-2.5 md:px-5 md:py-3 rounded-lg md:rounded-xl text-xs md:text-sm font-bold transition-all shadow-lg inline-flex items-center gap-2 backdrop-blur-md hover:scale-105 active:scale-95"
                   >
                     {link.label}
                     <ChevronRight className="w-4 h-4" />
@@ -296,7 +298,9 @@ export default function ServiceDetail() {
           {/* FAQs */}
           {service.faqs && (
             <div>
-              <h2 className="text-lg md:text-2xl font-bold font-bn text-white mb-3 md:mb-4 drop-shadow">সাধারণ জিজ্ঞাসা (FAQ)</h2>
+              <h2 className="text-lg md:text-2xl font-bold text-white mb-3 md:mb-4 drop-shadow">
+                সাধারণ জিজ্ঞাসা (FAQ)
+              </h2>
               <div className="space-y-2 md:space-y-3 pb-8">
                 {service.faqs.map((faq, idx) => (
                   <div key={idx} className="border border-slate-700/50 rounded-xl overflow-hidden bg-slate-800/60 backdrop-blur-md shadow-lg">

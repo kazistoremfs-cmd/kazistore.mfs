@@ -52,14 +52,14 @@ export default function BMETRegistrationDetails() {
             onClick={() => navigate('/')} 
             className="hover:text-blue-400 transition-colors flex items-center gap-1 cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4" /> Home
+            <ArrowLeft className="w-4 h-4" /> <span>হোম</span>
           </button>
           <ChevronRight className="w-4 h-4 text-slate-600" />
           <Link to="/#services" className="hover:text-blue-400 transition-colors">
-            Services
+            সার্ভিস সমূহ
           </Link>
           <ChevronRight className="w-4 h-4 text-slate-600" />
-          <span className="text-white font-medium truncate font-bn">BMET রেজিস্ট্রেশন</span>
+          <span className="text-white font-medium truncate">BMET রেজিস্ট্রেশন</span>
         </nav>
 
         {/* Hero Header */}
@@ -69,10 +69,10 @@ export default function BMETRegistrationDetails() {
           className="mb-8 md:mb-12"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-3">
-            BMET রেজিস্ট্রেশন
+            BMET রেজিস্ট্রেশন (আমি প্রবাসী স্মার্ট কার্ড)
           </h1>
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl">
-            বিদেশগামী কর্মী ও প্রবাসীদের জন্য বাধ্যতামূলক সরকারি <strong className="text-white">BMET রেজিস্ট্রেশন</strong> (আমি প্রবাসী পোর্টাল) কাজী স্টোর থেকে অতি দ্রুত ও শতভাগ নির্ভুলভাবে সম্পন্ন করা হয়। তাৎক্ষণিক অনলাইন ভেরিফিকেশন, ফি প্রদান ও প্রিমিয়াম কার্ড প্রিন্ট সুবিধা।
+            বিদেশগামী কর্মী ও প্রবাসীদের জন্য বাধ্যতামূলক সরকারি BMET রেজিস্ট্রেশন কাজী স্টোর থেকে অতি দ্রুত ও শতভাগ নির্ভুলভাবে সম্পন্ন করা হয়। তাৎক্ষণিক অনলাইন ভেরিফিকেশন, ফি প্রদান ও প্রিমিয়াম কার্ড প্রিন্ট সুবিধা।
           </p>
         </motion.div>
 
@@ -123,12 +123,13 @@ export default function BMETRegistrationDetails() {
           <div className="mt-4 p-4 rounded-xl bg-blue-950/40 border border-blue-800/40 flex items-start gap-3">
             <AlertCircle className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
             <p className="text-xs sm:text-sm text-blue-200 leading-relaxed">
-              <strong>বিশেষ টিপস:</strong> পাসপোর্টের তথ্য ও জাতীয় পরিচয়পত্রের তথ্যের মধ্যে বড় গরমিল থাকলে আগেই কাজী স্টোরে এসে পরামর্শ নিন। আমাদের অভিজ্ঞ টিম নির্ভুলভাবে আবেদন প্রসেস করে দেবে।
+              <strong>বিশেষ টিপস:</strong>{' '}
+              পাসপোর্টের তথ্য ও জাতীয় পরিচয়পত্রের তথ্যের মধ্যে গরমিল থাকলে আগেই কাজী স্টোরে এসে পরামর্শ নিন। আমাদের অভিজ্ঞ টিম নির্ভুলভাবে আবেদন প্রসেস করে দেবে।
             </p>
           </div>
         </motion.div>
 
-        {/* Minimal Customer-Friendly Fee Section */}
+        {/* Fee Section */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -149,20 +150,19 @@ export default function BMETRegistrationDetails() {
             </span>
           </div>
 
-          {/* একক মিনিমাল ফি বক্স (Single unified minimal fee container) */}
           <div className="bg-slate-800/40 border border-slate-700/60 rounded-2xl p-4 sm:p-5">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-700/50">
               <div className="pb-3 sm:pb-0 sm:pr-4 flex items-center justify-between">
                 <span className="text-sm font-medium text-slate-300">সরকারি ফি</span>
-                <span className="text-base font-bold text-white">২১০ ৳</span>
+                <span className="text-base font-bold text-white">210 ৳</span>
               </div>
               <div className="py-3 sm:py-0 sm:px-4 flex items-center justify-between">
                 <span className="text-sm font-medium text-slate-300">আবেদন ও প্রিন্ট</span>
-                <span className="text-base font-bold text-white">৪০ ৳</span>
+                <span className="text-base font-bold text-white">40 ৳</span>
               </div>
               <div className="pt-3 sm:pt-0 sm:pl-4 flex items-center justify-between">
                 <span className="text-sm font-bold text-emerald-400">মোট প্যাকেজ</span>
-                <span className="text-lg font-black text-emerald-400">২৫০ ৳</span>
+                <span className="text-lg font-black text-emerald-400">250 ৳</span>
               </div>
             </div>
           </div>
@@ -179,7 +179,7 @@ export default function BMETRegistrationDetails() {
             <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
               BMET রেজিস্ট্রেশন করতে চান?
             </h3>
-            <p className="text-xs sm:text-sm text-slate-300 whitespace-nowrap">
+            <p className="text-xs sm:text-sm text-slate-300">
               দোকানে চলে আসুন বা বিস্তারিত জানতে হোয়াটসঅ্যাপে মেসেজ দিন।
             </p>
           </div>

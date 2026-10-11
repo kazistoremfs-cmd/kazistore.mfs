@@ -305,7 +305,7 @@ export const servicesData = serviceCategories.flatMap(cat =>
             { content: "IUT Admission", link: "/admission/iut" },
             { content: "জিএসটি গুচ্ছ এডমিশন", link: "/admission/gst" },
             { content: "কৃষি গুচ্ছ এডমিশন", link: "/admission/agri-guccho" },
-            { content: "মেডিকেল এডমিশন", link: "/admission/medical" },
+            { content: "মেডিকেল এডমিশন (MBBS)", link: "/admission/medical" },
             { content: "ডেন্টাল এডমিশন", link: "/admission/dental" },
             { content: "নার্সিং ও মিডওয়াইফারি", link: "/admission/nursing" }
           ]

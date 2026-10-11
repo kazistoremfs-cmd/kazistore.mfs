@@ -13,6 +13,8 @@ import CollegeAdmissionDetails from './components/CollegeAdmissionDetails';
 import HSCDetails from './components/HSCDetails';
 import ChargeSummary from './components/ChargeSummary';
 import UniversityAdmissionDetails from './components/UniversityAdmissionDetails';
+import MedicalAdmissionDetails from './components/MedicalAdmissionDetails';
+import DUAdmissionDetails from './components/DUAdmissionDetails';
 import VaccineDetails from './components/VaccineDetails';
 import CreditCardBillPaymentDetails from './components/CreditCardBillPaymentDetails';
 import GPSimDetails from './components/GPSimDetails';
@@ -43,6 +45,10 @@ export default function App() {
             <Route path="/college-admission-details" element={<CollegeAdmissionDetails />} />
             <Route path="/hsc-details" element={<HSCDetails />} />
             <Route path="/charges" element={<ChargeSummary />} />
+            <Route path="/admission/medical" element={<MedicalAdmissionDetails />} />
+            <Route path="/medical-admission" element={<MedicalAdmissionDetails />} />
+            <Route path="/admission/du" element={<DUAdmissionDetails />} />
+            <Route path="/du-admission" element={<DUAdmissionDetails />} />
             <Route path="/admission/:id" element={<UniversityAdmissionDetails />} />
             <Route path="/vaccine/:id" element={<VaccineDetails />} />
             <Route path="/credit-card-bill-payment" element={<CreditCardBillPaymentDetails />} />

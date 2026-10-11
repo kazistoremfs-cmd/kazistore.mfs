@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ChevronRight, GraduationCap, CheckCircle2, MessageCircle } from 'lucide-react';
 import { motion } from 'motion/react';
+import MedicalAdmissionDetails from './MedicalAdmissionDetails';
+import DUAdmissionDetails from './DUAdmissionDetails';
 
 const admissionMap: Record<string, string> = {
   'du': 'DU Admission (ঢাকা বিশ্ববিদ্যালয়)',
@@ -25,6 +27,14 @@ export default function UniversityAdmissionDetails() {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   
+  if (id === 'medical') {
+    return <MedicalAdmissionDetails />;
+  }
+
+  if (id === 'du') {
+    return <DUAdmissionDetails />;
+  }
+
   const title = id && admissionMap[id] ? admissionMap[id] : 'বিশ্ববিদ্যালয় ভর্তি';
 
   useEffect(() => {
@@ -42,7 +52,7 @@ export default function UniversityAdmissionDetails() {
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-slate-400 p-4 md:pt-12 md:px-0 font-en backdrop-blur-md bg-[#0F172A]/50 md:bg-transparent sticky top-0 z-20 border-b border-slate-800 md:border-none">
           <button onClick={() => navigate(-1)} className="hover:text-blue-400 transition-colors flex items-center gap-1 cursor-pointer">
-            <ArrowLeft className="w-4 h-4" /> Back
+            <ArrowLeft className="w-4 h-4" /> <span>পেছনে</span>
           </button>
           <ChevronRight className="w-4 h-4 text-slate-600" />
           <span className="text-white font-medium truncate">{title}</span>

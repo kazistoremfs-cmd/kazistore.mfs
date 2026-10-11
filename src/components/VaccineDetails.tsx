@@ -155,8 +155,8 @@ export default function VaccineDetails() {
     return (
       <div className="min-h-[80vh] flex items-center justify-center bg-[#0F172A]">
         <div className="text-center">
-          <h2 className="text-2xl text-white font-bn mb-4">তথ্য পাওয়া যায়নি</h2>
-          <Link to="/" className="text-blue-400 hover:text-blue-300 font-bn">ফিরে যান</Link>
+          <h2 className="text-2xl text-white mb-4">তথ্য পাওয়া যায়নি</h2>
+          <Link to="/" className="text-blue-400 hover:text-blue-300">ফিরে যান</Link>
         </div>
       </div>
     );
@@ -174,7 +174,7 @@ export default function VaccineDetails() {
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-slate-400 p-4 md:pt-12 md:px-0 font-en backdrop-blur-md bg-[#0F172A]/50 md:bg-transparent sticky top-0 z-20 border-b border-slate-800 md:border-none">
           <button onClick={() => navigate(-1)} className="hover:text-blue-400 transition-colors flex items-center gap-1 cursor-pointer">
-            <ArrowLeft className="w-4 h-4" /> Back
+            <ArrowLeft className="w-4 h-4" /> <span>পেছনে</span>
           </button>
           <ChevronRight className="w-4 h-4 text-slate-600" />
           <span className="text-white font-medium truncate">{currentData.title}</span>

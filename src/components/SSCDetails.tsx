@@ -10,7 +10,7 @@ export default function SSCDetails() {
   }, []);
 
   return (
-    <div className="relative min-h-[calc(100vh-64px)] bg-[#0F172A] overflow-hidden flex flex-col">
+    <div className="relative min-h-[calc(100vh-64px)] bg-[#0F172A] overflow-hidden flex flex-col font-bn">
       {/* 3D Background Element */}
       <div className="absolute inset-0 z-0 overflow-hidden [perspective:1000px] pointer-events-none fixed">
         <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-blue-600/20 to-[#0F172A] opacity-90"></div>
@@ -21,7 +21,7 @@ export default function SSCDetails() {
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-slate-400 p-4 md:pt-12 md:px-0 font-en backdrop-blur-md bg-[#0F172A]/50 md:bg-transparent sticky top-0 z-20 border-b border-slate-800 md:border-none">
           <button onClick={() => navigate(-1)} className="hover:text-blue-400 transition-colors flex items-center gap-1 cursor-pointer">
-            <ArrowLeft className="w-4 h-4" /> Back
+            <ArrowLeft className="w-4 h-4" /> <span>পেছনে</span>
           </button>
           <ChevronRight className="w-4 h-4 text-slate-600" />
           <span className="text-white font-medium truncate">SSC রেজাল্ট ও বোর্ড চ্যালেঞ্জ</span>

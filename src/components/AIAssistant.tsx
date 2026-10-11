@@ -18,8 +18,7 @@ interface ChatMessage {
 const SUGGESTIONS = [
   "কাজী স্টোরে কী কী সেবা পাওয়া যায়?",
   "৫০০০ টাকা তুলতে কত খরচ?",
-  "বিকাশ ও নগদ ক্যাশ আউট ও চার্জ কত?",
-  "ক্রেডিট কার্ড বিল পরিশোধের নিয়ম কী?",
+  "বিকাশ ও নগদ ক্যাশ আউট চার্জ কত?",
   "একাদশ শ্রেণিতে কলেজ ভর্তির আবেদন কীভাবে করব?",
   "সিভি বা বায়োডাটা (Resume) তৈরির নিয়ম কী?",
   "GP সিম রিপ্লেসমেন্ট করতে কী কী লাগে?",
@@ -497,9 +496,13 @@ export default function AIAssistant() {
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h3 className="font-bold text-white text-base leading-tight">কাজী স্টোর এআই</h3>
+                    <h3 className="font-bold text-white text-base leading-tight">
+                      কাজী স্টোর এআই
+                    </h3>
                   </div>
-                  <p className="text-xs text-slate-400">অনলাইন স্মার্ট সহযোগী</p>
+                  <p className="text-xs text-slate-400">
+                    অনলাইন স্মার্ট সহযোগী
+                  </p>
                 </div>
               </div>
 
@@ -620,7 +623,7 @@ export default function AIAssistant() {
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="কাজী স্টোরের যেকোনো সেবা সম্পর্কে লিখুন..."
                   disabled={isLoading}
-                  className="flex-1 bg-slate-800/90 border border-slate-700 focus:border-teal-400 focus:ring-1 focus:ring-teal-400 text-white placeholder-slate-400 text-base sm:text-sm px-4 py-2.5 rounded-xl outline-none transition-all disabled:opacity-50 font-bn"
+                  className="flex-1 bg-slate-800/90 border border-slate-700 focus:border-teal-400 focus:ring-1 focus:ring-teal-400 text-white placeholder-slate-400 text-base sm:text-sm px-4 py-2.5 rounded-xl outline-none transition-all disabled:opacity-50"
                 />
                 <button
                   type="submit"
@@ -631,7 +634,7 @@ export default function AIAssistant() {
                   <Send className="w-4 h-4" />
                 </button>
               </form>
-              <div className="flex justify-center items-center px-1 mt-1.5 text-[10px] text-slate-500 font-bn">
+              <div className="flex justify-center items-center px-1 mt-1.5 text-[10px] text-slate-500">
                 <span>কাজী স্টোর অফিশিয়াল ডাটাবেজ দ্বারা পরিচালিত</span>
               </div>
             </div>

@@ -95,7 +95,7 @@ export default function CollegeAdmissionDetails() {
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-slate-400 py-3 mb-4 backdrop-blur-md bg-[#0F172A]/70 sticky top-0 z-20 border-b border-slate-800 rounded-xl px-4">
           <button onClick={() => navigate(-1)} className="hover:text-blue-400 transition-colors flex items-center gap-1 cursor-pointer">
-            <ArrowLeft className="w-4 h-4" /> ফিরে যান
+            <ArrowLeft className="w-4 h-4" /> <span>ফিরে যান</span>
           </button>
           <ChevronRight className="w-4 h-4 text-slate-600" />
           <span className="text-white font-medium truncate">একাদশ শ্রেণিতে ভর্তি ফর্ম</span>
@@ -355,19 +355,19 @@ export default function CollegeAdmissionDetails() {
 
               {/* Total Display Box */}
               <div className="w-full lg:w-72 bg-gradient-to-b from-slate-900 to-slate-950 rounded-2xl border border-slate-700/80 p-6 flex flex-col justify-center items-center text-center shadow-xl">
-                <span className="text-xs text-slate-400 uppercase tracking-wider mb-2">আনুমানিক সর্বমোট খরচ</span>
-                <div className="text-4xl sm:text-5xl font-bold text-emerald-400 mb-2">
+                <span className="text-xs text-slate-400 mb-1">মোট সম্ভাব্য খরচ</span>
+                <div className="text-4xl sm:text-5xl font-bold text-teal-400 mb-2">
                   ৳ {calculateTotal()}
                 </div>
-                <span className="text-xs text-slate-400 mb-5">ভর্তি ও আবেদন ফি + চার্জ + প্যাকেজ</span>
+                <span className="text-xs text-slate-500 mb-5">ভর্তি ও আবেদন ফি + চার্জ + প্যাকেজ</span>
                 
                 <a 
                   href="https://wa.me/message/L2XAYVWBE5RIJ1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-semibold text-sm text-center shadow-md shadow-emerald-600/20 active:scale-95 transition-all flex items-center justify-center gap-2"
+                  className="w-full py-2.5 px-4 rounded-xl bg-teal-500 hover:bg-teal-600 text-white font-semibold text-sm text-center shadow-md shadow-teal-500/20 active:scale-95 transition-all flex items-center justify-center gap-2"
                 >
-                  <MessageCircle className="w-4 h-4 text-emerald-100 shrink-0" />
+                  <MessageCircle className="w-4 h-4 text-teal-100 shrink-0" />
                   <span>আবেদন করতে যোগাযোগ করুন</span>
                 </a>
               </div>
