@@ -4,7 +4,7 @@ import {
   ArrowLeft, ChevronRight, CheckCircle2, ChevronDown, Calculator, 
   ExternalLink, Calendar, Building2, Phone, Mail, Globe, 
   FileText, AlertCircle, BookOpen, Clock, ShieldAlert, Sparkles, MessageCircle,
-  GraduationCap, Award, MapPin, Check
+  GraduationCap, Award, MapPin, Check, Tag, X
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -14,6 +14,31 @@ export default function DUAdmissionDetails() {
   const [isPackageDetailsOpen, setIsPackageDetailsOpen] = useState<boolean>(false);
   const [isMarksExpanded, setIsMarksExpanded] = useState<boolean>(false);
   const [selectedUnitId, setSelectedUnitId] = useState<string>('science');
+
+  // Coupon state
+  const [couponCode, setCouponCode] = useState<string>('');
+  const [isCouponApplied, setIsCouponApplied] = useState<boolean>(false);
+  const [couponError, setCouponError] = useState<string>('');
+
+  const handleApplyCoupon = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!couponCode.trim()) {
+      setCouponError('অনুগ্রহ করে কোডটি লিখুন');
+      return;
+    }
+    if (couponCode.trim().toUpperCase() === 'KSTDU27') {
+      setIsCouponApplied(true);
+      setCouponError('');
+    } else {
+      setCouponError('ভুল কোড! অনুগ্রহ করে সঠিক কোড দিন।');
+    }
+  };
+
+  const handleRemoveCoupon = () => {
+    setIsCouponApplied(false);
+    setCouponCode('');
+    setCouponError('');
+  };
 
   // Calculator state
   const [fees, setFees] = useState({
@@ -35,6 +60,8 @@ export default function DUAdmissionDetails() {
       nameEn: 'Science Unit',
       fee: 1050,
       feeBn: '1,050/-',
+      negativeMark: '0.25',
+      negativeMarkDetail: '(প্রতিটি ভুল MCQ উত্তরে 0.25 নম্বর কর্তন)',
       examTime: 'বেলা 11:00 - 12:30',
       examDuration: '90 মিনিট (1 ঘণ্টা 30 মিনিট)',
       badgeColor: 'border-blue-500/40 bg-blue-500/10 text-blue-300',
@@ -54,6 +81,8 @@ export default function DUAdmissionDetails() {
       nameEn: 'Arts, Law & Social Sciences Unit',
       fee: 1050,
       feeBn: '1,050/-',
+      negativeMark: '0.25',
+      negativeMarkDetail: '(প্রতিটি ভুল MCQ উত্তরে 0.25 নম্বর কর্তন)',
       examTime: 'বেলা 11:00 - 12:30',
       examDuration: '90 মিনিট (1 ঘণ্টা 30 মিনিট)',
       badgeColor: 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300',
@@ -73,6 +102,8 @@ export default function DUAdmissionDetails() {
       nameEn: 'Business Studies Unit',
       fee: 1050,
       feeBn: '1,050/-',
+      negativeMark: '0.25',
+      negativeMarkDetail: '(প্রতিটি ভুল MCQ উত্তরে 0.25 নম্বর কর্তন)',
       examTime: 'বেলা 11:00 - 12:30',
       examDuration: '90 মিনিট (1 ঘণ্টা 30 মিনিট)',
       badgeColor: 'border-amber-500/40 bg-amber-500/10 text-amber-300',
@@ -92,6 +123,8 @@ export default function DUAdmissionDetails() {
       nameEn: 'Fine Arts Unit',
       fee: 1050,
       feeBn: '1,050/-',
+      negativeMark: '0.25',
+      negativeMarkDetail: '(MCQ অংশে ভুল উত্তরে 0.25 কর্তন, অঙ্কন পরীক্ষায় নেগেটিভ মার্কিং নেই)',
       examTime: 'বেলা 11:00 - 12:30',
       examDuration: 'সাধারণ জ্ঞান ও অঙ্কন পরীক্ষা',
       badgeColor: 'border-rose-500/40 bg-rose-500/10 text-rose-300',
@@ -117,6 +150,9 @@ export default function DUAdmissionDetails() {
     if (fees.paymentCharge) total += paymentChargeAmount;
     if (fees.serviceFee) total += 100;
     if (fees.admissionPackage) total += 100;
+    if (isCouponApplied) {
+      total = Math.max(0, total - 50);
+    }
     return total;
   };
 
@@ -228,9 +264,6 @@ export default function DUAdmissionDetails() {
                 <h2 className="text-xl sm:text-2xl font-bold text-yellow-300">
                   আন্ডারগ্র্যাজুয়েট প্রোগ্রামে ভর্তি বিজ্ঞপ্তি
                 </h2>
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-en">
-                  4টি ইউনিট ভর্তি পরীক্ষা
-                </span>
               </div>
               <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
                 এতদ্বারা সংশ্লিষ্ট সকলের অবগতির জন্য জানানো যাচ্ছে যে, ঢাকা বিশ্ববিদ্যালয়ের 2024-2025 শিক্ষাবর্ষে 4 বছর মেয়াদি আন্ডারগ্র্যাজুয়েট প্রোগ্রামে কলা আইন ও সামাজিক বিজ্ঞান ইউনিট, বিজ্ঞান ইউনিট, ব্যবসায় শিক্ষা ইউনিট এবং চারুকলা ইউনিটে 1st বর্ষে ভর্তির অনলাইন আবেদন কার্যক্রম চলমান রয়েছে। শিক্ষার্থীরা ঘরে বসেই বা আমাদের <strong className="text-emerald-300">কাজী স্টোরে</strong> এসে অভিজ্ঞ অপারেটরের মাধ্যমে সম্পূর্ণ নির্ভুলভাবে অনলাইনে আবেদন ফরম পূরণ, ছবি আপলোড ও ফি পরিশোধ করতে পারবেন।
@@ -245,7 +278,7 @@ export default function DUAdmissionDetails() {
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-xl text-sm sm:text-base transition-all shadow-lg shadow-blue-600/25 active:scale-95 text-center"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>কাজী স্টোরে ঢাবি ভর্তি আবেদন সহায়তা</span>
+                <span>ঢাবি ভর্তি আবেদন সহায়তা</span>
               </a>
               <a 
                 href="https://admission.eis.du.ac.bd" 
@@ -328,6 +361,9 @@ export default function DUAdmissionDetails() {
                     <span className={`text-xs px-3 py-1 rounded-lg border font-semibold ${currentUnit.badgeColor}`}>
                       আবেদন ফি: {currentUnit.feeBn}
                     </span>
+                    <span className="text-xs px-3 py-1 rounded-lg border border-rose-500/30 bg-rose-500/10 text-rose-300 font-semibold font-en">
+                      নেগেটিভ মার্ক: -{currentUnit.negativeMark}
+                    </span>
                     <span className="text-xs px-3 py-1 rounded-lg border border-slate-700 bg-slate-800 text-slate-300">
                       {currentUnit.examDuration}
                     </span>
@@ -357,6 +393,10 @@ export default function DUAdmissionDetails() {
                         <span>{hl}</span>
                       </div>
                     ))}
+                    <div className="flex items-start gap-2.5 bg-rose-500/10 border border-rose-500/20 p-3 rounded-xl text-xs sm:text-sm text-rose-200">
+                      <AlertCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                      <span>নেগেটিভ মার্কিং: <strong className="text-white font-en">-{currentUnit.negativeMark}</strong> {currentUnit.negativeMarkDetail}</span>
+                    </div>
                     <div className="flex items-start gap-2.5 bg-slate-800/50 border border-slate-700/50 p-3 rounded-xl text-xs sm:text-sm text-slate-300">
                       <Clock className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
                       <span>পরীক্ষার সময়: <strong className="text-slate-100">{currentUnit.examTime}</strong></span>
@@ -591,16 +631,16 @@ export default function DUAdmissionDetails() {
                           <div className="w-full mt-2.5 bg-slate-900/90 p-3 sm:p-4 rounded-xl border border-slate-700/70 text-xs sm:text-sm text-slate-300 space-y-2">
                             <div className="space-y-1.5 text-slate-300">
                               <p className="flex justify-between items-center gap-2 py-1 border-b border-slate-800">
-                                <span className="leading-snug">সঠিক মাপে ছবি রিসাইজ ও 4 কপি পাসপোর্ট সাইজ ল্যাব প্রিন্ট</span>
-                                <span className="font-en text-slate-200 font-medium shrink-0">40 টাকা</span>
+                                <span className="leading-snug">আবেদন ফি</span>
+                                <span className="font-en text-slate-200 font-medium shrink-0">100 টাকা</span>
                               </p>
                               <p className="flex justify-between items-center gap-2 py-1 border-b border-slate-800">
-                                <span className="leading-snug">অনলাইন আবেদন কনফার্মেশন ফরম রঙিন প্রিন্ট কপি</span>
+                                <span className="leading-snug">আবেদন পেমেন্ট স্লিপ</span>
                                 <span className="font-en text-slate-200 font-medium shrink-0">20 টাকা</span>
                               </p>
                               <p className="flex justify-between items-center gap-2 py-1 border-b border-slate-800">
-                                <span className="leading-snug">প্রবেশপত্র (Admit Card) কালার প্রিন্ট ও প্রিমিয়াম লেমিনেশন কুপন</span>
-                                <span className="font-en text-slate-200 font-medium shrink-0">40 টাকা</span>
+                                <span className="leading-snug">এডমিট কার্ড কালার প্রিন্ট 1 কপি</span>
+                                <span className="font-en text-slate-200 font-medium shrink-0">20 টাকা</span>
                               </p>
                             </div>
                             <p className="text-teal-300 font-semibold pt-1 text-xs leading-relaxed">
@@ -612,6 +652,53 @@ export default function DUAdmissionDetails() {
                     </AnimatePresence>
                   </div>
                 </div>
+
+                {/* Promo Code Input Section (Selector 3 with Selector 1 and 2 inside) */}
+                <div className="mt-3.5 p-3 rounded-2xl bg-slate-900/60 border border-slate-700/60">
+                  {!isCouponApplied ? (
+                    <form onSubmit={handleApplyCoupon} className="relative flex items-center">
+                      <input
+                        type="text"
+                        value={couponCode}
+                        onChange={(e) => {
+                          setCouponCode(e.target.value);
+                          if (couponError) setCouponError('');
+                        }}
+                        placeholder="প্রমো কোড লিখুন"
+                        className="w-full bg-slate-950/80 border border-slate-700/80 rounded-xl pl-4 pr-24 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-teal-400 uppercase font-en tracking-wider"
+                      />
+                      <button
+                        type="submit"
+                        className="absolute right-1.5 px-3.5 py-1.5 rounded-lg bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs transition-all shadow-sm active:scale-95 cursor-pointer flex items-center gap-1"
+                      >
+                        <Sparkles className="w-3.5 h-3.5" />
+                        <span>অ্যাপ্লাই</span>
+                      </button>
+                    </form>
+                  ) : (
+                    <div className="flex items-center justify-between gap-2 bg-emerald-500/10 border border-emerald-500/25 rounded-xl px-3 py-2 text-xs sm:text-sm text-emerald-300">
+                      <div className="flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
+                        <span>কোড সফলভাবে ভেরিফাইড! ৫০ টাকা ছাড় প্রযোজ্য হয়েছে।</span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handleRemoveCoupon}
+                        className="p-1 rounded-lg hover:bg-emerald-500/20 text-slate-400 hover:text-rose-400 transition-colors shrink-0 cursor-pointer"
+                        title="বাতিল করুন"
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                    </div>
+                  )}
+
+                  {couponError && (
+                    <p className="text-xs text-rose-400 mt-2 flex items-center gap-1 pl-1">
+                      <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                      <span>{couponError}</span>
+                    </p>
+                  )}
+                </div>
               </div>
 
               {/* Total Display Box */}
@@ -620,7 +707,16 @@ export default function DUAdmissionDetails() {
                 <div className="text-4xl sm:text-5xl font-bold text-teal-400 mb-2 font-en">
                   ৳ {calculateTotal()}
                 </div>
-                <span className="text-xs text-slate-500 mb-5">ইউনিট ফি + পেমেন্ট চার্জ + কাজী স্টোর সার্ভিস</span>
+                {isCouponApplied && (
+                  <span className="inline-block text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2.5 py-1 rounded-lg font-bold mb-3 font-en">
+                    কুপন ছাড় (-50 টাকা)
+                  </span>
+                )}
+                <span className="text-xs text-slate-500 mb-5">
+                  {isCouponApplied 
+                    ? 'কুপন ভেরিফাইড (মোট খরচ থেকে 50 টাকা ছাড়)' 
+                    : 'ইউনিট ফি + পেমেন্ট চার্জ + সার্ভিস খরচ'}
+                </span>
                 
                 <a 
                   href="https://wa.me/message/L2XAYVWBE5RIJ1"
