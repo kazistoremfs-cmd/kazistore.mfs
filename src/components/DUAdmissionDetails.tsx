@@ -52,92 +52,133 @@ export default function DUAdmissionDetails() {
     window.scrollTo(0, 0);
   }, []);
 
-  // DU Units Data
+  // DU Units Data (Updated with 2025-2026 official guidelines)
   const duUnits = [
     {
       id: 'science',
+      shortName: 'বিজ্ঞান',
       name: 'বিজ্ঞান ইউনিট',
       nameEn: 'Science Unit',
       fee: 1050,
       feeBn: '1,050/-',
+      totalSeats: '1,891টি',
       negativeMark: '0.25',
       negativeMarkDetail: '(প্রতিটি ভুল MCQ উত্তরে 0.25 নম্বর কর্তন)',
-      examTime: 'বেলা 11:00 - 12:30',
-      examDuration: '90 মিনিট (1 ঘণ্টা 30 মিনিট)',
+      examDate: '20 ডিসেম্বর 2025 (শনিবার)',
+      examTime: 'সকাল 11:00 - 12:30',
+      examDuration: '90 মিনিট (MCQ 45 মি. + লিখিত 45 মি.)',
       badgeColor: 'border-blue-500/40 bg-blue-500/10 text-blue-300',
       activeColor: 'bg-blue-600/25 border-blue-400 text-white shadow-lg shadow-blue-500/10',
-      minGpa: 'মোট জিপিএ 8.00 (পৃথকভাবে 3.50)',
-      description: 'বিজ্ঞান শাখা থেকে এইচএসসি উত্তীর্ণ শিক্ষার্থীদের জন্য।',
-      criteria: 'এসএসসি ও এইচএসসি উভয় পরীক্ষায় বিজ্ঞান বিভাগ থেকে উত্তীর্ণ হতে হবে। 4র্থ বিষয়সহ মোট ন্যূনতম জিপিএ 8.00 (উভয় পরীক্ষায় আলাদাভাবে নূন্যতম 3.50 থাকতে হবে)।',
+      minGpa: 'বিজ্ঞান: 8.00 (পৃথক 3.50), বিভাগ পরিবর্তন: 7.50 (পৃথক 3.00)',
+      description: 'বিজ্ঞান অনুষদ, জীববিজ্ঞান, ফার্মেসী, আর্থ এন্ড এনভায়রনমেন্টাল সায়েন্সেস ও ইঞ্জিনিয়ারিং অনুষদ।',
+      criteria: 'এসএসসি (2020-2023) ও এইচএসসি (2025)। বিজ্ঞান ও কৃষিবিজ্ঞান শাখা: ৪র্থ বিষয়সহ উভয় পরীক্ষায় আলাদাভাবে নূন্যতম জিপিএ 3.50 সহ মোট জিপিএ নূন্যতম 8.00। মানবিক ও ব্যবসায় শাখা থেকে বিজ্ঞান ইউনিটে বিভাগ পরিবর্তনে: পৃথকভাবে নূন্যতম 3.00 সহ মোট জিপিএ নূন্যতম 7.50।',
       highlights: [
-        'বিজ্ঞান শাখার শিক্ষার্থীরা আবেদন করতে পারবে',
-        'উভয় পরীক্ষায় আলাদাভাবে নূন্যতম 3.50 থাকতে হবে',
-        'ভর্তি পরীক্ষা মোট 100 নম্বরে (MCQ 60 + লিখিত 40)'
+        'মোট আসন সংখ্যা 1,891টি (অনুষদভুক্ত সকল বিভাগ ও ইনস্টিটিউট)',
+        'ভর্তি পরীক্ষা: 20 ডিসেম্বর 2025 (শনিবার সকাল 11:00 - 12:30)',
+        'ভর্তি পরীক্ষা 100 নম্বরে (MCQ 60 + লিখিত 40), পাস নম্বর মোট 40 (MCQ 24, লিখিত 12)',
+        'মেধা তালিকা 120 নম্বরে (ভর্তি পরীক্ষা 100 + এসএসসি জিপিএ×2=10 + এইচএসসি জিপিএ×2=10)'
       ]
     },
     {
       id: 'arts_law_social',
+      shortName: 'কলা ও সামাজিক',
       name: 'কলা, আইন ও সামাজিক বিজ্ঞান ইউনিট',
       nameEn: 'Arts, Law & Social Sciences Unit',
       fee: 1050,
       feeBn: '1,050/-',
+      totalSeats: '2,934টি',
       negativeMark: '0.25',
       negativeMarkDetail: '(প্রতিটি ভুল MCQ উত্তরে 0.25 নম্বর কর্তন)',
-      examTime: 'বেলা 11:00 - 12:30',
-      examDuration: '90 মিনিট (1 ঘণ্টা 30 মিনিট)',
+      examDate: '13 ডিসেম্বর 2025 (শনিবার)',
+      examTime: 'সকাল 11:00 - 12:30',
+      examDuration: '90 মিনিট (MCQ 45 মি. + লিখিত 45 মি.)',
       badgeColor: 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300',
       activeColor: 'bg-emerald-600/25 border-emerald-400 text-white shadow-lg shadow-emerald-500/10',
       minGpa: 'মানবিক: 7.50, বিজ্ঞান: 8.00, ব্যবসায়: 7.50',
-      description: 'মানবিক, বিজ্ঞান ও ব্যবসায় শাখা থেকে বিভাগ পরিবর্তনের সুযোগ।',
-      criteria: 'মানবিক শাখা: মোট জিপিএ ন্যূনতম 7.50 (আলাদাভাবে নূন্যতম 3.00)। বিজ্ঞান শাখা থেকে বিভাগ পরিবর্তন: মোট জিপিএ ন্যূনতম 8.00 (আলাদাভাবে নূন্যতম 3.50)। ব্যবসায় শাখা থেকে বিভাগ পরিবর্তন: মোট জিপিএ ন্যূনতম 7.50 (আলাদাভাবে নূন্যতম 3.00)।',
+      description: 'মানবিক, বিজ্ঞান ও ব্যবসায় শিক্ষা শাখা থেকে বিভাগ পরিবর্তনের সুযোগ।',
+      criteria: 'এসএসসি (2020-2023) ও এইচএসসি (2025)। মানবিক শাখা: ৪র্থ বিষয়সহ মোট জিপিএ নূন্যতম 7.50 (আলাদাভাবে নূন্যতম 3.00)। বিজ্ঞান শাখা থেকে বিভাগ পরিবর্তন: মোট জিপিএ নূন্যতম 8.00 (আলাদাভাবে নূন্যতম 3.50)। ব্যবসায় শিক্ষা থেকে বিভাগ পরিবর্তন: মোট জিপিএ নূন্যতম 7.50 (আলাদাভাবে নূন্যতম 3.00)।',
       highlights: [
-        'মানবিক, বিজ্ঞান ও ব্যবসায় সকল শাখার শিক্ষার্থীরা আবেদনযোগ্য',
-        'বিভাগ পরিবর্তন (Faculty Change) করার সুযোগ রয়েছে',
-        'মানবিক: নূন্যতম 7.50, বিজ্ঞান: নূন্যতম 8.00, ব্যবসায়: নূন্যতম 7.50'
+        'সর্বমোট আসন 2,934টি (মানবিক: 1,694, বিজ্ঞান: 962, ব্যবসায় শিক্ষা: 278)',
+        'ভর্তি পরীক্ষা: 13 ডিসেম্বর 2025 (শনিবার সকাল 11:00 - 12:30)',
+        'ভর্তি পরীক্ষা 100 নম্বরে (MCQ 60 + লিখিত 40), পাস নম্বর মোট 40 (MCQ 24 {বাংলা 5, ইংরেজি 5, সাধারণ জ্ঞান 10}, লিখিত 11 {বাংলা 5, ইংরেজি 5})',
+        'মেধা তালিকা 120 নম্বরে (ভর্তি পরীক্ষা 100 + এসএসসি জিপিএ×2=10 + এইচএসসি জিপিএ×2=10)'
       ]
     },
     {
       id: 'business',
+      shortName: 'ব্যবসায় শিক্ষা',
       name: 'ব্যবসায় শিক্ষা ইউনিট',
       nameEn: 'Business Studies Unit',
       fee: 1050,
       feeBn: '1,050/-',
+      totalSeats: '1,050টি (আনুমানিক)',
       negativeMark: '0.25',
       negativeMarkDetail: '(প্রতিটি ভুল MCQ উত্তরে 0.25 নম্বর কর্তন)',
-      examTime: 'বেলা 11:00 - 12:30',
-      examDuration: '90 মিনিট (1 ঘণ্টা 30 মিনিট)',
+      examDate: '06 ডিসেম্বর 2025 (শনিবার)',
+      examTime: 'সকাল 11:00 - 12:30',
+      examDuration: '90 মিনিট (MCQ 45 মি. + লিখিত 45 মি.)',
       badgeColor: 'border-amber-500/40 bg-amber-500/10 text-amber-300',
       activeColor: 'bg-amber-600/25 border-amber-400 text-white shadow-lg shadow-amber-500/10',
       minGpa: 'মোট জিপিএ 7.50 (পৃথকভাবে 3.00)',
-      description: 'ব্যবসায় শিক্ষা শাখা থেকে এইচএসসি উত্তীর্ণ শিক্ষার্থীদের জন্য।',
-      criteria: 'এইচএসসি পরীক্ষায় ব্যবসায় শিক্ষা শাখা থেকে উত্তীর্ণ হতে হবে। এসএসসি ও এইচএসসি উভয় পরীক্ষায় পৃথকভাবে নূন্যতম জিপিএ 3.00 সহ মোট জিপিএ নূন্যতম 7.50 থাকতে হবে।',
+      description: 'ব্যবসায় শিক্ষা শাখা ও অন্যান্য শাখা থেকে বিভাগ পরিবর্তন।',
+      criteria: 'এসএসসি (2020-2023) ও এইচএসসি (2025)। ব্যবসায় শিক্ষা শাখা: উভয় পরীক্ষায় আলাদাভাবে নূন্যতম জিপিএ 3.00 সহ মোট জিপিএ নূন্যতম 7.50 থাকতে হবে। বিজ্ঞান ও মানবিক শাখা থেকে বিভাগ পরিবর্তনের ক্ষেত্রে সংশ্লিষ্ট শাখার ন্যূনতম যোগ্যতা প্রযোজ্য।',
       highlights: [
-        'এইচএসসি ব্যবসায় শিক্ষা শাখা থেকে উত্তীর্ণ হতে হবে',
-        'উভয় পরীক্ষায় আলাদাভাবে নূন্যতম 3.00 থাকতে হবে',
-        'মোট জিপিএ নূন্যতম 7.50 প্রয়োজন'
+        'ভর্তি পরীক্ষা: 06 ডিসেম্বর 2025 (শনিবার সকাল 11:00 - 12:30)',
+        'ভর্তি পরীক্ষা মোট 100 নম্বরে (MCQ 60 + লিখিত 40), মোট পাস নম্বর 40',
+        'ব্যবসায় শিক্ষা শাখা: উভয় পরীক্ষায় আলাদাভাবে নূন্যতম 3.00 সহ মোট জিপিএ নূন্যতম 7.50',
+        'মেধা তালিকা 120 নম্বরে (ভর্তি পরীক্ষা 100 + এসএসসি জিপিএ 10 + এইচএসসি জিপিএ 10)'
       ]
     },
     {
       id: 'fine_arts',
+      shortName: 'চারুকলা',
       name: 'চারুকলা ইউনিট',
       nameEn: 'Fine Arts Unit',
       fee: 1050,
       feeBn: '1,050/-',
+      totalSeats: '130টি',
       negativeMark: '0.25',
-      negativeMarkDetail: '(MCQ অংশে ভুল উত্তরে 0.25 কর্তন, অঙ্কন পরীক্ষায় নেগেটিভ মার্কিং নেই)',
-      examTime: 'বেলা 11:00 - 12:30',
-      examDuration: 'সাধারণ জ্ঞান ও অঙ্কন পরীক্ষা',
+      negativeMarkDetail: '(সাধারণ জ্ঞান MCQ-তে 0.25 কর্তন, অঙ্কনে নেগেটিভ নেই)',
+      examDate: '29 নভেম্বর 2025 (শনিবার)',
+      examTime: 'সকাল 11:00 - 12:30',
+      examDuration: '90 মিনিট (MCQ 30 মি. + অঙ্কন 60 মি.)',
       badgeColor: 'border-rose-500/40 bg-rose-500/10 text-rose-300',
       activeColor: 'bg-rose-600/25 border-rose-400 text-white shadow-lg shadow-rose-500/10',
       minGpa: 'মোট জিপিএ 6.50 (পৃথকভাবে 3.00)',
       description: 'যেকোনো বিভাগ হতে এসএসসি ও এইচএসসি উত্তীর্ণদের জন্য।',
-      criteria: 'উচ্চমাধ্যমিক বা সমমানের যেকোনো শাখা হতে উত্তীর্ণ শিক্ষার্থী আবেদন করতে পারবে। এসএসসি ও এইচএসসি উভয় পরীক্ষায় আলাদাভাবে নূন্যতম জিপিএ 3.00 সহ সর্বমোট জিপিএ নূন্যতম 6.50 থাকতে হবে।',
+      criteria: 'এসএসসি (2020-2023) ও এইচএসসি (2025) যেকোনো শাখা (বিজ্ঞান, মানবিক বা ব্যবসায়) হতে উত্তীর্ণ শিক্ষার্থী আবেদন করতে পারবে। উভয় পরীক্ষায় আলাদাভাবে নূন্যতম জিপিএ 3.00 সহ মোট জিপিএ নূন্যতম 6.50 থাকতে হবে। পরীক্ষা কেন্দ্র শুধুমাত্র ঢাকা বিশ্ববিদ্যালয় ক্যাম্পাসে অনুষ্ঠিত হবে।',
       highlights: [
-        'যেকোনো শাখা (বিজ্ঞান, মানবিক বা ব্যবসায়) হতে উত্তীর্ণরা আবেদনযোগ্য',
-        'সাধারণ জ্ঞান (MCQ) 40 নম্বর এবং অঙ্কন পরীক্ষা 60 নম্বর',
-        'মোট জিপিএ নূন্যতম 6.50 (উভয় পরীক্ষায় আলাদাভাবে 3.00)'
+        'মোট আসন সংখ্যা 130টি (8টি বিভাগে মেধার ভিত্তিতে আসন বণ্টন)',
+        'ভর্তি পরীক্ষা: 29 নভেম্বর 2025 (শনিবার সকাল 11:00 - 12:30)',
+        'পরীক্ষা কেন্দ্র: শুধুমাত্র ঢাকা বিশ্ববিদ্যালয় ক্যাম্পাস (অন্য বিভাগে কেন্দ্র নেই)',
+        'সাধারণ জ্ঞান (MCQ) 40 নম্বর (30 মি.) + অঙ্কন পরীক্ষা 60 নম্বর (1 ঘণ্টা), পাস নম্বর 40%'
       ]
     },
+    {
+      id: 'iba',
+      shortName: 'আইবিএ (BBA)',
+      name: 'আইবিএ (IBA - BBA)',
+      nameEn: 'Institute of Business Administration',
+      fee: 1500,
+      feeBn: '1,500/-',
+      totalSeats: '120টি',
+      negativeMark: '0.25',
+      negativeMarkDetail: '(প্রতিটি ভুল MCQ উত্তরে 0.25 নম্বর কর্তন)',
+      examDate: '28 নভেম্বর 2025 (শুক্রবার)',
+      examTime: 'সকাল 10:00 - 12:00',
+      examDuration: '120 মিনিট (2 ঘণ্টা)',
+      badgeColor: 'border-purple-500/40 bg-purple-500/10 text-purple-300',
+      activeColor: 'bg-purple-600/25 border-purple-400 text-white shadow-lg shadow-purple-500/10',
+      minGpa: 'মোট জিপিএ 8.00 (পৃথকভাবে 3.50)',
+      description: 'ব্যবসায় প্রশাসন ইনস্টিটিউট আন্ডারগ্র্যাজুয়েট (BBA) প্রোগ্রাম।',
+      criteria: '2025 সালের উচ্চ মাধ্যমিক/সমমান পরীক্ষায় যেকোনো শাখা হতে উত্তীর্ণ। মাধ্যমিক ও উচ্চ মাধ্যমিক উভয় পরীক্ষায় আলাদাভাবে নূন্যতম জিপিএ 3.50 সহ মোট জিপিএ অন্তত 8.00 থাকতে হবে। IGCSE/O-Level গণিতসহ 5টি বিষয়ে ও A-Level 2টি বিষয়ে পাস থাকতে হবে।',
+      highlights: [
+        'মোট আসন সংখ্যা 120টি (সম্পূর্ণ মেধার ভিত্তিতে পূরণ)',
+        'ভর্তি পরীক্ষা: 28 নভেম্বর 2025 (শুক্রবার সকাল 10:00 টা - 12:00 টা)',
+        'ভর্তি আবেদন ফি সর্বমোট 1,500/- টাকা, পরীক্ষার সময় 120 মিনিট (2 ঘণ্টা)',
+        '1ম ধাপ: MCQ 70 (কাটঅফ সহ) + লিখিত 30 (কাটঅফ 12); 2য় ধাপ: ভাইভা/কমিউনিকেশন টেস্ট 20 নম্বর'
+      ]
+    }
   ];
 
   const currentUnit = duUnits.find(u => u.id === selectedUnitId) || duUnits[0];
@@ -171,23 +212,27 @@ export default function DUAdmissionDetails() {
   const faqs = [
     {
       q: "ঢাকা বিশ্ববিদ্যালয়ে কি সেকেন্ড টাইম (Second Time) পরীক্ষা দেওয়ার সুযোগ আছে?",
-      a: "না। ঢাকা বিশ্ববিদ্যালয়ে কোনো প্রকার সেকেন্ড টাইম (Second Time) পরীক্ষা দেওয়ার সুযোগ নেই। শুধুমাত্র নিয়মিত শিক্ষাবর্ষের প্রথমবার উচ্চমাধ্যমিক উত্তীর্ণ শিক্ষার্থীরাই আবেদন করতে পারবে।"
+      a: "না। ঢাকা বিশ্ববিদ্যালয়ে কোনো প্রকার সেকেন্ড টাইম (Second Time) পরীক্ষা দেওয়ার সুযোগ নেই। 2025-2026 শিক্ষাবর্ষে শুধুমাত্র 2025 সালের এইচএসসি/সমমান পরীক্ষায় ১ম বার উত্তীর্ণ শিক্ষার্থীরাই আবেদন করতে পারবে (এসএসসি 2020 হতে 2023)।"
     },
     {
       q: "ভর্তি পরীক্ষা কি শুধুমাত্র ঢাকায় হবে নাকি বিভাগীয় শহরেও অনুষ্ঠিত হবে?",
-      a: "শিক্ষার্থীদের সুবিধার্থে ঢাকা বিশ্ববিদ্যালয় ভর্তি পরীক্ষা ঢাকাসহ দেশের 8টি বিভাগীয় শহরের পাবলিক বিশ্ববিদ্যালয় ক্যাম্পাসে অনুষ্ঠিত হয়। শিক্ষার্থীরা অনলাইনে ফরম পূরণের সময় তাদের পছন্দমতো বিভাগীয় কেন্দ্র নির্বাচন করতে পারবেন।"
+      a: "চারুকলা ইউনিট ব্যতীত অন্য সকল ইউনিটের (বিজ্ঞান, কলা আইন ও সামাজিক বিজ্ঞান, ব্যবসায় শিক্ষা) পরীক্ষা ঢাকাসহ দেশের 8টি বিভাগীয় শহরের পাবলিক বিশ্ববিদ্যালয় ক্যাম্পাসে অনুষ্ঠিত হবে। চারুকলা ইউনিটের সাধারণ জ্ঞান ও অঙ্কন পরীক্ষা শুধুমাত্র ঢাকা বিশ্ববিদ্যালয় ক্যাম্পাসে অনুষ্ঠিত হবে।"
+    },
+    {
+      q: "2025-2026 শিক্ষাবর্ষে আবেদন ও পরীক্ষার গুরুত্বপূর্ণ তারিখগুলো কী কী?",
+      a: "অনলাইন আবেদন গ্রহণ: 29 অক্টোবর 2025 (দুপুর 12:00) হতে 16 নভেম্বর 2025 (রাত 11:59) পর্যন্ত। প্রবেশপত্র সংগ্রহ: 30 নভেম্বর 2025 হতে (আইবিএ: 24 নভেম্বর 2025)। ভর্তি পরীক্ষা: আইবিএ 28 নভেম্বর 2025, চারুকলা 29 নভেম্বর 2025, ব্যবসায় শিক্ষা 06 ডিসেম্বর 2025, কলা আইন ও সামাজিক বিজ্ঞান 13 ডিসেম্বর 2025 এবং বিজ্ঞান ইউনিট 20 ডিসেম্বর 2025।"
     },
     {
       q: "একজন শিক্ষার্থী কি একাধিক ইউনিটে আবেদন করতে পারবে?",
-      a: "হ্যাঁ! শর্তপূরণ সাপেক্ষে একজন শিক্ষার্থী একাধিক ইউনিটে আবেদন করতে পারবে। বিশেষ করে বিজ্ঞান ও ব্যবসায় শিক্ষার শিক্ষার্থীরা যোগ্যতা অনুযায়ী কলা, আইন ও সামাজিক বিজ্ঞান ইউনিটেও পরীক্ষা দিতে পারবে।"
+      a: "হ্যাঁ! শর্তপূরণ সাপেক্ষে একজন শিক্ষার্থী যোগ্যতা অনুযায়ী একাধিক ইউনিটে আবেদন করতে পারবে। বিজ্ঞান ও ব্যবসায় শিক্ষা শাখার শিক্ষার্থীরা কলা, আইন ও সামাজিক বিজ্ঞান ইউনিটেও বিভাগ পরিবর্তনের মাধ্যমে পরীক্ষা দিতে পারবে।"
     },
     {
       q: "ভর্তি পরীক্ষার মানবণ্টন ও মেধা তালিকা কীভাবে তৈরি হয়?",
-      a: "মোট 120 নম্বরের ভিত্তিতে চূড়ান্ত মেধা তালিকা তৈরি করা হয়। এর মধ্যে 100 নম্বর থাকে ভর্তি পরীক্ষার (60 নম্বর MCQ + 40 নম্বর লিখিত, সময় 90 মিনিট)। বাকি 20 নম্বর আসে এসএসসি ও এইচএসসি জিপিএ-র ওপর (এসএসসি জিপিএ × 2 = 10 এবং এইচএসসি জিপিএ × 2 = 10)।"
+      a: "মোট 120 নম্বরের ভিত্তিতে চূড়ান্ত মেধা তালিকা তৈরি করা হয়। সাধারণ ইউনিটগুলোতে 100 নম্বর ভর্তি পরীক্ষার (60 নম্বর MCQ + 40 নম্বর লিখিত, সময় 90 মিনিট) এবং 20 নম্বর এসএসসি ও এইচএসসি জিপিএ-র ওপর (এসএসসি জিপিএ × 2 = 10 এবং এইচএসসি জিপিএ × 2 = 10)। চারুকলায় MCQ 40 + অঙ্কন 60 এবং আইবিএ-তে MCQ 70 + লিখিত 30 + ভাইভা 20 নম্বর।"
     },
     {
       q: "ভর্তি পরীক্ষায় কি নেগেটিভ মার্কিং আছে?",
-      a: "হ্যাঁ। প্রতিটি ভুল MCQ উত্তরের জন্য 0.25 নম্বর কাটা যাবে। প্রতিটি সঠিক উত্তরের জন্য 1 নম্বর পাওয়া যাবে।"
+      a: "হ্যাঁ। প্রতিটি ভুল MCQ উত্তরের জন্য 0.25 নম্বর কর্তন করা হবে। সঠিক উত্তরের জন্য 1 নম্বর পাওয়া যাবে। চারুকলা ইউনিটের অঙ্কন পরীক্ষায় কোনো নেগেটিভ মার্কিং নেই।"
     },
     {
       q: "কাজী স্টোর থেকে ঘরে বসেই কি ঢাবি আবেদন সম্পন্ন করা যাবে?",
@@ -262,12 +307,35 @@ export default function DUAdmissionDetails() {
             <div className="text-center sm:text-left bg-blue-950/40 border border-blue-500/30 rounded-2xl p-5 mb-6">
               <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
                 <h2 className="text-xl sm:text-2xl font-bold text-yellow-300">
-                  আন্ডারগ্র্যাজুয়েট প্রোগ্রামে ভর্তি বিজ্ঞপ্তি
+                  আন্ডারগ্র্যাজুয়েট প্রোগ্রামে ভর্তি বিজ্ঞপ্তি ২০২৫-২০২৬
                 </h2>
+                <span className="text-xs px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold font-en">
+                  Session: 2025-2026
+                </span>
               </div>
-              <p className="text-sm sm:text-base text-slate-200 leading-relaxed">
-                এতদ্বারা সংশ্লিষ্ট সকলের অবগতির জন্য জানানো যাচ্ছে যে, ঢাকা বিশ্ববিদ্যালয়ের 2024-2025 শিক্ষাবর্ষে 4 বছর মেয়াদি আন্ডারগ্র্যাজুয়েট প্রোগ্রামে কলা আইন ও সামাজিক বিজ্ঞান ইউনিট, বিজ্ঞান ইউনিট, ব্যবসায় শিক্ষা ইউনিট এবং চারুকলা ইউনিটে 1st বর্ষে ভর্তির অনলাইন আবেদন কার্যক্রম চলমান রয়েছে। শিক্ষার্থীরা ঘরে বসেই বা আমাদের <strong className="text-emerald-300">কাজী স্টোরে</strong> এসে অভিজ্ঞ অপারেটরের মাধ্যমে সম্পূর্ণ নির্ভুলভাবে অনলাইনে আবেদন ফরম পূরণ, ছবি আপলোড ও ফি পরিশোধ করতে পারবেন।
+              <p className="text-sm sm:text-base text-slate-200 leading-relaxed mb-4">
+                এতদ্বারা সংশ্লিষ্ট সকলের অবগতির জন্য জানানো যাচ্ছে যে, ঢাকা বিশ্ববিদ্যালয়ের 2025-2026 শিক্ষাবর্ষে 4 বছর মেয়াদি আন্ডারগ্র্যাজুয়েট প্রোগ্রামে কলা আইন ও সামাজিক বিজ্ঞান ইউনিট, বিজ্ঞান ইউনিট, ব্যবসায় শিক্ষা ইউনিট, চারুকলা ইউনিট এবং আইবিএ-তে ১ম বর্ষে ভর্তির অনলাইন আবেদন কার্যক্রম চলমান রয়েছে। শিক্ষার্থীরা ঘরে বসেই বা আমাদের <strong className="text-emerald-300">কাজী স্টোরে</strong> এসে অভিজ্ঞ অপারেটরের মাধ্যমে সম্পূর্ণ নির্ভুলভাবে অনলাইনে আবেদন ফরম পূরণ, ছবি আপলোড ও ফি পরিশোধ করতে পারবেন।
               </p>
+
+              {/* Official Key Dates Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 pt-3 border-t border-blue-900/50 text-xs">
+                <div className="bg-slate-900/60 p-2.5 rounded-xl border border-slate-700/60">
+                  <span className="text-slate-400 block text-[11px]">আবেদন গ্রহণ</span>
+                  <span className="text-white font-semibold font-en">29 Oct – 16 Nov 2025</span>
+                </div>
+                <div className="bg-slate-900/60 p-2.5 rounded-xl border border-slate-700/60">
+                  <span className="text-slate-400 block text-[11px]">প্রবেশপত্র সংগ্রহ</span>
+                  <span className="text-teal-300 font-semibold font-en">30 Nov 2025 হতে</span>
+                </div>
+                <div className="bg-slate-900/60 p-2.5 rounded-xl border border-slate-700/60">
+                  <span className="text-slate-400 block text-[11px]">পরীক্ষার সময়কাল</span>
+                  <span className="text-amber-300 font-semibold font-en">28 Nov – 20 Dec 2025</span>
+                </div>
+                <div className="bg-slate-900/60 p-2.5 rounded-xl border border-slate-700/60">
+                  <span className="text-slate-400 block text-[11px]">ভর্তি আবেদন ফি</span>
+                  <span className="text-emerald-400 font-semibold font-en">1,050/- (IBA: 1,500/-)</span>
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-wrap justify-center sm:justify-start gap-3">
@@ -318,7 +386,7 @@ export default function DUAdmissionDetails() {
             </div>
 
             {/* Unit Selector Buttons */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 mb-6">
               {duUnits.map((unit) => {
                 const isSelected = selectedUnitId === unit.id;
                 return (
@@ -332,7 +400,7 @@ export default function DUAdmissionDetails() {
                         : 'bg-slate-900/60 border-slate-700/70 text-slate-300 hover:border-slate-500 hover:text-white'
                     }`}
                   >
-                    <span className="font-bold text-sm sm:text-base leading-tight">{unit.name}</span>
+                    <span className="font-bold text-sm sm:text-base leading-tight">{unit.shortName || unit.name}</span>
                     <span className="text-[11px] font-en opacity-80">{unit.nameEn}</span>
                   </button>
                 );
@@ -360,6 +428,9 @@ export default function DUAdmissionDetails() {
                   <div className="flex flex-wrap items-center gap-2">
                     <span className={`text-xs px-3 py-1 rounded-lg border font-semibold ${currentUnit.badgeColor}`}>
                       আবেদন ফি: {currentUnit.feeBn}
+                    </span>
+                    <span className="text-xs px-3 py-1 rounded-lg border border-teal-500/30 bg-teal-500/10 text-teal-300 font-semibold font-en">
+                      মোট আসন: {currentUnit.totalSeats}
                     </span>
                     <span className="text-xs px-3 py-1 rounded-lg border border-rose-500/30 bg-rose-500/10 text-rose-300 font-semibold font-en">
                       নেগেটিভ মার্ক: -{currentUnit.negativeMark}
@@ -393,6 +464,10 @@ export default function DUAdmissionDetails() {
                         <span>{hl}</span>
                       </div>
                     ))}
+                    <div className="flex items-start gap-2.5 bg-slate-800/50 border border-slate-700/50 p-3 rounded-xl text-xs sm:text-sm text-slate-300">
+                      <Calendar className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                      <span>পরীক্ষার তারিখ: <strong className="text-slate-100">{currentUnit.examDate}</strong></span>
+                    </div>
                     <div className="flex items-start gap-2.5 bg-rose-500/10 border border-rose-500/20 p-3 rounded-xl text-xs sm:text-sm text-rose-200">
                       <AlertCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
                       <span>নেগেটিভ মার্কিং: <strong className="text-white font-en">-{currentUnit.negativeMark}</strong> {currentUnit.negativeMarkDetail}</span>
@@ -447,32 +522,45 @@ export default function DUAdmissionDetails() {
                       <div className="bg-slate-900/70 border border-slate-700/70 p-5 rounded-2xl text-center">
                         <span className="text-xs text-slate-400 block mb-1">এমসিকিউ (MCQ) অংশ</span>
                         <span className="text-3xl font-bold text-blue-400 font-en">60</span>
-                        <span className="text-xs text-slate-400 block mt-1">সময়: 45 মিনিট</span>
+                        <span className="text-xs text-slate-400 block mt-1">সময়: 45 মিনিট (চারুকলা 40, আইবিএ 70)</span>
                       </div>
                       <div className="bg-slate-900/70 border border-slate-700/70 p-5 rounded-2xl text-center">
-                        <span className="text-xs text-slate-400 block mb-1">লিখিত (Written) অংশ</span>
+                        <span className="text-xs text-slate-400 block mb-1">লিখিত / অঙ্কন অংশ</span>
                         <span className="text-3xl font-bold text-emerald-400 font-en">40</span>
-                        <span className="text-xs text-slate-400 block mt-1">সময়: 45 মিনিট</span>
+                        <span className="text-xs text-slate-400 block mt-1">সময়: 45 মিনিট (চারুকলা 60, আইবিএ 30)</span>
                       </div>
                       <div className="bg-slate-900/70 border border-slate-700/70 p-5 rounded-2xl text-center">
                         <span className="text-xs text-slate-400 block mb-1">এসএসসি ও এইচএসসি জিপিএ</span>
                         <span className="text-3xl font-bold text-yellow-400 font-en">20</span>
-                        <span className="text-xs text-slate-400 block mt-1">এসএসসি 10 + এইচএসসি 10</span>
+                        <span className="text-xs text-slate-400 block mt-1">এসএসসি 10 + এইচএসসি 10 (আইবিএ: ভাইভা 20)</span>
                       </div>
                     </div>
 
+                    {/* Unit-wise Pass Marks Table/List */}
                     <div className="space-y-3 bg-slate-900/50 border border-slate-700/50 p-4 rounded-2xl text-xs sm:text-sm text-slate-300">
-                      <div className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                        <span><strong>নেগেটিভ মার্কিং:</strong> প্রতিটি ভুল উত্তরের জন্য 0.25 নম্বর কাটা যাবে।</span>
+                      <div className="flex items-start gap-2">
+                        <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <span><strong>বিজ্ঞান ইউনিট:</strong> মোট 100 নম্বরে পাস নম্বর 40। এর মধ্যে MCQ-তে ন্যূনতম 24 এবং লিখিত অংশে ন্যূনতম 12 নম্বর অবশ্যই পেতে হবে।</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Check className="w-4 h-4 text-emerald-400 shrink-0" />
-                        <span><strong>চারুকলা ইউনিট:</strong> সাধারণ জ্ঞান (MCQ) 40 নম্বর এবং অঙ্কন পরীক্ষা 60 নম্বর।</span>
+                      <div className="flex items-start gap-2">
+                        <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <span><strong>কলা, আইন ও সামাজিক বিজ্ঞান ইউনিট:</strong> মোট 100 নম্বরে পাস নম্বর 40। MCQ-তে ন্যূনতম 24 (বাংলা 5, ইংরেজি 5, সাধারণ জ্ঞান 10) এবং লিখিততে ন্যূনতম 11 (বাংলা 5, ইংরেজি 5) পেতে হবে।</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-blue-400 shrink-0" />
-                        <span><strong>বিভাগীয় কেন্দ্র:</strong> ঢাকা, চট্টগ্রাম, রাজশাহী, খুলনা, বরিশাল, সিলেট, রংপুর ও ময়মনসিংহ বিভাগের সরকারি বিশ্ববিদ্যালয় কেন্দ্রে পরীক্ষা অনুষ্ঠিত হবে।</span>
+                      <div className="flex items-start gap-2">
+                        <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <span><strong>চারুকলা ইউনিট:</strong> সাধারণ জ্ঞান (MCQ) 40 নম্বর (30 মি.) + অঙ্কন 60 নম্বর (1 ঘণ্টা)। পাস নম্বর 40% (40 নম্বর)। পরীক্ষা কেন্দ্র শুধুমাত্র ঢাবি ক্যাম্পাস।</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                        <span><strong>আইবিএ (IBA - BBA):</strong> ১ম ধাপ 100 নম্বর (MCQ 70: ইংরেজি 30 [কাটঅফ 12], গণিত 25 [কাটঅফ 10], অ্যানালিটিক্যাল 15 [কাটঅফ 6] + লিখিত 30 [কাটঅফ 12])। ২য় ধাপ: ভাইভা 20 নম্বর (পাস 12)।</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <AlertCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
+                        <span><strong>নেগেটিভ মার্কিং:</strong> প্রতিটি ভুল MCQ উত্তরের জন্য 0.25 নম্বর কর্তন করা হবে (চারুকলা অঙ্কনে কোনো নেগেটিভ নেই)।</span>
+                      </div>
+                      <div className="flex items-start gap-2">
+                        <MapPin className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                        <span><strong>পরীক্ষা কেন্দ্র:</strong> সাধারণ ইউনিটগুলোর পরীক্ষা ঢাকা এবং 7টি বিভাগীয় শহরের পাবলিক বিশ্ববিদ্যালয় কেন্দ্রে অনুষ্ঠিত হবে (চারুকলা ব্যতীত)।</span>
                       </div>
                     </div>
                   </div>
@@ -520,20 +608,20 @@ export default function DUAdmissionDetails() {
                 {/* Unit Selector */}
                 <div className="mb-5">
                   <label className="text-xs text-slate-400 block mb-2 font-normal">আবেদনের ইউনিট নির্বাচন করুন:</label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
                     {duUnits.map((u) => (
                       <button
                         key={u.id}
                         type="button"
                         onClick={() => setSelectedUnitId(u.id)}
-                        className={`p-2.5 rounded-xl border transition-all text-center cursor-pointer ${
+                        className={`p-2.5 rounded-xl border transition-all text-center cursor-pointer flex flex-col items-center justify-center ${
                           selectedUnitId === u.id 
                             ? 'bg-teal-500/20 border-teal-400 text-white shadow-md shadow-teal-500/10' 
                             : 'bg-slate-900/40 border-slate-700 text-slate-300 hover:border-slate-600 hover:text-white'
                         }`}
                       >
-                        <span className="block text-sm font-normal text-slate-200">{u.name.split(' ')[0]}</span>
-                        <span className="text-emerald-400 text-xs font-en font-medium mt-0.5 block">{u.fee}/-</span>
+                        <span className="block text-xs sm:text-sm font-medium text-slate-200 truncate w-full">{u.shortName || u.name}</span>
+                        <span className="text-emerald-400 text-xs font-en font-bold mt-0.5 block">{u.fee}/-</span>
                       </button>
                     ))}
                   </div>
