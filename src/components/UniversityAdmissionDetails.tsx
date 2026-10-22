@@ -4,6 +4,7 @@ import { ArrowLeft, ChevronRight, GraduationCap, CheckCircle2, MessageCircle } f
 import { motion } from 'motion/react';
 import MedicalAdmissionDetails from './MedicalAdmissionDetails';
 import DUAdmissionDetails from './DUAdmissionDetails';
+import RUAdmissionDetails from './RUAdmissionDetails';
 
 const admissionMap: Record<string, string> = {
   'du': 'DU Admission (ঢাকা বিশ্ববিদ্যালয়)',
@@ -33,6 +34,10 @@ export default function UniversityAdmissionDetails() {
 
   if (id === 'du') {
     return <DUAdmissionDetails />;
+  }
+
+  if (id === 'ru') {
+    return <RUAdmissionDetails />;
   }
 
   const title = id && admissionMap[id] ? admissionMap[id] : 'বিশ্ববিদ্যালয় ভর্তি';

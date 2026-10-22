@@ -72,8 +72,8 @@ export default function CollegeAdmissionDetails() {
       a: "https://fmgc.eshiksabd.com/ লিংকে গিয়ে User Name ও Password হিসেবে 'fmgcstudent' দিয়ে লগইন করতে হবে।"
     },
     {
-      q: "প্রসপেক্টাস ও আইডি কার্ড ফি (৪০০ টাকা) কোথায় জমা দিতে হবে?",
-      a: "ফরম জমার সময় প্রসপেক্টাস, মনোগ্রাম, আইডি কার্ড ও অন্যান্য ফি বাবদ ৪০০/- টাকা কলেজের হিসাব শাখার এমজে আরমান ও নাজমুন নাহার চৈতী'র নিকট রশিদের মাধ্যমে জমা দিতে হবে।"
+      q: "প্রসপেক্টাস ও আইডি কার্ড ফি (400 টাকা) কোথায় জমা দিতে হবে?",
+      a: "ফরম জমার সময় প্রসপেক্টাস, মনোগ্রাম, আইডি কার্ড ও অন্যান্য ফি বাবদ 400/- টাকা কলেজের হিসাব শাখার এমজে আরমান ও নাজমুন নাহার চৈতী'র নিকট রশিদের মাধ্যমে জমা দিতে হবে।"
     },
     {
       q: "কাজী স্টোর থেকে কি ফরম পূরণ ও ফি পরিশোধের সম্পূর্ণ কাজ করে দেওয়া হয়?",
@@ -240,7 +240,7 @@ export default function CollegeAdmissionDetails() {
                     <span className="text-slate-200 text-sm sm:text-base group-hover:text-white transition-colors flex-1">
                       কলেজ ভর্তি ফি ({currentGroup.group.split(' ')[0]})
                     </span>
-                    <span className="text-emerald-400 font-bold text-sm sm:text-base font-bn">{selectedGroupFee} টাকা</span>
+                    <span className="text-emerald-400 font-bold text-sm sm:text-base font-en">{selectedGroupFee} টাকা</span>
                   </label>
 
                   <label className="flex items-center gap-3 cursor-pointer group">
@@ -256,7 +256,7 @@ export default function CollegeAdmissionDetails() {
                     <span className="text-slate-200 text-sm sm:text-base group-hover:text-white transition-colors flex-1">
                       বিকাশ বা পেমেন্ট চার্জ (2%)
                     </span>
-                    <span className="text-slate-300 font-bold text-sm sm:text-base font-bn">{bkashChargeAmount} টাকা</span>
+                    <span className="text-slate-300 font-bold text-sm sm:text-base font-en">{bkashChargeAmount} টাকা</span>
                   </label>
 
                   <label className="flex items-center gap-3 cursor-pointer group">
@@ -272,7 +272,7 @@ export default function CollegeAdmissionDetails() {
                     <span className="text-slate-200 text-sm sm:text-base group-hover:text-white transition-colors flex-1">
                       আবেদন ফি
                     </span>
-                    <span className="text-emerald-400 font-bold text-sm sm:text-base font-bn">100 টাকা</span>
+                    <span className="text-emerald-400 font-bold text-sm sm:text-base font-en">100 টাকা</span>
                   </label>
 
                   <div>
@@ -293,7 +293,7 @@ export default function CollegeAdmissionDetails() {
                       </label>
 
                       <div className="flex items-center gap-2">
-                        <span className="text-emerald-400 font-bold text-sm sm:text-base font-bn">150 টাকা</span>
+                        <span className="text-emerald-400 font-bold text-sm sm:text-base font-en">150 টাকা</span>
                         <button
                           type="button"
                           onClick={() => setIsPackageDetailsOpen(!isPackageDetailsOpen)}
@@ -319,31 +319,31 @@ export default function CollegeAdmissionDetails() {
                             <div className="space-y-1.5 text-slate-300">
                               <p className="flex justify-between items-center gap-2 py-1 border-b border-slate-800">
                                 <span className="leading-snug">আবেদন ফি</span>
-                                <span className="font-bn text-slate-200 font-medium shrink-0">100 টাকা</span>
+                                <span className="font-en text-slate-200 font-medium shrink-0">100 টাকা</span>
                               </p>
                               <p className="flex justify-between items-center gap-2 py-1 border-b border-slate-800">
                                 <span className="leading-snug">শিক্ষার্থীর পাসপোর্ট সাইজের ০৪ কপি ছবি</span>
-                                <span className="font-bn text-slate-200 font-medium shrink-0">50 টাকা</span>
+                                <span className="font-en text-slate-200 font-medium shrink-0">50 টাকা</span>
                               </p>
                               <p className="flex justify-between items-center gap-2 py-1 border-b border-slate-800">
                                 <span className="leading-snug">পিতা-মাতার জাতীয় পরিচয়পত্র (NID) ফটোকপি ০১ কপি</span>
-                                <span className="font-bn text-slate-200 font-medium shrink-0">10 টাকা</span>
+                                <span className="font-en text-slate-200 font-medium shrink-0">10 টাকা</span>
                               </p>
                               <p className="flex justify-between items-center gap-2 py-1 border-b border-slate-800">
                                 <span className="leading-snug">জন্মনিবন্ধনের ফটোকপি ০১ কপি</span>
-                                <span className="font-bn text-slate-200 font-medium shrink-0">5 টাকা</span>
+                                <span className="font-en text-slate-200 font-medium shrink-0">5 টাকা</span>
                               </p>
                               <p className="flex justify-between items-center gap-2 py-1 border-b border-slate-800">
                                 <span className="leading-snug">প্রশংসাপত্র ফটোকপি ০৩ কপি</span>
-                                <span className="font-bn text-slate-200 font-medium shrink-0">15 টাকা</span>
+                                <span className="font-en text-slate-200 font-medium shrink-0">15 টাকা</span>
                               </p>
                               <p className="flex justify-between items-center gap-2 py-1 border-b border-slate-800">
                                 <span className="leading-snug">মার্কশীট ফটোকপি ০৩ কপি</span>
-                                <span className="font-bn text-slate-200 font-medium shrink-0">15 টাকা</span>
+                                <span className="font-en text-slate-200 font-medium shrink-0">15 টাকা</span>
                               </p>
                             </div>
                             <p className="text-teal-300 font-semibold pt-1 text-xs leading-relaxed">
-                              ※ আলাদা আলাদা করে এই চার্জ প্রয়োজন হবে, কিন্তু প্যাকেজ নিলে ১৫০ টাকা মাত্র।
+                              ※ আলাদা আলাদা করে এই চার্জ প্রয়োজন হবে, কিন্তু প্যাকেজ নিলে 150 টাকা মাত্র।
                             </p>
                           </div>
                         </motion.div>

@@ -2,8 +2,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-bengali: "Hind Siliguri", sans-serif;
-  --font-english: "Saira", sans-serif;
+  --font-sans: "Saira", "Hind Siliguri", sans-serif;
+  --font-bengali: "Saira", "Hind Siliguri", sans-serif;
+  --font-english: "Saira", "Hind Siliguri", sans-serif;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
 }
 
 .font-bn {
-  font-family: "Hind Siliguri", "Kalpurush", sans-serif;
+  font-family: "Saira", "Hind Siliguri", "Kalpurush", sans-serif;
 }
 
 .font-en {

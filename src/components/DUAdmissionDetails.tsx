@@ -305,13 +305,10 @@ export default function DUAdmissionDetails() {
             </div>
 
             <div className="text-center sm:text-left bg-blue-950/40 border border-blue-500/30 rounded-2xl p-5 mb-6">
-              <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
+              <div className="mb-2">
                 <h2 className="text-xl sm:text-2xl font-bold text-yellow-300">
                   আন্ডারগ্র্যাজুয়েট প্রোগ্রামে ভর্তি বিজ্ঞপ্তি ২০২৫-২০২৬
                 </h2>
-                <span className="text-xs px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold font-en">
-                  Session: 2025-2026
-                </span>
               </div>
               <p className="text-sm sm:text-base text-slate-200 leading-relaxed mb-4">
                 এতদ্বারা সংশ্লিষ্ট সকলের অবগতির জন্য জানানো যাচ্ছে যে, ঢাকা বিশ্ববিদ্যালয়ের 2025-2026 শিক্ষাবর্ষে 4 বছর মেয়াদি আন্ডারগ্র্যাজুয়েট প্রোগ্রামে কলা আইন ও সামাজিক বিজ্ঞান ইউনিট, বিজ্ঞান ইউনিট, ব্যবসায় শিক্ষা ইউনিট, চারুকলা ইউনিট এবং আইবিএ-তে ১ম বর্ষে ভর্তির অনলাইন আবেদন কার্যক্রম চলমান রয়েছে। শিক্ষার্থীরা ঘরে বসেই বা আমাদের <strong className="text-emerald-300">কাজী স্টোরে</strong> এসে অভিজ্ঞ অপারেটরের মাধ্যমে সম্পূর্ণ নির্ভুলভাবে অনলাইনে আবেদন ফরম পূরণ, ছবি আপলোড ও ফি পরিশোধ করতে পারবেন।
@@ -767,7 +764,7 @@ export default function DUAdmissionDetails() {
                     <div className="flex items-center justify-between gap-2 bg-emerald-500/10 border border-emerald-500/25 rounded-xl px-3 py-2 text-xs sm:text-sm text-emerald-300">
                       <div className="flex items-center gap-2">
                         <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
-                        <span>কোড সফলভাবে ভেরিফাইড! ৫০ টাকা ছাড় প্রযোজ্য হয়েছে।</span>
+                        <span>কোড সফলভাবে ভেরিফাইড! 50 টাকা ছাড় প্রযোজ্য হয়েছে।</span>
                       </div>
                       <button
                         type="button"

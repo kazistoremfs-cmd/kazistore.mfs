@@ -169,9 +169,9 @@ export default function SSCDetails() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-4 sm:p-6 backdrop-blur-md shadow-xl flex flex-col justify-center">
                 <h3 className="text-xl font-bold text-white font-bn mb-3">বোর্ড চ্যালেঞ্জ করার ফি</h3>
-                <p className="font-bn text-[15px] md:text-base text-slate-300 mb-4">প্রতি সাবজেক্ট জন্য: ১৫০ টাকা + MFS সার্ভিস চার্জ + আমার সার্ভিস চার্জ</p>
+                <p className="font-bn text-[15px] md:text-base text-slate-300 mb-4">প্রতি সাবজেক্ট জন্য: 150 টাকা + MFS সার্ভিস চার্জ + আমার সার্ভিস চার্জ</p>
                 <div className="bg-slate-900/50 p-4 rounded-xl border border-slate-700 text-center">
-                  <span className="font-bn text-xl md:text-2xl font-bold text-emerald-400">১৫০ + ১.৫ + ৫০ = ২০০ টাকা মাত্র</span>
+                  <span className="font-en text-xl md:text-2xl font-bold text-emerald-400">150 + 1.5 + 50 = 200 টাকা মাত্র</span>
                 </div>
               </div>
               <div className="bg-slate-800/60 border border-slate-700/50 rounded-2xl p-4 sm:p-6 backdrop-blur-md shadow-xl flex flex-col justify-center">
